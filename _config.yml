@@ -2,7 +2,17 @@
 
 theme: jekyll-theme-minimal # 好きなテーマを指定できます
 
-# collectionsセクションを追加して、documentsフォルダを登録
+# collectionsセクションを追加して、_documentsフォルダを登録
 collections:
   documents:
     output: true # この設定で各ドキュメントが個別のページとして出力されます
+    permalink: /:collection/:name/ # URLパターンを設定 (例: /documents/getting-started/)
+
+# サイト設定
+title: "Documentation Site"
+description: "GitHub Pagesで動的にドキュメントを管理するサイト"
+
+# プラグイン（GitHub Pagesで自動的に有効化される）
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
