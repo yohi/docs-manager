@@ -16,3 +16,4 @@ description: "GitHub Pagesで動的にドキュメントを管理するサイト
 plugins:
   - jekyll-relative-links
   - jekyll-optional-front-matter
+  - jekyll-redirect-from
