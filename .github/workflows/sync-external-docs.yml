@@ -1,0 +1,73 @@
+name: Sync External Documentation
+
+on:
+  schedule:
+    # 毎日午前9時（JST）に実行（UTC 0時）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 手動実行も可能
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/sync-external-docs.yml'
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Download external documentation
+      run: |
+        # GitHub MCP Server README をダウンロード
+        curl -s https://raw.githubusercontent.com/github/github-mcp-server/refs/heads/main/README.md -o /tmp/github-mcp-server-raw.md
+        
+        # Front matter を追加
+        cat > _documents/github-mcp-server-synced.md << 'DOCEOF'
+        ---
+        title: GitHub MCP Server (同期版)
+        description: GitHub MCP Serverの公式ドキュメント（毎日同期）
+        order: 4
+        last_sync: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        source_url: https://raw.githubusercontent.com/github/github-mcp-server/refs/heads/main/README.md
+        ---
+        
+        > 📅 **最終同期**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")  
+        > 🔗 **元のファイル**: [GitHub MCP Server README](https://github.com/github/github-mcp-server/blob/main/README.md)  
+        > ⚡ **同期方法**: GitHub Actions（毎日自動実行）
+        
+        ---
+        
+        DOCEOF
+        
+        # 元のMarkdownコンテンツを追加
+        cat /tmp/github-mcp-server-raw.md >> _documents/github-mcp-server-synced.md
+    
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if git diff --quiet; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push changes
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add _documents/github-mcp-server-synced.md
+        git commit -m "docs: 外部ドキュメントを自動同期 ($(date -u +"%Y-%m-%d %H:%M:%S UTC"))"
+        git push
+    
+    - name: Summary
+      run: |
+        if [ "${{ steps.verify-changed-files.outputs.changed }}" == "true" ]; then
+          echo "✅ ドキュメントが更新されました"
+        else
+          echo "ℹ️ ドキュメントに変更はありませんでした"
+        fi
