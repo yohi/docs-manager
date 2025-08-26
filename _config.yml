@@ -1,0 +1,8 @@
+# _config.yml
+
+theme: jekyll-theme-minimal # 好きなテーマを指定できます
+
+# collectionsセクションを追加して、documentsフォルダを登録
+collections:
+  documents:
+    output: true # この設定で各ドキュメントが個別のページとして出力されます
