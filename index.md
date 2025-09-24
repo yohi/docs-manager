@@ -42,7 +42,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🔗 **GitHub統合・自動化**
 
-#### [GitHub MCP Server]({% link index.md %})
+#### [GitHub MCP Server]({% link _documents/github-mcp-index.md %})
 ##### GitHubとの高度な統合ソリューション
 - リアルタイム公式ドキュメント
 - 認証・設定・実装ガイド
@@ -145,7 +145,7 @@ GitHub MCP Server → 基本設定
 
 ### 🔧 **上級者の方**
 1. [高度な機能]({{ site.baseurl }}{% link _documents/advanced-feature.md %}) - 発展的技術
-2. [GitHub MCP Server]({{ site.baseurl }}{% link _documents/github-mcp-server.md %}) - 深度統合
+2. [GitHub MCP Server]({{ site.baseurl }}{% link _documents/github-mcp-index.md %}) - 深度統合
 3. [拡張思考のコツ]({{ site.baseurl }}{% link _documents/_anthropic-prompt-engineering/extended-thinking-tips.md %}) - AI最適化
 
 ---
