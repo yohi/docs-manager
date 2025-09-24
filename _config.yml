@@ -3,8 +3,8 @@
 # サイト基本設定
 title: "Development Documentation Hub"
 description: "プロフェッショナル開発者のための包括的ドキュメントサイト - AI開発・プロンプトエンジニアリング・IDE活用"
-url: "" # GitHub Pagesが自動設定
-baseurl: "" # GitHub Pagesが自動設定
+url: "https://yohi.github.io"
+baseurl: "/docs-manager"
 
 # 作成者情報
 author:
@@ -12,8 +12,7 @@ author:
   email: "dev@example.com"
 
 # テーマ設定
-theme: jekyll-theme-minimal
-remote_theme: jekyll/minima # より機能豊富なテーマオプション
+remote_theme: jekyll/minima
 
 # Collections設定
 collections:
@@ -72,9 +71,8 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - "*.md"
   - "*.txt"
-  - README*
+  - README.md
 
 # インクルード設定（必要な場合）
 include:
