@@ -167,6 +167,7 @@ GitHub MCP Server → 基本設定
 
 **🎯 目標**: このサイトを通じて、開発者の皆様がAI・モダンツールを活用した効率的で高品質な開発ワークフローを構築できることを目指しています。
 
-{% if site.documents.size == 0 %}
+{% assign docs_col = site.collections['documents'] %}
+{% if docs_col == nil or docs_col.docs | size == 0 %}
 <p><em>ドキュメントがまだありません。_documentsフォルダにMarkdownファイルを追加してください。</em></p>
 {% endif %}
