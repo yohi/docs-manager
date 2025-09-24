@@ -17,5 +17,5 @@ order: 2
 
 ## 参考リンク
 
-- [はじめに]({{ site.baseurl }}{% link _documents/getting-started.md %})
+- [はじめに]({% link _documents/getting-started.md %})
 - [GitHub Pages公式ドキュメント](https://docs.github.com/ja/pages)
