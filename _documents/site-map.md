@@ -145,7 +145,7 @@ layout: default
   - [Slack]({{ site.baseurl }}{% link _documents/_cursor/integrations/slack.md %})
 
 #### タブ・ワークスペース
-- **[tab/]({{ site.baseurl }}{% link _documents/_cursor/tab/ %})**
+- **[tab/]({{ site.baseurl }}{% link _documents/_cursor/tab/overview.md %})**
   - [概要]({{ site.baseurl }}{% link _documents/_cursor/tab/overview.md %})
 
 #### トラブルシューティング
