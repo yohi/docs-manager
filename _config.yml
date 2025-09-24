@@ -1,19 +1,127 @@
-# _config.yml
+# Jekyll Configuration for Development Documentation Hub
 
-theme: jekyll-theme-minimal # 好きなテーマを指定できます
+# サイト基本設定
+title: "Development Documentation Hub"
+description: "プロフェッショナル開発者のための包括的ドキュメントサイト - AI開発・プロンプトエンジニアリング・IDE活用"
+url: "" # GitHub Pagesが自動設定
+baseurl: "" # GitHub Pagesが自動設定
 
-# collectionsセクションを追加して、_documentsフォルダを登録
+# 作成者情報
+author:
+  name: "Development Team"
+  email: "dev@example.com"
+
+# テーマ設定
+theme: jekyll-theme-minimal
+remote_theme: jekyll/minima # より機能豊富なテーマオプション
+
+# Collections設定
 collections:
   documents:
-    output: true # この設定で各ドキュメントが個別のページとして出力されます
-    permalink: /:collection/:name/ # URLパターンを設定 (例: /documents/getting-started/)
+    output: true
+    permalink: /:collection/:name/
+    sort_by: order
 
-# サイト設定
-title: "Documentation Site"
-description: "GitHub Pagesで動的にドキュメントを管理するサイト"
+# デフォルト設定
+defaults:
+  - scope:
+      path: ""
+      type: "documents"
+    values:
+      layout: "default"
+      toc: true
+      nav: true
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 
-# プラグイン（GitHub Pagesで自動的に有効化される）
+# プラグイン設定（GitHub Pages対応）
 plugins:
   - jekyll-relative-links
   - jekyll-optional-front-matter
   - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Markdown設定
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# 除外設定
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - "*.md"
+  - "*.txt"
+  - README*
+
+# インクルード設定（必要な場合）
+include:
+  - _pages
+  - _includes
+
+# SEO・ソーシャル設定
+social:
+  name: Development Documentation Hub
+  links:
+    - https://github.com/your-username/docs-manager
+
+# Google Analytics（オプション）
+# google_analytics: "G-XXXXXXXXXX"
+
+# サイト設定
+timezone: Asia/Tokyo
+encoding: utf-8
+lang: ja
+
+# パフォーマンス設定
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [local]
+
+# カスタム変数
+custom:
+  navigation_enabled: true
+  toc_enabled: true
+  breadcrumbs_enabled: true
+  search_enabled: false # GitHub Pagesの制限により無効
+
+# RSS/Atom Feed設定
+feed:
+  posts_limit: 20
+  excerpt_only: true
+
+# 開発設定（ローカル開発時のみ）
+# port: 4000
+# host: 127.0.0.1
+# incremental: true
+# livereload: true
+
+# GitHub固有設定
+github: [metadata]
