@@ -62,7 +62,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 - セットアップ手順・ナビゲーション
 - 各セクションの概要・活用方法
 
-#### [高度な機能]({% link _documents/advanced-feture.md %})
+#### [高度な機能]({% link _documents/advanced-feature.md %})
 **発展的な技術・実装パターン**
 - 上級者向けテクニック
 - 複合的なワークフロー構築
@@ -144,7 +144,7 @@ GitHub MCP Server → 基本設定
 3. [GitHub Actions統合]({% link _documents/_cursor/cli/github-actions.md %}) - CI/CD自動化
 
 ### 🔧 **上級者の方**
-1. [高度な機能]({% link _documents/advanced-feture.md %}) - 発展的技術
+1. [高度な機能]({% link _documents/advanced-feature.md %}) - 発展的技術
 2. [GitHub MCP Server]({% link _documents/github-mcp-server.md %}) - 深度統合
 3. [拡張思考のコツ]({% link _documents/_anthropic-prompt-engineering/extended-thinking-tips.md %}) - AI最適化
 

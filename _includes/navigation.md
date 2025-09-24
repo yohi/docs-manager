@@ -29,7 +29,7 @@
         📖 はじめに
       </a>
 
-      <a href="{{ site.baseurl }}{% link _documents/advanced-feture.md %}" style="color: #cf222e; text-decoration: none;">
+      <a href="{{ site.baseurl }}{% link _documents/advanced-feature.md %}" style="color: #cf222e; text-decoration: none;">
         ⚡ 高度な機能
       </a>
     </div>

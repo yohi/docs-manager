@@ -17,4 +17,4 @@ order: 1
 
 ## 次のステップ
 
-[高度な機能]({{ site.baseurl }}{% link _documents/advanced-feture.md %})についても確認してください。
+[高度な機能]({{ site.baseurl }}{% link _documents/advanced-feature.md %})についても確認してください。

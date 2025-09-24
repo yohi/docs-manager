@@ -187,7 +187,7 @@ layout: default
 
 ### 基本ガイド
 - [はじめに]({{ site.baseurl }}{% link _documents/getting-started.md %})
-- [高度な機能]({{ site.baseurl }}{% link _documents/advanced-feture.md %})
+- [高度な機能]({{ site.baseurl }}{% link _documents/advanced-feature.md %})
 
 ### ドキュメント管理
 - [Claude Code Documentation]({{ site.baseurl }}{% link _documents/claude-code-documentation.md %})
