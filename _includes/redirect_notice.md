@@ -1,17 +1,8 @@
----
-title: Bugbot
-description: CursorのBugbot機能
-order: 6
-redirect_to: https://cursor.com/docs/bugbot
-robots: noindex
-sitemap: false
----
-
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->
 
-# Bugbot
+# {{ include.title }}
 
-このページは自動的に[Bugbot]({{ page.redirect_to }})にリダイレクトされます。
+このページは自動的に[{{ include.title }}]({{ include.url }})にリダイレクトされます。
 
 リダイレクトされない場合は、上記のリンクをクリックしてください。
 

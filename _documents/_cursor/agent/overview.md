@@ -3,6 +3,9 @@ title: エージェント概要
 description: Cursorのエージェント機能の概要
 order: 30
 redirect_to: https://cursor.com/docs/agent/overview
+layout: redirect
+robots: noindex
+sitemap: false
 ---
 
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->

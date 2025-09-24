@@ -3,6 +3,8 @@ title: アクセス権の更新
 description: Cursorのアクセス権の更新
 order: 5
 redirect_to: https://cursor.com/docs/account/update-access
+robots: noindex
+sitemap: false
 ---
 
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->

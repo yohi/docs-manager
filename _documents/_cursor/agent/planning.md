@@ -3,6 +3,8 @@ title: エージェントプランニング
 description: Cursorのエージェントプランニング機能
 order: 31
 redirect_to: https://cursor.com/docs/agent/planning
+robots: noindex
+sitemap: false
 ---
 
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->

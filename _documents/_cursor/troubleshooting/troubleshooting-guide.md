@@ -3,16 +3,8 @@ title: トラブルシューティングガイド
 description: Cursorのトラブルシューティングガイド
 order: 28
 redirect_to: https://cursor.com/docs/troubleshooting/troubleshooting-guide
+robots: noindex
+sitemap: false
 ---
 
-<!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->
-
-# トラブルシューティングガイド
-
-このページは自動的に[トラブルシューティングガイド]({{ page.redirect_to }})にリダイレクトされます。
-
-リダイレクトされない場合は、上記のリンクをクリックしてください。
-
----
-
-**技術情報**: このリダイレクトは`jekyll-redirect-from`プラグインにより実装されています。
+{% include redirect_notice.md title=page.title url=page.redirect_to %}

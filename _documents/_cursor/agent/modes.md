@@ -3,6 +3,8 @@ title: エージェントモード
 description: Cursorのエージェントモード
 order: 29
 redirect_to: https://cursor.com/docs/agent/modes
+robots: noindex
+sitemap: false
 ---
 
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->

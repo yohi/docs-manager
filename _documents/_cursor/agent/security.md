@@ -3,6 +3,8 @@ title: エージェントセキュリティ
 description: Cursorのエージェントのセキュリティ
 order: 33
 redirect_to: https://cursor.com/docs/agent/security
+robots: noindex
+sitemap: false
 ---
 
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->

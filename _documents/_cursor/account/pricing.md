@@ -3,6 +3,8 @@ title: 価格設定
 description: Cursorの価格設定
 order: 4
 redirect_to: https://cursor.com/docs/account/pricing
+robots: noindex
+sitemap: false
 ---
 
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->
