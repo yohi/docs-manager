@@ -28,7 +28,7 @@ defaults:
       layout: "default"
       permalink: "/documents/:name/"
 
-# 追加デフォルト設定  
+# 追加デフォルト設定
   - scope:
       path: ""
       type: "pages"

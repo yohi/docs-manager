@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: site.title }}</title>
-    <meta name="description" content="{{ page.description | default: site.description }}">
-    
-    <!-- SEO Tags -->
-    {% seo %}
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+
+  <!-- SEO Tags -->
+  {% seo %}
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
 </head>
+
 <body>
-    <div class="wrapper">
-        <header>
-            <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-            <p>{{ site.description }}</p>
-            
-            {% if site.custom.navigation_enabled %}
-            <nav>
-                <ul>
-                    <li><a href="{{ '/' | relative_url }}">ホーム</a></li>
-                    <li><a href="{{ '/documents/_anthropic-prompt-engineering/' | relative_url }}">AI・プロンプト</a></li>
-                    <li><a href="{{ '/documents/_cursor/' | relative_url }}">Cursor</a></li>
-                    <li><a href="{{ '/documents/github-mcp-index.html' | relative_url }}">GitHub MCP</a></li>
-                </ul>
-            </nav>
-            {% endif %}
-        </header>
+  <div class="wrapper">
+    <header>
+      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      <p>{{ site.description }}</p>
 
-        <main>
-            <article>
-                {% if page.title %}
-                <h1>{{ page.title }}</h1>
-                {% endif %}
-                
-                {{ content }}
-            </article>
-        </main>
+      {% if site.custom.navigation_enabled %}
+      <nav>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}">ホーム</a></li>
+          <li><a href="{{ '/documents/_anthropic-prompt-engineering/' | relative_url }}">AI・プロンプト</a></li>
+          <li><a href="{{ '/documents/_cursor/' | relative_url }}">Cursor</a></li>
+          <li><a href="{{ '/documents/github-mcp-index.html' | relative_url }}">GitHub MCP</a></li>
+        </ul>
+      </nav>
+      {% endif %}
+    </header>
 
-        <footer>
-            <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name | default: site.title }}</p>
-            <p><small>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">GitHub Pages</a></small></p>
-        </footer>
-    </div>
+    <main>
+      <article>
+        {% if page.title %}
+        <h1>{{ page.title }}</h1>
+        {% endif %}
 
-    <!-- JavaScript -->
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+        {{ content }}
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name | default: site.title }}</p>
+      <p><small>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">GitHub
+            Pages</a></small></p>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
+
 </html>
