@@ -3,16 +3,9 @@ title: ダウンロード
 description: Cursorのダウンロード
 order: 16
 redirect_to: https://cursor.com/docs/downloads
+layout: redirect
+robots: noindex
+sitemap: false
 ---
 
-<!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->
-
-# ダウンロード
-
-このページは自動的に[ダウンロード]({{ page.redirect_to }})にリダイレクトされます。
-
-リダイレクトされない場合は、上記のリンクをクリックしてください。
-
----
-
-**技術情報**: このリダイレクトは`jekyll-redirect-from`プラグインにより実装されています。
+{% include redirect_notice.md title=page.title url=page.redirect_to %}
