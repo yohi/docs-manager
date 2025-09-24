@@ -7,7 +7,7 @@ layout: default
 
 # 🗺️ サイトマップ
 
-**Development Documentation Hub の全コンテンツ階層構造**
+### Development Documentation Hub の全コンテンツ階層構造
 
 このページでは、サイト内の全ドキュメントを階層的に整理して表示しています。目的のコンテンツを効率的に見つけるためのナビゲーションガイドとしてご活用ください。
 
@@ -87,13 +87,13 @@ layout: default
 ### [📁 セクション概要]({{ site.baseurl }}{% link _documents/_cursor/index.md %})
 
 #### はじめに・基本
-- **[get-started/]({{ site.baseurl }}{% link _documents/_cursor/get-started/ %})**
+- **[get-started/]({{ site.baseurl }}{% link _documents/_cursor/get-started/index.md %})**
   - [基本概念]({{ site.baseurl }}{% link _documents/_cursor/get-started/concepts.md %})
   - [クイックスタート]({{ site.baseurl }}{% link _documents/_cursor/get-started/quickstart.md %})
 - [ダウンロード]({{ site.baseurl }}{% link _documents/_cursor/downloads.md %})
 
 #### AI エージェント機能
-- **[agent/]({{ site.baseurl }}{% link _documents/_cursor/agent/ %})**
+- **[agent/]({{ site.baseurl }}{% link _documents/_cursor/agent/index.md %})**
   - [概要]({{ site.baseurl }}{% link _documents/_cursor/agent/overview.md %})
   - [モード]({{ site.baseurl }}{% link _documents/_cursor/agent/modes.md %})
   - [プランニング]({{ site.baseurl }}{% link _documents/_cursor/agent/planning.md %})
@@ -103,7 +103,7 @@ layout: default
   - [ツール]({{ site.baseurl }}{% link _documents/_cursor/agent/tools.md %})
 
 #### CLI・自動化
-- **[cli/]({{ site.baseurl }}{% link _documents/_cursor/cli/ %})**
+- **[cli/]({{ site.baseurl }}{% link _documents/_cursor/cli/index.md %})**
   - [概要]({{ site.baseurl }}{% link _documents/_cursor/cli/overview.md %})
   - [インストール]({{ site.baseurl }}{% link _documents/_cursor/cli/installation.md %})
   - [使用方法]({{ site.baseurl }}{% link _documents/_cursor/cli/using.md %})
@@ -111,7 +111,7 @@ layout: default
   - [シェルモード]({{ site.baseurl }}{% link _documents/_cursor/cli/shell-mode.md %})
   - [GitHub Actions]({{ site.baseurl }}{% link _documents/_cursor/cli/github-actions.md %})
   - [MCP]({{ site.baseurl }}{% link _documents/_cursor/cli/mcp.md %})
-  - **[reference/]({{ site.baseurl }}{% link _documents/_cursor/cli/reference/ %})**
+  - **[reference/]({{ site.baseurl }}{% link _documents/_cursor/cli/reference/index.md %})**
     - [認証]({{ site.baseurl }}{% link _documents/_cursor/cli/reference/authentication.md %})
     - [設定]({{ site.baseurl }}{% link _documents/_cursor/cli/reference/configuration.md %})
     - [出力形式]({{ site.baseurl }}{% link _documents/_cursor/cli/reference/output-format.md %})
@@ -120,16 +120,16 @@ layout: default
     - [スラッシュコマンド]({{ site.baseurl }}{% link _documents/_cursor/cli/reference/slash-commands.md %})
 
 #### 設定・カスタマイズ
-- **[settings/]({{ site.baseurl }}{% link _documents/_cursor/settings/ %})**
+- **[settings/]({{ site.baseurl }}{% link _documents/_cursor/settings/index.md %})**
   - [API キー]({{ site.baseurl }}{% link _documents/_cursor/settings/api-keys.md %})
-- **[configuration/]({{ site.baseurl }}{% link _documents/_cursor/configuration/ %})**
+- **[configuration/]({{ site.baseurl }}{% link _documents/_cursor/configuration/index.md %})**
   - [拡張機能]({{ site.baseurl }}{% link _documents/_cursor/configuration/extensions.md %})
   - [キーバインド]({{ site.baseurl }}{% link _documents/_cursor/configuration/kbd.md %})
   - [シェル]({{ site.baseurl }}{% link _documents/_cursor/configuration/shell.md %})
   - [テーマ]({{ site.baseurl }}{% link _documents/_cursor/configuration/themes.md %})
 
 #### コンテキスト・インデックス
-- **[context/]({{ site.baseurl }}{% link _documents/_cursor/context/ %})**
+- **[context/]({{ site.baseurl }}{% link _documents/_cursor/context/index.md %})**
   - [コードベースインデックス]({{ site.baseurl }}{% link _documents/_cursor/context/codebase-indexing.md %})
   - [除外ファイル]({{ site.baseurl }}{% link _documents/_cursor/context/ignore-files.md %})
   - [メモリ]({{ site.baseurl }}{% link _documents/_cursor/context/memories.md %})
@@ -137,7 +137,7 @@ layout: default
   - [シンボル]({{ site.baseurl }}{% link _documents/_cursor/context/symbols.md %})
 
 #### 統合・連携
-- **[integrations/]({{ site.baseurl }}{% link _documents/_cursor/integrations/ %})**
+- **[integrations/]({{ site.baseurl }}{% link _documents/_cursor/integrations/index.md %})**
   - [ディープリンク]({{ site.baseurl }}{% link _documents/_cursor/integrations/deeplinks.md %})
   - [Git]({{ site.baseurl }}{% link _documents/_cursor/integrations/git.md %})
   - [GitHub]({{ site.baseurl }}{% link _documents/_cursor/integrations/github.md %})
@@ -149,7 +149,7 @@ layout: default
   - [概要]({{ site.baseurl }}{% link _documents/_cursor/tab/overview.md %})
 
 #### トラブルシューティング
-- **[troubleshooting/]({{ site.baseurl }}{% link _documents/_cursor/troubleshooting/ %})**
+- **[troubleshooting/]({{ site.baseurl }}{% link _documents/_cursor/troubleshooting/index.md %})**
   - [よくある問題]({{ site.baseurl }}{% link _documents/_cursor/troubleshooting/common-issues.md %})
   - [リクエスト・レポート]({{ site.baseurl }}{% link _documents/_cursor/troubleshooting/request-reporting.md %})
   - [トラブルシューティングガイド]({{ site.baseurl }}{% link _documents/_cursor/troubleshooting/troubleshooting-guide.md %})
@@ -201,6 +201,7 @@ layout: default
 ## 📊 **統計情報**
 
 ### コンテンツ概要
+
 | セクション | ドキュメント数 | 主要機能 |
 |-----------|-------------|---------|
 | **Anthropic** | 15 | プロンプトエンジニアリング・Claude 4活用 |
@@ -208,6 +209,7 @@ layout: default
 | **Cursor** | 45+ | AI統合IDE・エージェント・CLI・統合 |
 | **GitHub MCP** | 7 | GitHub統合・MCP・自動化 |
 | **基本ガイド** | 6 | 学習・リファレンス・ナビゲーション |
+
 
 ### 総計
 - **全ドキュメント数**: 85+ファイル
@@ -240,4 +242,5 @@ layout: default
 
 ---
 
-*最終更新: {% assign update_time = site.time | date: "%Y年%m月%d日 %H:%M" %}{{ update_time }}*
+#### 最終更新
+{% assign update_time = site.time | date: "%Y年%m月%d日 %H:%M" %}{{ update_time }}
