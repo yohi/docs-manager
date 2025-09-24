@@ -20,16 +20,20 @@ collections:
     output: true
     permalink: /:collection/:name/
     sort_by: order
-
-# デフォルト設定
 defaults:
   - scope:
-      path: ""
+      path: "_documents"
       type: "documents"
     values:
       layout: "default"
-      toc: true
-      nav: true
+      permalink: "/documents/:name/"
+
+# 追加デフォルト設定  
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
   - scope:
       path: ""
     values:
