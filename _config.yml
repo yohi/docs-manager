@@ -14,8 +14,8 @@ author:
   name: "Development Team"
   email: "dev@example.com"
 
-# テーマ設定
-remote_theme: jekyll/minima
+# テーマ設定（GitHub Pages標準）
+# remote_theme は使用せず、GitHub Pages標準のテーマを使用
 
 # Collections設定
 collections:
