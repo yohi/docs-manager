@@ -93,32 +93,4 @@ permalink: /404.html
   </div>
 </div>
 
-<script>
-  // 自動リダイレクト対応
-  document.addEventListener('DOMContentLoaded', function () {
-    const path = window.location.pathname;
-    const redirects = {
-      // 旧形式のリンクから新形式への自動リダイレクト
-      '/docs-manager/documents/_anthropic-prompt-engineering/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
-      '/docs-manager/documents/_cursor/': '/docs-manager/documents/_cursor/index/',
-      '/docs-manager/documents/_claude-code/': '/docs-manager/documents/_claude-code/index/'
-    };
-
-    if (redirects[path]) {
-      setTimeout(() => {
-        window.location.href = redirects[path];
-      }, 3000); // 3秒後にリダイレクト
-
-      // リダイレクト通知を表示
-      const notice = document.createElement('div');
-      notice.innerHTML = `
-      <div style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-                  background: #d4edda; color: #155724; padding: 15px 20px;
-                  border: 1px solid #c3e6cb; border-radius: 5px; z-index: 1000;">
-        🔄 3秒後に正しいページにリダイレクトします...
-      </div>
-    `;
-      document.body.appendChild(notice);
-    }
-  });
-</script>
+<!-- リダイレクト処理は redirect_handler.html に委譲済み -->

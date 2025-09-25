@@ -138,17 +138,29 @@ GitHub Pages用 高度リダイレクトハンドラー
         'index_redirect': 'インデックス補正'
       }[reason] || '自動検出';
 
-      notice.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-        <div style="width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-        <div>
-          <div style="font-weight: 600;">🔄 ページを最適化しています...</div>
-          <div style="font-size: 12px; opacity: 0.9; margin-top: 2px;">
-            理由: ${reasonText} | 移動先: ${newPath.replace('/docs-manager', '')}
-          </div>
-        </div>
-      </div>
-    `;
+      // セキュアなDOM構築 - XSS脆弱性修正
+      const container = document.createElement('div');
+      container.style.cssText = 'display: flex; align-items: center; justify-content: center; gap: 10px;';
+
+      const spinner = document.createElement('div');
+      spinner.style.cssText = 'width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;';
+
+      const textContainer = document.createElement('div');
+
+      const mainText = document.createElement('div');
+      mainText.style.fontWeight = '600';
+      mainText.textContent = '🔄 ページを最適化しています...';
+
+      const metaText = document.createElement('div');
+      metaText.style.cssText = 'font-size: 12px; opacity: 0.9; margin-top: 2px;';
+      // XSS対策: textContentを使用してユーザー入力をエスケープ
+      metaText.textContent = `理由: ${reasonText} | 移動先: ${newPath.replace('/docs-manager', '')}`;
+
+      textContainer.appendChild(mainText);
+      textContainer.appendChild(metaText);
+      container.appendChild(spinner);
+      container.appendChild(textContainer);
+      notice.appendChild(container);
 
       // CSS アニメーション
       const style = document.createElement('style');

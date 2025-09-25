@@ -39,13 +39,13 @@ bundle exec htmlproofer _site --internal-domains="localhost"
 ```bash
 git add .
 git commit -m "🔧 Fix 404 errors: Collections config, redirects, and link validation"
-git push origin main
+git push origin master
 ```
 
 ### **Step 3: GitHub Pages 設定確認**
 1. リポジトリ設定 → Pages
 2. Source: Deploy from a branch
-3. Branch: main / (root)
+3. Branch: master / (root)
 4. GitHub Pages サイトの有効化確認
 
 ### **Step 4: デプロイ完了確認**
@@ -58,9 +58,9 @@ git push origin main
 ## 🧪 **デプロイ後テスト**
 
 ### **主要テストページ**
-1. **トップページ**: https://y_ohi.github.io/docs-manager/
-2. **テストページ**: https://y_ohi.github.io/docs-manager/test-links.html
-3. **404ページ**: https://y_ohi.github.io/docs-manager/nonexistent-page/
+1. **トップページ**: <https://y_ohi.github.io/docs-manager/>
+2. **テストページ**: <https://y_ohi.github.io/docs-manager/test-links.html>
+3. **404ページ**: <https://y_ohi.github.io/docs-manager/nonexistent-page/>
 
 ### **✅ 機能テスト項目**
 
@@ -71,8 +71,8 @@ git push origin main
 - [ ] [GitHub MCP Server](https://y_ohi.github.io/docs-manager/documents/github-mcp-index/)
 
 #### **2. リダイレクト機能**
-- [ ] https://y_ohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/ → /index/
-- [ ] https://y_ohi.github.io/docs-manager/documents/_cursor/ → /index/
+- [ ] <https://y_ohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/> → /index/
+- [ ] <https://y_ohi.github.io/docs-manager/documents/_cursor/> → /index/
 - [ ] .html拡張子付きURL → 拡張子なしURL
 
 #### **3. 404エラーハンドリング**

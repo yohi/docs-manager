@@ -4,11 +4,7 @@ Allow: /
 # Sitemap
 Sitemap: https://y_ohi.github.io/docs-manager/sitemap.xml
 
-# 優先クロール対象
-Allow: /documents/_anthropic-prompt-engineering/
-Allow: /documents/_cursor/
-Allow: /documents/_claude-code/
-Allow: /documents/github-mcp-index/
+# 優先クロール対象（Allow: / で既に許可済みのため省略可能）
 
 # クロール除外
 Disallow: /404.html

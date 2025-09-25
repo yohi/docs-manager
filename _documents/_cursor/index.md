@@ -67,66 +67,66 @@ Cursorは、AI（特にGPT-4・Claude）を深度統合した革新的なコー�
 
 ### ⚙️ **設定・カスタマイズ**
 
-#### [設定](settings/)
-- **[API キー](settings/api-keys.html)** - AI サービス連携設定
+#### [設定]({{ site.baseurl }}/documents/_cursor/settings/index/)
+- **[API キー]({{ site.baseurl }}/documents/_cursor/settings/api-keys/)** - AI サービス連携設定
 
-#### [構成](configuration/)
+#### [構成]({{ site.baseurl }}/documents/_cursor/configuration/index/)
 **エディター環境の最適化**
-- **[拡張機能](configuration/extensions.html)** - プラグイン・拡張管理
-- **[キーバインド](configuration/kbd.html)** - キーボードショートカット
-- **[シェル](configuration/shell.html)** - 統合シェル設定
-- **[テーマ](configuration/themes.html)** - UI・テーマカスタマイズ
+- **[拡張機能]({{ site.baseurl }}/documents/_cursor/configuration/extensions/)** - プラグイン・拡張管理
+- **[キーバインド]({{ site.baseurl }}/documents/_cursor/configuration/kbd/)** - キーボードショートカット
+- **[シェル]({{ site.baseurl }}/documents/_cursor/configuration/shell/)** - 統合シェル設定
+- **[テーマ]({{ site.baseurl }}/documents/_cursor/configuration/themes/)** - UI・テーマカスタマイズ
 
 ---
 
 ### 🔍 **コンテキスト・インデックス**
 
-#### [コンテキスト](context/)
+#### [コンテキスト]({{ site.baseurl }}/documents/_cursor/context/index/)
 **AIが理解するプロジェクト情報**
-- **[コードベースインデックス](context/codebase-indexing.html)** - 効率的なコード検索
-- **[除外ファイル](context/ignore-files.html)** - .cursorignore・除外設定
-- **[メモリ](context/memories.html)** - AI記憶・学習機能
-- **[ルール](context/rules.html)** - プロジェクト固有ルール
-- **[シンボル](context/symbols.html)** - コードシンボル解析
+- **[コードベースインデックス]({{ site.baseurl }}/documents/_cursor/context/codebase-indexing/)** - 効率的なコード検索
+- **[除外ファイル]({{ site.baseurl }}/documents/_cursor/context/ignore-files/)** - .cursorignore・除外設定
+- **[メモリ]({{ site.baseurl }}/documents/_cursor/context/memories/)** - AI記憶・学習機能
+- **[ルール]({{ site.baseurl }}/documents/_cursor/context/rules/)** - プロジェクト固有ルール
+- **[シンボル]({{ site.baseurl }}/documents/_cursor/context/symbols/)** - コードシンボル解析
 
 ---
 
 ### 🔗 **統合・連携**
 
-#### [統合](integrations/)
+#### [統合]({{ site.baseurl }}/documents/_cursor/integrations/index/)
 **外部サービス・ツール連携**
-- **[ディープリンク](integrations/deeplinks.html)** - アプリケーション間連携
-- **[Git](integrations/git.html)** - Git ワークフロー統合
-- **[GitHub](integrations/github.html)** - GitHub 深度統合
-- **[Linear](integrations/linear.html)** - プロジェクト管理連携
-- **[Slack](integrations/slack.html)** - チームコミュニケーション
+- **[ディープリンク]({{ site.baseurl }}/documents/_cursor/integrations/deeplinks/)** - アプリケーション間連携
+- **[Git]({{ site.baseurl }}/documents/_cursor/integrations/git/)** - Git ワークフロー統合
+- **[GitHub]({{ site.baseurl }}/documents/_cursor/integrations/github/)** - GitHub 深度統合
+- **[Linear]({{ site.baseurl }}/documents/_cursor/integrations/linear/)** - プロジェクト管理連携
+- **[Slack]({{ site.baseurl }}/documents/_cursor/integrations/slack/)** - チームコミュニケーション
 
 ---
 
 ### 📱 **タブ・ワークスペース**
 
-#### [タブ](tab/)
-- **[概要](tab/overview.html)** - タブ管理・ワークスペース最適化
+#### [タブ]({{ site.baseurl }}/documents/_cursor/tab/index/)
+- **[概要]({{ site.baseurl }}/documents/_cursor/tab/index/)** - タブ管理・ワークスペース最適化
 
 ---
 
 ### 🛠️ **トラブルシューティング**
 
-#### [トラブルシューティング](troubleshooting/)
+#### [トラブルシューティング]({{ site.baseurl }}/documents/_cursor/troubleshooting/index/)
 **問題解決・サポート**
-- **[よくある問題](troubleshooting/common-issues.html)** - 頻発する問題の解決
-- **[リクエスト・レポート](troubleshooting/request-reporting.html)** - バグ報告・機能要求
-- **[トラブルシューティングガイド](troubleshooting/troubleshooting-guide.html)** - 体系的問題解決
+- **[よくある問題]({{ site.baseurl }}/documents/_cursor/troubleshooting/common-issues/)** - 頻発する問題の解決
+- **[リクエスト・レポート]({{ site.baseurl }}/documents/_cursor/troubleshooting/request-reporting/)** - バグ報告・機能要求
+- **[トラブルシューティングガイド]({{ site.baseurl }}/documents/_cursor/troubleshooting/troubleshooting-guide/)** - 体系的問題解決
 
 ---
 
 ### 🔧 **特殊機能**
 
-#### [モデル](models.html)
+#### [モデル]({{ site.baseurl }}/documents/_cursor/models/)
 **AIモデル選択・最適化**
 - モデル比較・適用場面・パフォーマンス
 
-#### [BugBot](bugbot.html)
+#### [BugBot]({{ site.baseurl }}/documents/_cursor/bugbot/)
 **自動バグ検出・修正支援**
 - AI支援デバッグ・品質向上
 

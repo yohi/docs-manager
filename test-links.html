@@ -59,20 +59,26 @@ description: "GitHub Pages deployment link testing"
 
   // リンクテスト結果の自動記録
   document.addEventListener('DOMContentLoaded', function () {
-    const links = document.querySelectorAll('a[href^="/docs-manager"]');
+    const basePath = '{{ site.baseurl | default: "" }}'.replace(/\/$/, '');
+    const selector = basePath ? `a[href^="${basePath}/"]` : 'a[href^="/"]';
+    const links = document.querySelectorAll(selector);
 
     links.forEach(link => {
-      link.addEventListener('click', function (e) {
+      link.addEventListener('click', function () {
         const url = this.href;
         console.log('Testing link:', url);
 
-        // 結果をローカルストレージに記録
-        const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
-        testResults[url] = {
-          tested: true,
-          timestamp: new Date().toISOString()
-        };
-        localStorage.setItem('linkTestResults', JSON.stringify(testResults));
+        try {
+          // 結果をローカルストレージに記録
+          const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
+          testResults[url] = {
+            tested: true,
+            timestamp: new Date().toISOString()
+          };
+          localStorage.setItem('linkTestResults', JSON.stringify(testResults));
+        } catch (error) {
+          console.warn('linkTestResultsの記録に失敗しました', error);
+        }
       });
     });
   });
