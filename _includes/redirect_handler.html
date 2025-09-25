@@ -112,7 +112,17 @@ GitHub Pages用 高度リダイレクトハンドラー
 
       // 履歴に残さずリダイレクト（SEO配慮）
       setTimeout(() => {
-        window.location.replace(newPath);
+        try {
+          const url = new URL(newPath, window.location.origin);
+          // 既存の search/hash を引き継ぐ（新URL側が明示指定していない場合）
+          if (!url.search && window.location.search) url.search = window.location.search;
+          if (!url.hash && window.location.hash) url.hash = window.location.hash;
+          window.location.replace(url.toString());
+        } catch {
+          // newPath が相対パスでも安全にフォールバック
+          const suffix = (window.location.search || '') + (window.location.hash || '');
+          window.location.replace(newPath + suffix);
+        }
       }, 1500);
     }
 
