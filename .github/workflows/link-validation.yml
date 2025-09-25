@@ -28,6 +28,13 @@ on:
         default: 'false'
         type: boolean
 
+# GitHub Actions権限設定
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  checks: write
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -170,26 +177,35 @@ jobs:
 
     - name: 💬 Comment PR Results
       if: github.event_name == 'pull_request'
+      continue-on-error: true
       uses: actions/github-script@v7
       with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const fs = require('fs');
+          try {
+            const fs = require('fs');
 
-          // GITHUB_STEP_SUMMARY の内容を読み取り
-          let summary = '# 🔗 Link Validation Results\n\n';
-          summary += 'Link validation completed for this PR.\n\n';
-          summary += '## 📊 Quick Summary\n';
-          summary += '- ✅ Jekyll build: Success\n';
-          summary += '- 🔍 Internal links: Checked\n';
-          summary += '- 📋 Structure analysis: Complete\n\n';
-          summary += 'For detailed results, check the [workflow run](' + context.payload.pull_request.html_url.replace('/pull/', '/actions/runs/') + ').\n';
+            // GITHUB_STEP_SUMMARY の内容を読み取り
+            let summary = '# 🔗 Link Validation Results\n\n';
+            summary += 'Link validation completed for this PR.\n\n';
+            summary += '## 📊 Quick Summary\n';
+            summary += '- ✅ Jekyll build: Success\n';
+            summary += '- 🔍 Internal links: Checked\n';
+            summary += '- 📋 Structure analysis: Complete\n\n';
+            summary += `For detailed results, check the [workflow run](${context.payload.pull_request.html_url.replace('/pull/', '/actions/runs/')}).\n`;
 
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: summary
-          });
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
+
+            console.log('✅ PR comment posted successfully');
+          } catch (error) {
+            console.log('⚠️ Failed to post PR comment:', error.message);
+            console.log('This is not critical - the workflow can continue');
+          }
 
   security-scan:
     name: 🛡️ Security Scan
