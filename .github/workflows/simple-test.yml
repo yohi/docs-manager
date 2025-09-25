@@ -10,17 +10,17 @@ on:
 jobs:
   simple_build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: 📥 Checkout
       uses: actions/checkout@v4
-      
+
     - name: 🏗️ Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
         bundler-cache: true
-        
+
     - name: 📋 Install Dependencies
       run: |
         if [ ! -f Gemfile ]; then
@@ -36,14 +36,14 @@ jobs:
         EOF
         fi
         bundle install
-        
+
     - name: ✅ Build Jekyll Site
       run: |
         echo "Jekyll version: $(bundle exec jekyll --version)"
         echo "Building site..."
         bundle exec jekyll build --verbose
         echo "Build completed successfully!"
-        
+
     - name: 📊 Verify Build
       run: |
         if [ -d "_site" ]; then
