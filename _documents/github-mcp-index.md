@@ -17,7 +17,7 @@ GitHub MCP Serverは、AI開発ワークフローとGitHubプラットフォー�
 
 ### 🚀 **メインドキュメント**
 
-#### [GitHub MCP Server](github-mcp-server.html)
+#### [GitHub MCP Server](./github-mcp-server/)
 **公式ドキュメント（動的読み込み）**
 - リアルタイム更新される最新の公式情報
 - インストール・設定・基本使用方法
@@ -27,13 +27,13 @@ GitHub MCP Serverは、AI開発ワークフローとGitHubプラットフォー�
 
 ### ⚡ **実装・導入**
 
-#### [インスタント実装](github-mcp-server-instant.html)
+#### [インスタント実装](./github-mcp-server-instant/)
 **即座に使える実装ガイド**
 - 最小設定での迅速導入
 - テンプレート・設定例
 - トラブルシューティング
 
-#### [プラグイン開発](github-mcp-server-plugin.html)
+#### [プラグイン開発](./github-mcp-server-plugin/)
 **カスタムプラグイン・拡張開発**
 - プラグインアーキテクチャ
 - 開発フレームワーク・API
@@ -43,13 +43,13 @@ GitHub MCP Serverは、AI開発ワークフローとGitHubプラットフォー�
 
 ### 🔧 **技術実装**
 
-#### [iframe統合](github-mcp-server-iframe.html)
+#### [iframe統合](./github-mcp-server-iframe/)
 **Webアプリケーション内埋め込み**
 - iframe実装パターン
 - セキュリティ・サンドボックス設定
 - 外部アプリケーション統合
 
-#### [リダイレクト実装](github-mcp-server-redirect.html)
+#### [リダイレクト実装](./github-mcp-server-redirect/)
 **効率的なリダイレクト・プロキシ**
 - パフォーマンス最適化
 - キャッシュ戦略・CDN活用
@@ -59,7 +59,7 @@ GitHub MCP Serverは、AI開発ワークフローとGitHubプラットフォー�
 
 ### 📋 **公式リソース**
 
-#### [README](github-mcp-server-readme.html)
+#### [README](./github-mcp-server-readme/)
 **公式READMEファイル**
 - プロジェクト概要・基本情報
 - クイックスタートガイド
@@ -69,7 +69,7 @@ GitHub MCP Serverは、AI開発ワークフローとGitHubプラットフォー�
 
 ### 📊 **比較・分析**
 
-#### [リダイレクト手法比較](redirect-comparison.html)
+#### [リダイレクト手法比較](./redirect-comparison/)
 **各種リダイレクト手法の詳細比較**
 - JavaScript・Meta・Server-side比較
 - パフォーマンス・SEO・ユーザビリティ分析
@@ -111,17 +111,17 @@ iframe統合 → 既存ツール連携
 ## 🚀 **クイックスタートパス**
 
 ### 1️⃣ **即座に始める**
-1. **[GitHub MCP Server](github-mcp-server.html)** - 公式ドキュメント確認
-2. **[インスタント実装](github-mcp-server-instant.html)** - 最小設定での導入
+1. **[GitHub MCP Server](./github-mcp-server/)** - 公式ドキュメント確認
+2. **[インスタント実装](./github-mcp-server-instant/)** - 最小設定での導入
 3. **基本操作** - リポジトリ操作・認証テスト
 
 ### 2️⃣ **カスタマイズ**
-1. **[プラグイン開発](github-mcp-server-plugin.html)** - 独自機能実装
-2. **[iframe統合](github-mcp-server-iframe.html)** - 既存システム統合
-3. **[リダイレクト最適化](github-mcp-server-redirect.html)** - パフォーマンス向上
+1. **[プラグイン開発](./github-mcp-server-plugin/)** - 独自機能実装
+2. **[iframe統合](./github-mcp-server-iframe/)** - 既存システム統合
+3. **[リダイレクト最適化](./github-mcp-server-redirect/)** - パフォーマンス向上
 
 ### 3️⃣ **高度な活用**
-1. **[リダイレクト比較](redirect-comparison.html)** - 最適手法選択
+1. **[リダイレクト比較](./redirect-comparison/)** - 最適手法選択
 2. **セキュリティ強化** - 企業レベル設定
 3. **スケーリング** - 大規模運用対応
 

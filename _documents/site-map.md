@@ -1,11 +1,9 @@
 ---
-title: サイトマップ
+title: 🗺️ サイトマップ
 description: Development Documentation Hubの全コンテンツ一覧
 order: 999
 layout: default
 ---
-
-# 🗺️ サイトマップ
 
 ## Development Documentation Hub の全コンテンツ階層構造
 

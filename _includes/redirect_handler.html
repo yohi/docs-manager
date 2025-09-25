@@ -7,61 +7,67 @@ GitHub Pages用 高度リダイレクトハンドラー
   (function () {
     'use strict';
 
+    // 動的baseurl対応
+    const baseUrl = '{{ site.baseurl | default: "" }}';
+
     // リダイレクトマッピング（旧URL → 新URL）
     const redirectMap = {
       // Anthropic プロンプトエンジニアリング
-      '/docs-manager/documents/_anthropic-prompt-engineering/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
-      '/docs-manager/documents/anthropic-prompt-engineering/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
+      [`${baseUrl}/documents/_anthropic-prompt-engineering/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
+      [`${baseUrl}/documents/anthropic-prompt-engineering/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
 
       // Cursor Documentation
-      '/docs-manager/documents/_cursor/': '/docs-manager/documents/_cursor/index/',
-      '/docs-manager/documents/cursor/': '/docs-manager/documents/_cursor/index/',
-      '/docs-manager/documents/_cursor/get-started/': '/docs-manager/documents/_cursor/get-started/index/',
-      '/docs-manager/documents/_cursor/agent/': '/docs-manager/documents/_cursor/agent/index/',
-      '/docs-manager/documents/_cursor/cli/': '/docs-manager/documents/_cursor/cli/index/',
-      '/docs-manager/documents/_cursor/cli/reference/': '/docs-manager/documents/_cursor/cli/reference/index/',
-      '/docs-manager/documents/_cursor/settings/': '/docs-manager/documents/_cursor/settings/index/',
-      '/docs-manager/documents/_cursor/configuration/': '/docs-manager/documents/_cursor/configuration/index/',
-      '/docs-manager/documents/_cursor/context/': '/docs-manager/documents/_cursor/context/index/',
-      '/docs-manager/documents/_cursor/integrations/': '/docs-manager/documents/_cursor/integrations/index/',
-      '/docs-manager/documents/_cursor/tab/': '/docs-manager/documents/_cursor/tab/index/',
-      '/docs-manager/documents/_cursor/troubleshooting/': '/docs-manager/documents/_cursor/troubleshooting/index/',
+      [`${baseUrl}/documents/_cursor/`]: `${baseUrl}/documents/_cursor/index/`,
+      [`${baseUrl}/documents/cursor/`]: `${baseUrl}/documents/_cursor/index/`,
+      [`${baseUrl}/documents/_cursor/get-started/`]: `${baseUrl}/documents/_cursor/get-started/index/`,
+      [`${baseUrl}/documents/_cursor/agent/`]: `${baseUrl}/documents/_cursor/agent/index/`,
+      [`${baseUrl}/documents/_cursor/cli/`]: `${baseUrl}/documents/_cursor/cli/index/`,
+      [`${baseUrl}/documents/_cursor/cli/reference/`]: `${baseUrl}/documents/_cursor/cli/reference/index/`,
+      [`${baseUrl}/documents/_cursor/settings/`]: `${baseUrl}/documents/_cursor/settings/index/`,
+      [`${baseUrl}/documents/_cursor/configuration/`]: `${baseUrl}/documents/_cursor/configuration/index/`,
+      [`${baseUrl}/documents/_cursor/context/`]: `${baseUrl}/documents/_cursor/context/index/`,
+      [`${baseUrl}/documents/_cursor/integrations/`]: `${baseUrl}/documents/_cursor/integrations/index/`,
+      [`${baseUrl}/documents/_cursor/tab/`]: `${baseUrl}/documents/_cursor/tab/index/`,
+      [`${baseUrl}/documents/_cursor/troubleshooting/`]: `${baseUrl}/documents/_cursor/troubleshooting/index/`,
 
       // Claude Code Documentation
-      '/docs-manager/documents/_claude-code/': '/docs-manager/documents/_claude-code/index/',
-      '/docs-manager/documents/claude-code/': '/docs-manager/documents/_claude-code/index/',
+      [`${baseUrl}/documents/_claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
+      [`${baseUrl}/documents/claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
 
       // 拡張子付きURL対応（.html除去）
-      '/docs-manager/documents/_cursor/agent/overview.html': '/docs-manager/documents/_cursor/agent/overview/',
-      '/docs-manager/documents/_cursor/agent/modes.html': '/docs-manager/documents/_cursor/agent/modes/',
-      '/docs-manager/documents/_cursor/cli/overview.html': '/docs-manager/documents/_cursor/cli/overview/',
-      '/docs-manager/documents/_cursor/get-started/quickstart.html': '/docs-manager/documents/_cursor/get-started/quickstart/',
-      '/docs-manager/documents/_cursor/get-started/concepts.html': '/docs-manager/documents/_cursor/get-started/concepts/',
+      [`${baseUrl}/documents/_cursor/agent/overview.html`]: `${baseUrl}/documents/_cursor/agent/overview/`,
+      [`${baseUrl}/documents/_cursor/agent/modes.html`]: `${baseUrl}/documents/_cursor/agent/modes/`,
+      [`${baseUrl}/documents/_cursor/cli/overview.html`]: `${baseUrl}/documents/_cursor/cli/overview/`,
+      [`${baseUrl}/documents/_cursor/get-started/quickstart.html`]: `${baseUrl}/documents/_cursor/get-started/quickstart/`,
+      [`${baseUrl}/documents/_cursor/get-started/concepts.html`]: `${baseUrl}/documents/_cursor/get-started/concepts/`,
 
       // GitHub MCP関連
-      '/docs-manager/documents/github-mcp/': '/docs-manager/documents/github-mcp-index/',
-      '/docs-manager/documents/github-mcp-server.html': '/docs-manager/documents/github-mcp-server/',
+      [`${baseUrl}/documents/github-mcp/`]: `${baseUrl}/documents/github-mcp-index/`,
+      [`${baseUrl}/documents/github-mcp-server.html`]: `${baseUrl}/documents/github-mcp-server/`,
 
       // レガシーパス対応
-      '/docs-manager/anthropic/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
-      '/docs-manager/cursor/': '/docs-manager/documents/_cursor/index/',
-      '/docs-manager/claude-code/': '/docs-manager/documents/_claude-code/index/',
-      '/docs-manager/github-mcp/': '/docs-manager/documents/github-mcp-index/'
+      [`${baseUrl}/anthropic/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
+      [`${baseUrl}/cursor/`]: `${baseUrl}/documents/_cursor/index/`,
+      [`${baseUrl}/claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
+      [`${baseUrl}/github-mcp/`]: `${baseUrl}/documents/github-mcp-index/`
     };
 
-    // パターンベースリダイレクト（正規表現）
+    // パターンベースリダイレクト（正規表現） - baseurl対応
+    const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const baseUrlRegex = escapeRegex(baseUrl);
+
     const patternRedirects = [
       {
-        pattern: /^\/docs-manager\/documents\/([^\/]+)\.html$/,
-        replacement: '/docs-manager/documents/$1/'
+        pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/([^\\/]+)\\.html$`),
+        replacement: `${baseUrl}/documents/$1/`
       },
       {
-        pattern: /^\/docs-manager\/documents\/_([^\/]+)\/([^\/]+)\.html$/,
-        replacement: '/docs-manager/documents/_$1/$2/'
+        pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/_([^\\/]+)\\/([^\\/]+)\\.html$`),
+        replacement: `${baseUrl}/documents/_$1/$2/`
       },
       {
-        pattern: /^\/docs-manager\/documents\/_([^\/]+)\/([^\/]+)\/([^\/]+)\.html$/,
-        replacement: '/docs-manager/documents/_$1/$2/$3/'
+        pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/_([^\\/]+)\\/([^\\/]+)\\/([^\\/]+)\\.html$`),
+        replacement: `${baseUrl}/documents/_$1/$2/$3/`
       }
     ];
 
@@ -154,7 +160,8 @@ GitHub Pages用 高度リダイレクトハンドラー
       const metaText = document.createElement('div');
       metaText.style.cssText = 'font-size: 12px; opacity: 0.9; margin-top: 2px;';
       // XSS対策: textContentを使用してユーザー入力をエスケープ
-      metaText.textContent = `理由: ${reasonText} | 移動先: ${newPath.replace('/docs-manager', '')}`;
+      const displayPath = baseUrl ? newPath.replace(baseUrl, '') : newPath;
+      metaText.textContent = `理由: ${reasonText} | 移動先: ${displayPath}`;
 
       textContainer.appendChild(mainText);
       textContainer.appendChild(metaText);

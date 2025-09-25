@@ -58,21 +58,21 @@ git push origin master
 ## 🧪 **デプロイ後テスト**
 
 ### **主要テストページ**
-1. **トップページ**: <https://y_ohi.github.io/docs-manager/>
-2. **テストページ**: <https://y_ohi.github.io/docs-manager/test-links.html>
-3. **404ページ**: <https://y_ohi.github.io/docs-manager/nonexistent-page/>
+1. **トップページ**: <https://yohi.github.io/docs-manager/>
+2. **テストページ**: <https://yohi.github.io/docs-manager/test-links.html>
+3. **404ページ**: <https://yohi.github.io/docs-manager/nonexistent-page/>
 
 ### **✅ 機能テスト項目**
 
 #### **1. メインナビゲーション**
-- [ ] [Anthropic プロンプトエンジニアリング](https://y_ohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/index/)
-- [ ] [Cursor Documentation](https://y_ohi.github.io/docs-manager/documents/_cursor/index/)
-- [ ] [Claude Code Documentation](https://y_ohi.github.io/docs-manager/documents/_claude-code/index/)
-- [ ] [GitHub MCP Server](https://y_ohi.github.io/docs-manager/documents/github-mcp-index/)
+- [ ] [Anthropic プロンプトエンジニアリング](https://yohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/index/)
+- [ ] [Cursor Documentation](https://yohi.github.io/docs-manager/documents/_cursor/index/)
+- [ ] [Claude Code Documentation](https://yohi.github.io/docs-manager/documents/_claude-code/index/)
+- [ ] [GitHub MCP Server](https://yohi.github.io/docs-manager/documents/github-mcp-index/)
 
 #### **2. リダイレクト機能**
-- [ ] <https://y_ohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/> → /index/
-- [ ] <https://y_ohi.github.io/docs-manager/documents/_cursor/> → /index/
+- [ ] <https://yohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/> → /index/
+- [ ] <https://yohi.github.io/docs-manager/documents/_cursor/> → /index/
 - [ ] .html拡張子付きURL → 拡張子なしURL
 
 #### **3. 404エラーハンドリング**

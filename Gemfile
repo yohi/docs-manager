@@ -6,25 +6,18 @@ gem 'github-pages', group: :jekyll_plugins
 # Ruby 3.4 compatibility
 gem 'csv'
 
-# 必須プラグイン
-group :jekyll_plugins do
-  gem 'jekyll-feed'
-  gem 'jekyll-sitemap'
-  gem 'jekyll-seo-tag'
-  gem 'jekyll-relative-links'
-  gem 'jekyll-optional-front-matter'
-  gem 'jekyll-redirect-from'
-  gem 'jekyll-default-layout'
-end
+# GitHub Pages に含まれるプラグインは個別指定不要
+# _config.yml の plugins 設定で有効化
 
 # 開発・テスト用ツール
 group :development, :test do
   gem 'html-proofer'
   gem 'nokogiri'
+  gem 'webrick'  # Ruby 3.x でのローカル開発用
 end
 
-# プラットフォーム固有
-platforms :mingw, :x64_mingw, :mswin, :jruby do
+# プラットフォーム固有（Windows用）
+platforms :mingw, :x64_mingw, :mswin do
   gem "tzinfo", ">= 1", "< 3"
   gem "tzinfo-data"
 end

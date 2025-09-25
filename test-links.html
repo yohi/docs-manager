@@ -13,23 +13,27 @@ description: "GitHub Pages deployment link testing"
 
   <h3>✅ Primary Sections (Should work)</h3>
   <ul>
-    <li><a href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/">Anthropic プロンプトエンジニアリング</a></li>
-    <li><a href="{{ site.baseurl }}/documents/_cursor/index/">Cursor Documentation</a></li>
-    <li><a href="{{ site.baseurl }}/documents/_claude-code/index/">Claude Code Documentation</a></li>
-    <li><a href="{{ site.baseurl }}/documents/github-mcp-index/">GitHub MCP Server</a></li>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/">Anthropic
+        プロンプトエンジニアリング</a></li>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/_cursor/index/">Cursor Documentation</a></li>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/_claude-code/index/">Claude Code Documentation</a></li>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/github-mcp-index/">GitHub MCP Server</a></li>
   </ul>
 
   <h3>🔄 Redirect Tests (Should redirect)</h3>
   <ul>
-    <li><a href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/">Old Anthropic URL (no index)</a></li>
-    <li><a href="{{ site.baseurl }}/documents/_cursor/">Old Cursor URL (no index)</a></li>
-    <li><a href="{{ site.baseurl }}/documents/_cursor/get-started/quickstart.html">HTML extension test</a></li>
+    <li><a class="test-link redirect-link" href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/">Old
+        Anthropic URL (no index)</a></li>
+    <li><a class="test-link redirect-link" href="{{ site.baseurl }}/documents/_cursor/">Old Cursor URL (no index)</a>
+    </li>
+    <li><a class="test-link redirect-link" href="{{ site.baseurl }}/documents/_cursor/get-started/quickstart.html">HTML
+        extension test</a></li>
   </ul>
 
   <h3>❌ 404 Tests (Should show 404 page)</h3>
   <ul>
-    <li><a href="{{ site.baseurl }}/documents/nonexistent-page/">Non-existent page</a></li>
-    <li><a href="{{ site.baseurl }}/old-path/test/">Old path test</a></li>
+    <li><a class="test-link error-link" href="{{ site.baseurl }}/documents/nonexistent-page/">Non-existent page</a></li>
+    <li><a class="test-link error-link" href="{{ site.baseurl }}/old-path/test/">Old path test</a></li>
   </ul>
 </div>
 
@@ -55,31 +59,27 @@ description: "GitHub Pages deployment link testing"
 </div>
 
 <script>
-  document.getElementById('current-path').textContent = window.location.pathname;
-
-  // リンクテスト結果の自動記録
   document.addEventListener('DOMContentLoaded', function () {
+    const currentPathEl = document.getElementById('current-path');
+    if (currentPathEl) currentPathEl.textContent = window.location.pathname;
     const basePath = '{{ site.baseurl | default: "" }}'.replace(/\/$/, '');
     const selector = basePath ? `a[href^="${basePath}/"]` : 'a[href^="/"]';
     const links = document.querySelectorAll(selector);
 
-    links.forEach(link => {
-      link.addEventListener('click', function () {
-        const url = this.href;
-        console.log('Testing link:', url);
+    const record = (url) => {
+      console.log('Testing link:', url);
+      try {
+        const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
+        testResults[url] = { tested: true, timestamp: new Date().toISOString() };
+        localStorage.setItem('linkTestResults', JSON.stringify(testResults));
+      } catch (error) {
+        console.warn('linkTestResultsの記録に失敗しました', error);
+      }
+    };
 
-        try {
-          // 結果をローカルストレージに記録
-          const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
-          testResults[url] = {
-            tested: true,
-            timestamp: new Date().toISOString()
-          };
-          localStorage.setItem('linkTestResults', JSON.stringify(testResults));
-        } catch (error) {
-          console.warn('linkTestResultsの記録に失敗しました', error);
-        }
-      });
+    links.forEach(link => {
+      link.addEventListener('click', function () { record(this.href); }, { passive: true });
+      link.addEventListener('auxclick', function () { record(this.href); }, { passive: true });
     });
   });
 </script>

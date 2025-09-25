@@ -4,10 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
 
-  <!-- SEO Tags -->
+  <!-- SEO Tags (Jekyll SEO Tag がtitle/descriptionを管理) -->
   {% seo %}
 
   <!-- CSS -->
@@ -53,7 +51,7 @@
   </div>
 
   <!-- JavaScript -->
-  <!-- <script src="{{ '/assets/js/main.js' | relative_url }}"></script> -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 
 </html>

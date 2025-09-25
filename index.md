@@ -1,10 +1,8 @@
 ---
-title: "Development Documentation Hub"
+title: "🚀 Development Documentation Hub"
 description: "開発者向け包括的ドキュメントサイト - AI開発・プロンプトエンジニアリング・IDE活用"
 layout: default
 ---
-
-# 🚀 Development Documentation Hub
 
 ## プロフェッショナル開発者のための包括的ドキュメントサイト
 
