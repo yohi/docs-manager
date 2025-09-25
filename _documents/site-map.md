@@ -22,7 +22,7 @@ layout: default
 
 ## 🤖 **Anthropic プロンプトエンジニアリング**
 
-### [📁 セクション概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
+### [📁 セクション概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/)
 
 #### 基本概念
 - [プロンプトエンジニアリング概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/overview/)

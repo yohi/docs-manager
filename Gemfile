@@ -1,20 +1,34 @@
 source 'https://rubygems.org'
 
-# GitHub Pages公式推奨設定
+# Jekyll と GitHub Pages
+gem 'jekyll', '~> 4.3'
 gem 'github-pages', group: :jekyll_plugins
 
-# GitHub Pagesで利用可能なプラグインは自動的に含まれる：
-# - jekyll-feed
-# - jekyll-sitemap
-# - jekyll-seo-tag
-# - jekyll-relative-links
-# - jekyll-optional-front-matter
-# - jekyll-redirect-from
-# - jekyll-default-layout
+# 必須プラグイン
+group :jekyll_plugins do
+  gem 'jekyll-feed'
+  gem 'jekyll-sitemap'
+  gem 'jekyll-seo-tag'
+  gem 'jekyll-relative-links'
+  gem 'jekyll-optional-front-matter'
+  gem 'jekyll-redirect-from'
+  gem 'jekyll-default-layout'
+end
 
-# ローカル開発用（Ruby 3.0+で必要）
-gem 'webrick', '~> 1.7'
+# 開発・テスト用ツール
+group :development, :test do
+  gem 'html-proofer'
+  gem 'nokogiri'
+end
 
-# Windows環境対応
-gem 'wdm', '~> 0.1.1', :platforms => [:mingw, :x64_mingw, :mswin]
-gem 'tzinfo-data', :platforms => [:mingw, :x64_mingw, :mswin, :jruby]
+# プラットフォーム固有
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
+
+# Windows でのファイル監視
+gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+
+# JRuby での HTTP パーサー
+gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]

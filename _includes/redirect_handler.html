@@ -1,0 +1,223 @@
+<!--
+GitHub Pages用 高度リダイレクトハンドラー
+使用方法: {% include redirect_handler.html %}
+-->
+
+<script>
+  (function () {
+    'use strict';
+
+    // リダイレクトマッピング（旧URL → 新URL）
+    const redirectMap = {
+      // Anthropic プロンプトエンジニアリング
+      '/docs-manager/documents/_anthropic-prompt-engineering/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
+      '/docs-manager/documents/anthropic-prompt-engineering/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
+
+      // Cursor Documentation
+      '/docs-manager/documents/_cursor/': '/docs-manager/documents/_cursor/index/',
+      '/docs-manager/documents/cursor/': '/docs-manager/documents/_cursor/index/',
+      '/docs-manager/documents/_cursor/get-started/': '/docs-manager/documents/_cursor/get-started/index/',
+      '/docs-manager/documents/_cursor/agent/': '/docs-manager/documents/_cursor/agent/index/',
+      '/docs-manager/documents/_cursor/cli/': '/docs-manager/documents/_cursor/cli/index/',
+      '/docs-manager/documents/_cursor/cli/reference/': '/docs-manager/documents/_cursor/cli/reference/index/',
+      '/docs-manager/documents/_cursor/settings/': '/docs-manager/documents/_cursor/settings/index/',
+      '/docs-manager/documents/_cursor/configuration/': '/docs-manager/documents/_cursor/configuration/index/',
+      '/docs-manager/documents/_cursor/context/': '/docs-manager/documents/_cursor/context/index/',
+      '/docs-manager/documents/_cursor/integrations/': '/docs-manager/documents/_cursor/integrations/index/',
+      '/docs-manager/documents/_cursor/tab/': '/docs-manager/documents/_cursor/tab/index/',
+      '/docs-manager/documents/_cursor/troubleshooting/': '/docs-manager/documents/_cursor/troubleshooting/index/',
+
+      // Claude Code Documentation
+      '/docs-manager/documents/_claude-code/': '/docs-manager/documents/_claude-code/index/',
+      '/docs-manager/documents/claude-code/': '/docs-manager/documents/_claude-code/index/',
+
+      // 拡張子付きURL対応（.html除去）
+      '/docs-manager/documents/_cursor/agent/overview.html': '/docs-manager/documents/_cursor/agent/overview/',
+      '/docs-manager/documents/_cursor/agent/modes.html': '/docs-manager/documents/_cursor/agent/modes/',
+      '/docs-manager/documents/_cursor/cli/overview.html': '/docs-manager/documents/_cursor/cli/overview/',
+      '/docs-manager/documents/_cursor/get-started/quickstart.html': '/docs-manager/documents/_cursor/get-started/quickstart/',
+      '/docs-manager/documents/_cursor/get-started/concepts.html': '/docs-manager/documents/_cursor/get-started/concepts/',
+
+      // GitHub MCP関連
+      '/docs-manager/documents/github-mcp/': '/docs-manager/documents/github-mcp-index/',
+      '/docs-manager/documents/github-mcp-server.html': '/docs-manager/documents/github-mcp-server/',
+
+      // レガシーパス対応
+      '/docs-manager/anthropic/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
+      '/docs-manager/cursor/': '/docs-manager/documents/_cursor/index/',
+      '/docs-manager/claude-code/': '/docs-manager/documents/_claude-code/index/',
+      '/docs-manager/github-mcp/': '/docs-manager/documents/github-mcp-index/'
+    };
+
+    // パターンベースリダイレクト（正規表現）
+    const patternRedirects = [
+      {
+        pattern: /^\/docs-manager\/documents\/([^\/]+)\.html$/,
+        replacement: '/docs-manager/documents/$1/'
+      },
+      {
+        pattern: /^\/docs-manager\/documents\/_([^\/]+)\/([^\/]+)\.html$/,
+        replacement: '/docs-manager/documents/_$1/$2/'
+      },
+      {
+        pattern: /^\/docs-manager\/documents\/_([^\/]+)\/([^\/]+)\/([^\/]+)\.html$/,
+        replacement: '/docs-manager/documents/_$1/$2/$3/'
+      }
+    ];
+
+    // 現在のパスを取得
+    const currentPath = window.location.pathname;
+
+    // 直接マッピングをチェック
+    if (redirectMap[currentPath]) {
+      redirectTo(redirectMap[currentPath], 'exact_match');
+      return;
+    }
+
+    // パターンマッチングをチェック
+    for (const redirect of patternRedirects) {
+      const match = currentPath.match(redirect.pattern);
+      if (match) {
+        const newPath = currentPath.replace(redirect.pattern, redirect.replacement);
+        redirectTo(newPath, 'pattern_match');
+        return;
+      }
+    }
+
+    // ディレクトリアクセス（末尾スラッシュなし）対応
+    if (!currentPath.endsWith('/') && !currentPath.includes('.')) {
+      const dirPath = currentPath + '/';
+      if (redirectMap[dirPath]) {
+        redirectTo(redirectMap[dirPath], 'directory_redirect');
+        return;
+      }
+
+      // index/追加を試行
+      const indexPath = currentPath + '/index/';
+      if (redirectMap[indexPath]) {
+        redirectTo(indexPath, 'index_redirect');
+        return;
+      }
+    }
+
+    function redirectTo(newPath, reason) {
+      // ローディング表示
+      showRedirectNotice(newPath, reason);
+
+      // 履歴に残さずリダイレクト（SEO配慮）
+      setTimeout(() => {
+        window.location.replace(newPath);
+      }, 1500);
+    }
+
+    function showRedirectNotice(newPath, reason) {
+      const notice = document.createElement('div');
+      notice.id = 'redirect-notice';
+      notice.style.cssText = `
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 10000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      max-width: 90%;
+      text-align: center;
+      animation: slideDown 0.3s ease-out;
+    `;
+
+      const reasonText = {
+        'exact_match': '直接マッチ',
+        'pattern_match': 'パターンマッチ',
+        'directory_redirect': 'ディレクトリ補正',
+        'index_redirect': 'インデックス補正'
+      }[reason] || '自動検出';
+
+      notice.innerHTML = `
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <div style="width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <div>
+          <div style="font-weight: 600;">🔄 ページを最適化しています...</div>
+          <div style="font-size: 12px; opacity: 0.9; margin-top: 2px;">
+            理由: ${reasonText} | 移動先: ${newPath.replace('/docs-manager', '')}
+          </div>
+        </div>
+      </div>
+    `;
+
+      // CSS アニメーション
+      const style = document.createElement('style');
+      style.textContent = `
+      @keyframes slideDown {
+        from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+        to { transform: translateX(-50%) translateY(0); opacity: 1; }
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `;
+      document.head.appendChild(style);
+      document.body.appendChild(notice);
+
+      // 3秒後に通知を削除
+      setTimeout(() => {
+        if (notice.parentNode) {
+          notice.style.animation = 'slideDown 0.3s ease-out reverse';
+          setTimeout(() => notice.remove(), 300);
+        }
+      }, 3000);
+    }
+
+    // デバッグ情報（開発環境のみ）
+    if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+      console.log('[Redirect Handler] Current path:', currentPath);
+      console.log('[Redirect Handler] Available redirects:', Object.keys(redirectMap).length);
+    }
+  })();
+</script>
+
+<style>
+  /* リダイレクトハンドラー用のフォールバックスタイル */
+  .redirect-fallback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10001;
+  }
+
+  .redirect-fallback h3 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .redirect-fallback p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .redirect-fallback a {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+
+  .redirect-fallback a:hover {
+    background: #0056b3;
+  }
+</style>

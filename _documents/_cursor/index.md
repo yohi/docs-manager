@@ -17,11 +17,11 @@ Cursorは、AI（特にGPT-4・Claude）を深度統合した革新的なコー�
 
 ### 🎯 **はじめに・基本**
 
-#### [クイックスタート](get-started/)
-- **[基本概念](get-started/concepts.html)** - Cursorの核となる概念・哲学
-- **[クイックスタート](get-started/quickstart.html)** - 即座に始められるセットアップガイド
+#### [クイックスタート]({{ site.baseurl }}/documents/_cursor/get-started/)
+- **[基本概念]({{ site.baseurl }}/documents/_cursor/get-started/concepts/)** - Cursorの核となる概念・哲学
+- **[クイックスタート]({{ site.baseurl }}/documents/_cursor/get-started/quickstart/)** - 即座に始められるセットアップガイド
 
-#### [ダウンロード](downloads.html)
+#### [ダウンロード]({{ site.baseurl }}/documents/_cursor/downloads/)
 **各プラットフォーム対応インストール**
 - Windows・macOS・Linux対応
 - システム要件・インストール手順
@@ -30,38 +30,38 @@ Cursorは、AI（特にGPT-4・Claude）を深度統合した革新的なコー�
 
 ### 🤖 **AI エージェント機能**
 
-#### [エージェント](agent/)
+#### [エージェント]({{ site.baseurl }}/documents/_cursor/agent/index/)
 **AI支援開発の核心機能**
-- **[概要](agent/overview.html)** - エージェント機能の全体像
-- **[モード](agent/modes.html)** - 各種AIモード・活用シーン
-- **[プランニング](agent/planning.html)** - AI支援プロジェクト計画
-- **[レビュー](agent/review.html)** - AI コードレビュー・品質向上
-- **[セキュリティ](agent/security.html)** - AI使用時のセキュリティ対策
-- **[ターミナル](agent/terminal.html)** - AI統合ターミナル操作
-- **[ツール](agent/tools.html)** - AI活用ツール・拡張機能
+- **[概要]({{ site.baseurl }}/documents/_cursor/agent/overview/)** - エージェント機能の全体像
+- **[モード]({{ site.baseurl }}/documents/_cursor/agent/modes/)** - 各種AIモード・活用シーン
+- **[プランニング]({{ site.baseurl }}/documents/_cursor/agent/planning/)** - AI支援プロジェクト計画
+- **[レビュー]({{ site.baseurl }}/documents/_cursor/agent/review/)** - AI コードレビュー・品質向上
+- **[セキュリティ]({{ site.baseurl }}/documents/_cursor/agent/security/)** - AI使用時のセキュリティ対策
+- **[ターミナル]({{ site.baseurl }}/documents/_cursor/agent/terminal/)** - AI統合ターミナル操作
+- **[ツール]({{ site.baseurl }}/documents/_cursor/agent/tools/)** - AI活用ツール・拡張機能
 
 ---
 
 ### 💻 **CLI・自動化**
 
-#### [CLI](cli/)
+#### [CLI]({{ site.baseurl }}/documents/_cursor/cli/index/)
 **コマンドライン・ヘッドレス実行**
-- **[概要](cli/overview.html)** - CLI機能の全体像
-- **[インストール](cli/installation.html)** - CLI環境構築
-- **[使用方法](cli/using.html)** - 実践的な活用方法
-- **[ヘッドレス実行](cli/headless.html)** - 無人実行・自動化
-- **[シェルモード](cli/shell-mode.html)** - インタラクティブシェル
-- **[GitHub Actions](cli/github-actions.html)** - CI/CD統合
-- **[MCP](cli/mcp.html)** - Model Context Protocol連携
+- **[概要]({{ site.baseurl }}/documents/_cursor/cli/overview/)** - CLI機能の全体像
+- **[インストール]({{ site.baseurl }}/documents/_cursor/cli/installation/)** - CLI環境構築
+- **[使用方法]({{ site.baseurl }}/documents/_cursor/cli/using/)** - 実践的な活用方法
+- **[ヘッドレス実行]({{ site.baseurl }}/documents/_cursor/cli/headless/)** - 無人実行・自動化
+- **[シェルモード]({{ site.baseurl }}/documents/_cursor/cli/shell-mode/)** - インタラクティブシェル
+- **[GitHub Actions]({{ site.baseurl }}/documents/_cursor/cli/github-actions/)** - CI/CD統合
+- **[MCP]({{ site.baseurl }}/documents/_cursor/cli/mcp/)** - Model Context Protocol連携
 
-#### [CLI リファレンス](cli/reference/)
+#### [CLI リファレンス]({{ site.baseurl }}/documents/_cursor/cli/reference/index/)
 **詳細コマンドリファレンス**
-- **[認証](cli/reference/authentication.html)** - 認証・権限管理
-- **[設定](cli/reference/configuration.html)** - 設定・カスタマイズ
-- **[出力形式](cli/reference/output-format.html)** - 出力・フォーマット
-- **[パラメータ](cli/reference/parameters.html)** - コマンドパラメータ
-- **[権限](cli/reference/permissions.html)** - アクセス制御
-- **[スラッシュコマンド](cli/reference/slash-commands.html)** - 高速操作
+- **[認証]({{ site.baseurl }}/documents/_cursor/cli/reference/authentication/)** - 認証・権限管理
+- **[設定]({{ site.baseurl }}/documents/_cursor/cli/reference/configuration/)** - 設定・カスタマイズ
+- **[出力形式]({{ site.baseurl }}/documents/_cursor/cli/reference/output-format/)** - 出力・フォーマット
+- **[パラメータ]({{ site.baseurl }}/documents/_cursor/cli/reference/parameters/)** - コマンドパラメータ
+- **[権限]({{ site.baseurl }}/documents/_cursor/cli/reference/permissions/)** - アクセス制御
+- **[スラッシュコマンド]({{ site.baseurl }}/documents/_cursor/cli/reference/slash-commands/)** - 高速操作
 
 ---
 

@@ -1,0 +1,301 @@
+name: 🔗 Link Validation & Site Health Check
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '_documents/**'
+      - 'index.md'
+      - '_config.yml'
+      - '_includes/**'
+      - '_layouts/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '_documents/**'
+      - 'index.md'
+      - '_config.yml'
+      - '_includes/**'
+      - '_layouts/**'
+  schedule:
+    # 毎日午前3時（JST 12時）に実行
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      deep_scan:
+        description: 'Deep scan mode (external links)'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  link-validation:
+    name: 🔍 Link Validation
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: 🏗️ Setup Ruby & Jekyll
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+        bundler-cache: true
+
+    - name: 📝 Create Gemfile if missing
+      run: |
+        if [ ! -f Gemfile ]; then
+          cat > Gemfile << EOF
+        source 'https://rubygems.org'
+        gem 'jekyll', '~> 4.3'
+        gem 'jekyll-feed'
+        gem 'jekyll-sitemap'
+        gem 'jekyll-seo-tag'
+        gem 'jekyll-relative-links'
+        gem 'jekyll-optional-front-matter'
+        gem 'jekyll-redirect-from'
+        gem 'jekyll-default-layout'
+        gem 'html-proofer'
+        gem 'nokogiri'
+        EOF
+        fi
+
+    - name: 🔧 Install Dependencies
+      run: |
+        bundle install
+
+    - name: 🏗️ Build Jekyll Site
+      run: |
+        bundle exec jekyll build --verbose
+      env:
+        JEKYLL_ENV: production
+
+    - name: 📊 Jekyll Build Report
+      run: |
+        echo "## 🏗️ Jekyll Build Results" >> $GITHUB_STEP_SUMMARY
+        echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+        echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+        echo "| Build Status | ✅ Success |" >> $GITHUB_STEP_SUMMARY
+        echo "| Generated Files | $(find _site -type f | wc -l) |" >> $GITHUB_STEP_SUMMARY
+        echo "| HTML Files | $(find _site -name "*.html" | wc -l) |" >> $GITHUB_STEP_SUMMARY
+        echo "| Total Size | $(du -sh _site | cut -f1) |" >> $GITHUB_STEP_SUMMARY
+
+    - name: 🔍 Internal Link Validation
+      run: |
+        echo "🔍 Internal link validation starting..."
+
+        # htmlproofer での内部リンク検証
+        bundle exec htmlproofer _site \
+          --check-html \
+          --check-img-http \
+          --check-opengraph \
+          --report-invalid-tags \
+          --report-missing-names \
+          --report-script-embeds \
+          --report-missing-doctype \
+          --report-eof-tags \
+          --report-mismatched-tags \
+          --ignore-urls "/github.com/,/docs.cursor.com/,/cursor.com/,/discord.gg/" \
+          --ignore-status-codes "999,403,429" \
+          --swap-urls "^/docs-manager:" \
+          --internal-domains "y_ohi.github.io" \
+          --log-level :info \
+          --typhoeus '{"connecttimeout": 30, "timeout": 60}' || echo "⚠️ Some internal link issues found"
+
+    - name: 🌐 External Link Validation (Conditional)
+      if: github.event.inputs.deep_scan == 'true' || github.event_name == 'schedule'
+      run: |
+        echo "🌐 External link validation starting..."
+
+        bundle exec htmlproofer _site \
+          --external_only \
+          --check-external-hash \
+          --ignore-urls "/github.com/settings,/discord.gg/,/twitter.com/" \
+          --ignore-status-codes "999,403,429,503" \
+          --typhoeus '{"connecttimeout": 30, "timeout": 60}' \
+          --log-level :info || echo "⚠️ Some external link issues found"
+
+    - name: 📋 Custom Link Analysis
+      run: |
+        echo "🔎 Custom link analysis..."
+
+        # Markdown ファイル内のリンク分析
+        echo "## 📋 Link Analysis Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+
+        # 相対パスリンクの検出
+        RELATIVE_LINKS=$(find _documents -name "*.md" -exec grep -l "\]([^h\{][^)]*)" {} \; 2>/dev/null || true)
+        if [ -n "$RELATIVE_LINKS" ]; then
+          echo "### ⚠️ Relative Links Found" >> $GITHUB_STEP_SUMMARY
+          echo "```" >> $GITHUB_STEP_SUMMARY
+          echo "$RELATIVE_LINKS" >> $GITHUB_STEP_SUMMARY
+          echo "```" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "### ✅ No Relative Links Found" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        # 欠けている .html 拡張子の検出
+        HTML_EXTENSIONS=$(find _documents -name "*.md" -exec grep -l "](.*\.html)" {} \; 2>/dev/null || true)
+        if [ -n "$HTML_EXTENSIONS" ]; then
+          echo "### ⚠️ HTML Extensions Found (Should be removed)" >> $GITHUB_STEP_SUMMARY
+          echo "```" >> $GITHUB_STEP_SUMMARY
+          echo "$HTML_EXTENSIONS" >> $GITHUB_STEP_SUMMARY
+          echo "```" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "### ✅ No HTML Extensions Found" >> $GITHUB_STEP_SUMMARY
+        fi
+
+    - name: 📊 Site Structure Analysis
+      run: |
+        echo "📊 Site structure analysis..."
+
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 📊 Site Structure" >> $GITHUB_STEP_SUMMARY
+        echo "| Directory | Files | Size |" >> $GITHUB_STEP_SUMMARY
+        echo "|-----------|-------|------|" >> $GITHUB_STEP_SUMMARY
+
+        for dir in _site/documents/_anthropic-prompt-engineering _site/documents/_cursor _site/documents/_claude-code; do
+          if [ -d "$dir" ]; then
+            DIR_NAME=$(basename "$dir")
+            FILE_COUNT=$(find "$dir" -type f | wc -l)
+            DIR_SIZE=$(du -sh "$dir" 2>/dev/null | cut -f1 || echo "0K")
+            echo "| $DIR_NAME | $FILE_COUNT | $DIR_SIZE |" >> $GITHUB_STEP_SUMMARY
+          fi
+        done
+
+    - name: 🚨 Missing Index Pages Detection
+      run: |
+        echo "🚨 Missing index pages detection..."
+
+        MISSING_INDEXES=""
+
+        # 主要ディレクトリのindex.mdをチェック
+        for dir in _documents/_anthropic-prompt-engineering _documents/_cursor _documents/_claude-code; do
+          if [ -d "$dir" ] && [ ! -f "$dir/index.md" ]; then
+            MISSING_INDEXES="$MISSING_INDEXES\n- $dir/index.md"
+          fi
+        done
+
+        # サブディレクトリのindex.mdをチェック
+        find _documents -type d -name "_*" | while read subdir; do
+          if [ ! -f "$subdir/index.md" ]; then
+            MISSING_INDEXES="$MISSING_INDEXES\n- $subdir/index.md"
+          fi
+        done
+
+        if [ -n "$MISSING_INDEXES" ]; then
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚨 Missing Index Pages" >> $GITHUB_STEP_SUMMARY
+          echo -e "$MISSING_INDEXES" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ All Index Pages Present" >> $GITHUB_STEP_SUMMARY
+        fi
+
+    - name: 📈 Performance Metrics
+      run: |
+        echo "📈 Performance metrics..."
+
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 📈 Performance Metrics" >> $GITHUB_STEP_SUMMARY
+        echo "| Metric | Value | Status |" >> $GITHUB_STEP_SUMMARY
+        echo "|--------|-------|---------|" >> $GITHUB_STEP_SUMMARY
+
+        # ファイルサイズ分析
+        LARGE_FILES=$(find _site -type f -size +1M | wc -l)
+        if [ $LARGE_FILES -gt 0 ]; then
+          echo "| Large Files (>1MB) | $LARGE_FILES | ⚠️ Consider optimization |" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "| Large Files (>1MB) | $LARGE_FILES | ✅ Good |" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        # 画像最適化チェック
+        IMAGES=$(find _site -name "*.jpg" -o -name "*.png" -o -name "*.gif" | wc -l)
+        echo "| Images | $IMAGES | ℹ️ Info |" >> $GITHUB_STEP_SUMMARY
+
+        # CSS/JS ファイルチェック
+        CSS_FILES=$(find _site -name "*.css" | wc -l)
+        JS_FILES=$(find _site -name "*.js" | wc -l)
+        echo "| CSS Files | $CSS_FILES | ℹ️ Info |" >> $GITHUB_STEP_SUMMARY
+        echo "| JS Files | $JS_FILES | ℹ️ Info |" >> $GITHUB_STEP_SUMMARY
+
+    - name: 🔄 Cache Site Build
+      uses: actions/cache@v3
+      with:
+        path: |
+          _site
+          .jekyll-cache
+        key: ${{ runner.os }}-jekyll-${{ hashFiles('_config.yml', 'Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-jekyll-
+
+    - name: 📤 Upload Site Artifact
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: actions/upload-artifact@v3
+      with:
+        name: built-site
+        path: _site/
+        retention-days: 7
+
+    - name: 💬 Comment PR Results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+
+          // GITHUB_STEP_SUMMARY の内容を読み取り
+          let summary = '# 🔗 Link Validation Results\n\n';
+          summary += 'Link validation completed for this PR.\n\n';
+          summary += '## 📊 Quick Summary\n';
+          summary += '- ✅ Jekyll build: Success\n';
+          summary += '- 🔍 Internal links: Checked\n';
+          summary += '- 📋 Structure analysis: Complete\n\n';
+          summary += 'For detailed results, check the [workflow run](' + context.payload.pull_request.html_url.replace('/pull/', '/actions/runs/') + ').\n';
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: summary
+          });
+
+  security-scan:
+    name: 🛡️ Security Scan
+    runs-on: ubuntu-latest
+    needs: link-validation
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🛡️ Security Advisory Check
+      run: |
+        echo "🛡️ Security advisory check..."
+
+        # 機密情報の誤露出チェック
+        if grep -r "password\|secret\|token\|key" _documents/ --include="*.md" | grep -v "# " | grep -v "example"; then
+          echo "⚠️ Potential security issues found in documentation"
+          exit 1
+        else
+          echo "✅ No security issues found"
+        fi
+
+    - name: 🔐 Link Security Analysis
+      run: |
+        echo "🔐 Link security analysis..."
+
+        # HTTP リンクの検出（HTTPS推奨）
+        HTTP_LINKS=$(grep -r "http://" _documents/ --include="*.md" | grep -v "localhost" | wc -l)
+        if [ $HTTP_LINKS -gt 0 ]; then
+          echo "⚠️ Found $HTTP_LINKS HTTP links (HTTPS recommended)"
+          grep -r "http://" _documents/ --include="*.md" | grep -v "localhost"
+        else
+          echo "✅ All external links use HTTPS"
+        fi

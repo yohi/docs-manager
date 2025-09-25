@@ -21,7 +21,7 @@ author:
 collections:
   documents:
     output: true
-    permalink: /:collection/:name/
+    permalink: /documents/:name/
     sort_by: order
 defaults:
   - scope:
@@ -29,7 +29,6 @@ defaults:
       type: "documents"
     values:
       layout: "default"
-      permalink: "/documents/:name/"
 
   # 追加デフォルト設定
   - scope:
@@ -51,6 +50,19 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-redirect-from
   - jekyll-default-layout
+
+# SEO 設定
+lang: ja_JP
+timezone: Asia/Tokyo
+
+# Sitemap 設定
+sitemap:
+  filename: "/sitemap.xml"
+  exclude:
+    - "/404.html"
+    - "/redirect-test.html"
+  include_posts:
+    - "/documents/"
 
 # ビルド最適化設定
 markdown: kramdown

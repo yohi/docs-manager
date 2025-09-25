@@ -1,0 +1,124 @@
+---
+layout: default
+title: "ページが見つかりません"
+description: "お探しのページは見つかりませんでした"
+permalink: /404.html
+---
+
+{% include redirect_handler.html %}
+
+<div style="text-align: center; padding: 60px 20px;">
+  <h1 style="color: #dc3545; font-size: 3rem; margin-bottom: 20px;">404</h1>
+  <h2 style="color: #6c757d; margin-bottom: 30px;">ページが見つかりません</h2>
+
+  <p style="font-size: 1.1rem; color: #6c757d; margin-bottom: 40px;">
+    お探しのページは存在しないか、移動された可能性があります。
+  </p>
+
+  <div style="margin: 40px 0;">
+    <a href="{{ site.baseurl }}/" style="display: inline-block; background: #007bff; color: white; padding: 12px 24px;
+              text-decoration: none; border-radius: 5px; margin: 0 10px;">
+      🏠 ホームページに戻る
+    </a>
+
+    <a href="{{ site.baseurl }}/documents/site-map/" style="display: inline-block; background: #28a745; color: white; padding: 12px 24px;
+              text-decoration: none; border-radius: 5px; margin: 0 10px;">
+      🗺️ サイトマップ
+    </a>
+  </div>
+
+  <hr style="margin: 50px 0; border: none; border-top: 1px solid #dee2e6;">
+
+  <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <h3 style="color: #495057; margin-bottom: 20px;">🔍 お探しのコンテンツ</h3>
+
+    <div style="margin-bottom: 30px;">
+      <h4 style="color: #6c757d; margin-bottom: 10px;">📚 主要セクション</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin: 8px 0;">
+          <a href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/"
+            style="color: #007bff; text-decoration: none;">
+            🤖 Anthropic プロンプトエンジニアリング
+          </a>
+        </li>
+        <li style="margin: 8px 0;">
+          <a href="{{ site.baseurl }}/documents/_cursor/index/" style="color: #007bff; text-decoration: none;">
+            🚀 Cursor Documentation
+          </a>
+        </li>
+        <li style="margin: 8px 0;">
+          <a href="{{ site.baseurl }}/documents/claude-code-documentation/"
+            style="color: #007bff; text-decoration: none;">
+            💻 Claude Code Documentation
+          </a>
+        </li>
+        <li style="margin: 8px 0;">
+          <a href="{{ site.baseurl }}/documents/github-mcp-index/" style="color: #007bff; text-decoration: none;">
+            🔗 GitHub MCP Server
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <h4 style="color: #6c757d; margin-bottom: 10px;">🆕 人気ページ</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin: 8px 0;">
+          <a href="{{ site.baseurl }}/documents/getting-started/" style="color: #007bff; text-decoration: none;">
+            📖 はじめに - サイトの使い方
+          </a>
+        </li>
+        <li style="margin: 8px 0;">
+          <a href="{{ site.baseurl }}/documents/_cursor/get-started/quickstart/"
+            style="color: #007bff; text-decoration: none;">
+            ⚡ Cursor クイックスタート
+          </a>
+        </li>
+        <li style="margin: 8px 0;">
+          <a href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/claude-4-best-practices/"
+            style="color: #007bff; text-decoration: none;">
+            🎯 Claude 4 ベストプラクティス
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; padding: 20px; background: #f8f9fa; border-radius: 5px;">
+    <h4 style="color: #495057; margin-bottom: 15px;">💡 ヒント</h4>
+    <p style="color: #6c757d; margin: 0;">
+      URLが正しいかご確認ください。多くのページは最新の公式ドキュメントへ
+      リダイレクトされるため、数秒お待ちいただくか、ブラウザを更新してみてください。
+    </p>
+  </div>
+</div>
+
+<script>
+  // 自動リダイレクト対応
+  document.addEventListener('DOMContentLoaded', function () {
+    const path = window.location.pathname;
+    const redirects = {
+      // 旧形式のリンクから新形式への自動リダイレクト
+      '/docs-manager/documents/_anthropic-prompt-engineering/': '/docs-manager/documents/_anthropic-prompt-engineering/index/',
+      '/docs-manager/documents/_cursor/': '/docs-manager/documents/_cursor/index/',
+      '/docs-manager/documents/_claude-code/': '/docs-manager/documents/_claude-code/index/'
+    };
+
+    if (redirects[path]) {
+      setTimeout(() => {
+        window.location.href = redirects[path];
+      }, 3000); // 3秒後にリダイレクト
+
+      // リダイレクト通知を表示
+      const notice = document.createElement('div');
+      notice.innerHTML = `
+      <div style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+                  background: #d4edda; color: #155724; padding: 15px 20px;
+                  border: 1px solid #c3e6cb; border-radius: 5px; z-index: 1000;">
+        🔄 3秒後に正しいページにリダイレクトします...
+      </div>
+    `;
+      document.body.appendChild(notice);
+    }
+  });
+</script>
