@@ -1,7 +1,7 @@
 # Jekyll Configuration for Development Documentation Hub
 
-# GitHub Pages互換のテーマを使用
-theme: minima
+# GitHub Pages互換のテーマを使用（remote_theme使用）
+# theme: minima  # GitHub Pagesではremote_themeを優先
 
 # 作成者情報
 author:
@@ -25,7 +25,7 @@ defaults:
       layout: "default"
       permalink: "/documents/:name/"
 
-# 追加デフォルト設定
+  # 追加デフォルト設定
   - scope:
       path: ""
       type: "pages"
@@ -44,3 +44,28 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-redirect-from
   - jekyll-default-layout
+
+# ビルド最適化設定
+markdown: kramdown
+highlighter: rouge
+incremental: false
+
+# 除外ファイル設定
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - node_modules
+
+# Safe mode for GitHub Pages
+safe: true
+lsi: false
+excerpt_separator: "\n\n"
+
+# GitHub Pages制限対応
+limit_posts: 0
