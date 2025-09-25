@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Testing Page</title>
+  <meta name="description" content="GitHub Pages deployment link testing">
+
+  <!-- SEO Tags -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Link Testing Page | Development Documentation Hub</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Link Testing Page" />
+<meta name="author" content="Development Team" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="description" content="GitHub Pages deployment link testing" />
+<meta property="og:description" content="GitHub Pages deployment link testing" />
+<link rel="canonical" href="https://yohi.github.io/docs-manager/test-links.html" />
+<meta property="og:url" content="https://yohi.github.io/docs-manager/test-links.html" />
+<meta property="og:site_name" content="Development Documentation Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Link Testing Page" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Development Team"},"description":"GitHub Pages deployment link testing","headline":"Link Testing Page","url":"https://yohi.github.io/docs-manager/test-links.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/docs-manager/assets/css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/docs-manager/assets/favicon.ico">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1><a href="/docs-manager/">Development Documentation Hub</a></h1>
+      <p>プロフェッショナル開発者のための包括的ドキュメントサイト - AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合</p>
+
+      
+    </header>
+
+    <main>
+      <article>
+        
+        <h1>Link Testing Page</h1>
+        
+
+        <h1>🧪 Link Testing Page</h1>
+
+<p><strong>このページは GitHub Pages デプロイ後のリンク動作確認用です。</strong></p>
+
+<div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+  <h2>🔍 Main Navigation Tests</h2>
+
+  <h3>✅ Primary Sections (Should work)</h3>
+  <ul>
+    <li><a href="/docs-manager/documents/_anthropic-prompt-engineering/index/">Anthropic プロンプトエンジニアリング</a></li>
+    <li><a href="/docs-manager/documents/_cursor/index/">Cursor Documentation</a></li>
+    <li><a href="/docs-manager/documents/_claude-code/index/">Claude Code Documentation</a></li>
+    <li><a href="/docs-manager/documents/github-mcp-index/">GitHub MCP Server</a></li>
+  </ul>
+
+  <h3>🔄 Redirect Tests (Should redirect)</h3>
+  <ul>
+    <li><a href="/docs-manager/documents/_anthropic-prompt-engineering/">Old Anthropic URL (no index)</a></li>
+    <li><a href="/docs-manager/documents/_cursor/">Old Cursor URL (no index)</a></li>
+    <li><a href="/docs-manager/documents/_cursor/get-started/quickstart.html">HTML extension test</a></li>
+  </ul>
+
+  <h3>❌ 404 Tests (Should show 404 page)</h3>
+  <ul>
+    <li><a href="/docs-manager/documents/nonexistent-page/">Non-existent page</a></li>
+    <li><a href="/docs-manager/old-path/test/">Old path test</a></li>
+  </ul>
+</div>
+
+<div style="background: #e7f3ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+  <h2>📊 Test Results</h2>
+  <p>デプロイ後、以下をテストしてください：</p>
+  <ol>
+    <li>✅ Primary Sections のリンクが正常に動作する</li>
+    <li>🔄 Redirect Tests のリンクが適切にリダイレクトする</li>
+    <li>❌ 404 Tests でカスタム404ページが表示される</li>
+    <li>🧭 ナビゲーション機能が動作する</li>
+  </ol>
+</div>
+
+<div style="background: #fff3cd; padding: 20px; border-radius: 8px; margin: 20px 0;">
+  <h2>🛠️ Debug Information</h2>
+  <ul>
+    <li><strong>Site URL:</strong> https://yohi.github.io</li>
+    <li><strong>Base URL:</strong> /docs-manager</li>
+    <li><strong>Current Path:</strong> <span id="current-path"></span></li>
+    <li><strong>Timestamp:</strong> 2025-09-25 20:01:13 +0900</li>
+  </ul>
+</div>
+
+<script>
+  document.getElementById('current-path').textContent = window.location.pathname;
+
+  // リンクテスト結果の自動記録
+  document.addEventListener('DOMContentLoaded', function () {
+    const basePath = '/docs-manager'.replace(/\/$/, '');
+    const selector = basePath ? `a[href^="${basePath}/"]` : 'a[href^="/"]';
+    const links = document.querySelectorAll(selector);
+
+    links.forEach(link => {
+      link.addEventListener('click', function () {
+        const url = this.href;
+        console.log('Testing link:', url);
+
+        try {
+          // 結果をローカルストレージに記録
+          const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
+          testResults[url] = {
+            tested: true,
+            timestamp: new Date().toISOString()
+          };
+          localStorage.setItem('linkTestResults', JSON.stringify(testResults));
+        } catch (error) {
+          console.warn('linkTestResultsの記録に失敗しました', error);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .test-section {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 4px solid #007bff;
+    background: #f8f9fa;
+  }
+
+  .test-link {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .test-link:hover {
+    background: #0056b3;
+    color: white;
+  }
+
+  .redirect-link {
+    background: #ffc107;
+    color: #212529;
+  }
+
+  .redirect-link:hover {
+    background: #e0a800;
+    color: #212529;
+  }
+
+  .error-link {
+    background: #dc3545;
+  }
+
+  .error-link:hover {
+    background: #c82333;
+  }
+</style>
+
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Development Team</p>
+      <p><small>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">GitHub Pages</a></small></p>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <!-- <script src="/docs-manager/assets/js/main.js"></script> -->
+</body>
+
+</html>

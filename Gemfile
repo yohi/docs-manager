@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # GitHub Pages
 gem 'github-pages', group: :jekyll_plugins
 
+# Ruby 3.4 compatibility
+gem 'csv'
+
 # 必須プラグイン
 group :jekyll_plugins do
   gem 'jekyll-feed'

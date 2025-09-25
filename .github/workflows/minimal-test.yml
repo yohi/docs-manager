@@ -1,0 +1,19 @@
+name: 🧪 Minimal Jekyll Test
+
+on:
+  push:
+    branches: [ feature/notfound_error ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+    - run: |
+        echo "source 'https://rubygems.org'" > Gemfile
+        echo "gem 'github-pages', group: :jekyll_plugins" >> Gemfile
+        bundle install
+        bundle exec jekyll build

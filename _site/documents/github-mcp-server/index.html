@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub MCP Server</title>
+  <meta name="description" content="GitHub MCP Serverの公式ドキュメント（動的読み込み）">
+
+  <!-- SEO Tags -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GitHub MCP Server | Development Documentation Hub</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="GitHub MCP Server" />
+<meta name="author" content="Development Team" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="description" content="GitHub MCP Serverの公式ドキュメント（動的読み込み）" />
+<meta property="og:description" content="GitHub MCP Serverの公式ドキュメント（動的読み込み）" />
+<link rel="canonical" href="https://yohi.github.io/docs-manager/documents/github-mcp-server/" />
+<meta property="og:url" content="https://yohi.github.io/docs-manager/documents/github-mcp-server/" />
+<meta property="og:site_name" content="Development Documentation Hub" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-09-25T20:01:13+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GitHub MCP Server" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Development Team"},"dateModified":"2025-09-25T20:01:13+09:00","datePublished":"2025-09-25T20:01:13+09:00","description":"GitHub MCP Serverの公式ドキュメント（動的読み込み）","headline":"GitHub MCP Server","mainEntityOfPage":{"@type":"WebPage","@id":"https://yohi.github.io/docs-manager/documents/github-mcp-server/"},"url":"https://yohi.github.io/docs-manager/documents/github-mcp-server/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/docs-manager/assets/css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/docs-manager/assets/favicon.ico">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1><a href="/docs-manager/">Development Documentation Hub</a></h1>
+      <p>プロフェッショナル開発者のための包括的ドキュメントサイト - AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合</p>
+
+      
+    </header>
+
+    <main>
+      <article>
+        
+        <h1>GitHub MCP Server</h1>
+        
+
+        <div id="external-content-loading">
+  <p>📄 外部コンテンツを読み込み中...</p>
+</div>
+
+<div id="external-content" style="display: none;"></div>
+
+<div id="external-content-error" style="display: none;">
+  <p>❌ コンテンツの読み込みに失敗しました。</p>
+  <p><a href="https://raw.githubusercontent.com/github/github-mcp-server/refs/heads/main/README.md" target="_blank">元のファイルを直接表示 ↗</a></p>
+</div>
+
+<script>
+// 外部Markdownコンテンツを動的に読み込む
+async function loadExternalContent() {
+  const loadingDiv = document.getElementById('external-content-loading');
+  const contentDiv = document.getElementById('external-content');
+  const errorDiv = document.getElementById('external-content-error');
+  
+  try {
+    // CORSプロキシを使用して外部コンテンツを取得
+    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+    const targetUrl = 'https://raw.githubusercontent.com/github/github-mcp-server/refs/heads/main/README.md';
+    const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
+    
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    
+    const markdownContent = await response.text();
+    
+    // 簡単なMarkdown → HTMLの変換（基本的なもののみ）
+    let htmlContent = markdownContent
+      .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+      .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+      .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+      .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code>$1</code>')
+      .replace(/^\* (.*$)/gim, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/^(?!<[hul])/gm, '<p>')
+      .replace(/$(?![hul>])/gm, '</p>');
+    
+    // 更新日時を追加
+    const updateTime = new Date().toLocaleString('ja-JP');
+    htmlContent = `
+      <div style="background: #f6f8fa; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+        <small>🔄 最終更新: ${updateTime} | 
+        <a href="${targetUrl}" target="_blank">元のファイル ↗</a></small>
+      </div>
+      ${htmlContent}
+    `;
+    
+    loadingDiv.style.display = 'none';
+    contentDiv.innerHTML = htmlContent;
+    contentDiv.style.display = 'block';
+    
+  } catch (error) {
+    console.error('Error loading external content:', error);
+    loadingDiv.style.display = 'none';
+    errorDiv.style.display = 'block';
+  }
+}
+
+// ページ読み込み後に実行
+document.addEventListener('DOMContentLoaded', loadExternalContent);
+</script>
+
+<hr />
+
+<p><strong>注意</strong>: このページは外部のMarkdownファイルを動的に読み込んで表示しています。最新の内容を確認するには、ページを再読み込みしてください。</p>
+
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Development Team</p>
+      <p><small>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">GitHub Pages</a></small></p>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <!-- <script src="/docs-manager/assets/js/main.js"></script> -->
+</body>
+
+</html>

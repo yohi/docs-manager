@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://y_ohi.github.io/docs-manager/sitemap.xml
+
+# 優先クロール対象（Allow: / で既に許可済みのため省略可能）
+
+# クロール除外
+Disallow: /404.html
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /_sass/
+
+# 検索エンジン最適化ガイドライン
+# 更新頻度: 週次
+# 優先度: 高（プロフェッショナル開発者向けドキュメント）
