@@ -341,6 +341,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  base64
   csv
   github-pages
   html-proofer
@@ -350,6 +351,9 @@ DEPENDENCIES
   tzinfo-data
   wdm (~> 0.1.1)
   webrick
+
+RUBY VERSION
+   ruby 3.4.6p54
 
 BUNDLED WITH
    2.7.2

@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 
+# Specify Ruby version for compatibility
+ruby '>= 3.0'
+
 # GitHub Pages
 gem 'github-pages', group: :jekyll_plugins
 
-# Ruby 3.4 compatibility
+# Ruby compatibility
 gem 'csv'
+gem 'base64'  # Ruby 3.4+ compatibility
 
 # GitHub Pages に含まれるプラグインは個別指定不要
 # _config.yml の plugins 設定で有効化
