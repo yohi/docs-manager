@@ -101,7 +101,7 @@ GitHub Pages用 高度リダイレクトハンドラー
       // index/追加を試行
       const indexPath = currentPath + '/index/';
       if (redirectMap[indexPath]) {
-        redirectTo(indexPath, 'index_redirect');
+        redirectTo(redirectMap[indexPath], 'index_redirect');
         return;
       }
     }
