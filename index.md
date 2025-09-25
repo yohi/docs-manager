@@ -16,13 +16,13 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🤖 **AI・プロンプトエンジニアリング**
 
-#### [Anthropic プロンプトエンジニアリング]({% link _documents/_anthropic-prompt-engineering/index.md %})
+#### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
 ##### Claude 4を活用したプロンプトエンジニアリング技術
 - 基本概念からベストプラクティスまで
 - 15の専門技術・ツール・リソース
 - 公式ドキュメントへの直接リンク集
 
-#### [Claude Code Documentation]({% link _documents/claude-code-documentation.md %})
+#### [Claude Code Documentation]({{ site.baseurl }}/documents/claude-code-documentation/)
 ##### Claude Code統合開発環境での活用
 - IDE統合・コマンドリファレンス
 - アナリティクス・設定・最適化
@@ -32,7 +32,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🛠️ **IDE・開発環境**
 
-#### [Cursor Documentation]({% link _documents/_cursor/index.md %})
+#### [Cursor Documentation]({{ site.baseurl }}/documents/_cursor/)
 ##### 次世代AI統合IDE Cursorの完全ガイド
 - クイックスタート・基本概念
 - エージェント機能・高度な設定
@@ -42,27 +42,27 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🔗 **GitHub統合・自動化**
 
-#### [GitHub MCP Server]({% link _documents/github-mcp-index.md %})
+#### [GitHub MCP Server]({{ site.baseurl }}/documents/github-mcp-index/)
 ##### GitHubとの高度な統合ソリューション
 - リアルタイム公式ドキュメント
 - 認証・設定・実装ガイド
 - 動的コンテンツ読み込み機能
 
 #### GitHub MCP関連ツール
-- [インスタント実装]({% link _documents/github-mcp-server-instant.md %}) - 即座に使える設定
-- [プラグイン開発]({% link _documents/github-mcp-server-plugin.md %}) - カスタムプラグイン作成
-- [リダイレクト最適化]({% link _documents/github-mcp-server-redirect.md %}) - パフォーマンス向上
+- [インスタント実装]({{ site.baseurl }}/documents/github-mcp-server-instant/) - 即座に使える設定
+- [プラグイン開発]({{ site.baseurl }}/documents/github-mcp-server-plugin/) - カスタムプラグイン作成
+- [リダイレクト最適化]({{ site.baseurl }}/documents/github-mcp-server-redirect/) - パフォーマンス向上
 
 ---
 
 ### 📖 **学習・リファレンス**
 
-#### [はじめに]({% link _documents/getting-started.md %})
+#### [はじめに]({{ site.baseurl }}/documents/getting-started/)
 ##### このサイトの基本的な使い方
 - セットアップ手順・ナビゲーション
 - 各セクションの概要・活用方法
 
-#### [高度な機能]({% link _documents/advanced-feature.md %})
+#### [高度な機能]({{ site.baseurl }}/documents/advanced-feature/)
 ##### 発展的な技術・実装パターン
 - 上級者向けテクニック
 - 複合的なワークフロー構築
@@ -119,13 +119,13 @@ GitHub MCP Server → 基本設定
 
 ## 📊 **コンテンツ統計**
 
-| カテゴリ | ドキュメント数 | 主要機能 |
-|---------|-------------|---------|
-| **Anthropic** | 15ファイル | プロンプトエンジニアリング・Claude 4活用 |
-| **Claude Code** | 14ファイル | IDE統合・開発効率化 |
-| **Cursor** | 32+ファイル | AI統合IDE・エージェント機能 |
-| **GitHub MCP** | 7ファイル | GitHub統合・自動化・MCP |
-| **その他** | 4ファイル | 基本設定・高度機能・学習ガイド |
+| カテゴリ        | ドキュメント数 | 主要機能                                 |
+| --------------- | -------------- | ---------------------------------------- |
+| **Anthropic**   | 15ファイル     | プロンプトエンジニアリング・Claude 4活用 |
+| **Claude Code** | 14ファイル     | IDE統合・開発効率化                      |
+| **Cursor**      | 32+ファイル    | AI統合IDE・エージェント機能              |
+| **GitHub MCP**  | 7ファイル      | GitHub統合・自動化・MCP                  |
+| **その他**      | 4ファイル      | 基本設定・高度機能・学習ガイド           |
 
 **総計**: **70+ドキュメント** で包括的な開発者向けリソースを提供
 
@@ -134,19 +134,19 @@ GitHub MCP Server → 基本設定
 ## 🔍 **おすすめナビゲーション**
 
 ### 🆕 **初心者の方**
-1. [はじめに]({% link _documents/getting-started.md %}) - サイト全体の使い方
-2. [Cursor クイックスタート]({% link _documents/_cursor/get-started/quickstart.md %}) - AI IDE入門
-3. [Claude 4 ベストプラクティス]({% link _documents/_anthropic-prompt-engineering/claude-4-best-practices.md %}) - AI活用基礎
+1. [はじめに]({{ site.baseurl }}/documents/getting-started/) - サイト全体の使い方
+2. [Cursor クイックスタート]({{ site.baseurl }}/documents/_cursor/get-started/quickstart/) - AI IDE入門
+3. [Claude 4 ベストプラクティス]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/claude-4-best-practices/) - AI活用基礎
 
 ### ⚡ **効率化重視の方**
-1. [Cursor エージェント機能]({% link _documents/_cursor/agent/overview.md %}) - AI支援開発
-2. [プロンプトテンプレート]({% link _documents/_anthropic-prompt-engineering/prompt-templates-and-variables.md %}) - 再利用可能な技術
-3. [GitHub Actions統合]({% link _documents/_cursor/cli/github-actions.md %}) - CI/CD自動化
+1. [Cursor エージェント機能]({{ site.baseurl }}/documents/_cursor/agent/overview/) - AI支援開発
+2. [プロンプトテンプレート]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-templates-and-variables/) - 再利用可能な技術
+3. [GitHub Actions統合]({{ site.baseurl }}/documents/_cursor/cli/github-actions/) - CI/CD自動化
 
 ### 🔧 **上級者の方**
-1. [高度な機能]({% link _documents/advanced-feature.md %}) - 発展的技術
-2. [GitHub MCP Server]({% link _documents/github-mcp-index.md %}) - 深度統合
-3. [拡張思考のコツ]({% link _documents/_anthropic-prompt-engineering/extended-thinking-tips.md %}) - AI最適化
+1. [高度な機能]({{ site.baseurl }}/documents/advanced-feature/) - 発展的技術
+2. [GitHub MCP Server]({{ site.baseurl }}/documents/github-mcp-index/) - 深度統合
+3. [拡張思考のコツ]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/extended-thinking-tips/) - AI最適化
 
 ---
 
@@ -168,6 +168,7 @@ GitHub MCP Server → 基本設定
 **🎯 目標**: このサイトを通じて、開発者の皆様がAI・モダンツールを活用した効率的で高品質な開発ワークフローを構築できることを目指しています。
 
 {% assign docs_col = site.collections['documents'] %}
-{% if docs_col == nil or docs_col.docs | size == 0 %}
+{% assign docs_size = docs_col.docs | size %}
+{% if docs_col == nil or docs_size == 0 %}
 <p><em>ドキュメントがまだありません。_documentsフォルダにMarkdownファイルを追加してください。</em></p>
 {% endif %}

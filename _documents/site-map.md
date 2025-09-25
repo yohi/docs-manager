@@ -22,179 +22,179 @@ layout: default
 
 ## 🤖 **Anthropic プロンプトエンジニアリング**
 
-### [📁 セクション概要]({% link _documents/_anthropic-prompt-engineering/index.md %})
+### [📁 セクション概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
 
 #### 基本概念
-- [プロンプトエンジニアリング概要]({% link _documents/_anthropic-prompt-engineering/overview.md %})
-- [Claude 4 ベストプラクティス]({% link _documents/_anthropic-prompt-engineering/claude-4-best-practices.md %})
+- [プロンプトエンジニアリング概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/overview/)
+- [Claude 4 ベストプラクティス]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/claude-4-best-practices/)
 
 #### ツール・リソース
-- [プロンプトジェネレーター]({% link _documents/_anthropic-prompt-engineering/prompt-generator.md %})
-- [プロンプトテンプレートと変数]({% link _documents/_anthropic-prompt-engineering/prompt-templates-and-variables.md %})
-- [プロンプト改善ツール]({% link _documents/_anthropic-prompt-engineering/prompt-improver.md %})
+- [プロンプトジェネレーター]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-generator/)
+- [プロンプトテンプレートと変数]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-templates-and-variables/)
+- [プロンプト改善ツール]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-improver/)
 
 #### 設計原則
-- [明確で直接的な指示]({% link _documents/_anthropic-prompt-engineering/be-clear-and-direct.md %})
-- [マルチショットプロンプティング]({% link _documents/_anthropic-prompt-engineering/multishot-prompting.md %})
-- [思考の連鎖（Chain of Thought）]({% link _documents/_anthropic-prompt-engineering/chain-of-thought.md %})
+- [明確で直接的な指示]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/be-clear-and-direct/)
+- [マルチショットプロンプティング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/multishot-prompting/)
+- [思考の連鎖（Chain of Thought）]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/chain-of-thought/)
 
 #### 高度な技術
-- [XMLタグの使用]({% link _documents/_anthropic-prompt-engineering/use-xml-tags.md %})
-- [システムプロンプト]({% link _documents/_anthropic-prompt-engineering/system-prompts.md %})
-- [Claudeの応答の事前入力]({% link _documents/_anthropic-prompt-engineering/prefill-claudes-response.md %})
-- [プロンプトチェーン]({% link _documents/_anthropic-prompt-engineering/chain-prompts.md %})
+- [XMLタグの使用]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/use-xml-tags/)
+- [システムプロンプト]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/system-prompts/)
+- [Claudeの応答の事前入力]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prefill-claudes-response/)
+- [プロンプトチェーン]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/chain-prompts/)
 
 #### 特殊用途
-- [長文コンテキストのコツ]({% link _documents/_anthropic-prompt-engineering/long-context-tips.md %})
-- [拡張思考のコツ]({% link _documents/_anthropic-prompt-engineering/extended-thinking-tips.md %})
+- [長文コンテキストのコツ]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/long-context-tips/)
+- [拡張思考のコツ]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/extended-thinking-tips/)
 
 ---
 
 ## 💻 **Claude Code Documentation**
 
-### [📁 セクション概要]({% link _documents/_claude-code/index.md %})
+### [📁 セクション概要]({{ site.baseurl }}/documents/_claude-code/index/)
 
 #### 基本設定・開始
-- [CLI リファレンス]({% link _documents/_claude-code/cli-reference.md %})
-- [設定]({% link _documents/_claude-code/settings.md %})
-- [モデル設定]({% link _documents/_claude-code/model-config.md %})
+- [CLI リファレンス]({{ site.baseurl }}/documents/_claude-code/cli-reference/)
+- [設定]({{ site.baseurl }}/documents/_claude-code/settings/)
+- [モデル設定]({{ site.baseurl }}/documents/_claude-code/model-config/)
 
 #### 開発機能
-- [インタラクティブモード]({% link _documents/_claude-code/interactive-mode.md %})
-- [スラッシュコマンド]({% link _documents/_claude-code/slash-commands.md %})
-- [フック]({% link _documents/_claude-code/hooks.md %})
+- [インタラクティブモード]({{ site.baseurl }}/documents/_claude-code/interactive-mode/)
+- [スラッシュコマンド]({{ site.baseurl }}/documents/_claude-code/slash-commands/)
+- [フック]({{ site.baseurl }}/documents/_claude-code/hooks/)
 
 #### 統合・連携
-- [IDE統合]({% link _documents/_claude-code/ide-integrations.md %})
-- [ターミナル設定]({% link _documents/_claude-code/terminal-config.md %})
+- [IDE統合]({{ site.baseurl }}/documents/_claude-code/ide-integrations/)
+- [ターミナル設定]({{ site.baseurl }}/documents/_claude-code/terminal-config/)
 
 #### 監視・分析
-- [アナリティクス]({% link _documents/_claude-code/analytics.md %})
-- [ステータスライン]({% link _documents/_claude-code/statusline.md %})
-- [使用量監視]({% link _documents/_claude-code/monitoring-usage.md %})
+- [アナリティクス]({{ site.baseurl }}/documents/_claude-code/analytics/)
+- [ステータスライン]({{ site.baseurl }}/documents/_claude-code/statusline/)
+- [使用量監視]({{ site.baseurl }}/documents/_claude-code/monitoring-usage/)
 
 #### 運用・管理
-- [コスト]({% link _documents/_claude-code/costs.md %})
-- [メモリ]({% link _documents/_claude-code/memory.md %})
+- [コスト]({{ site.baseurl }}/documents/_claude-code/costs/)
+- [メモリ]({{ site.baseurl }}/documents/_claude-code/memory/)
 
 #### 法的・コンプライアンス
-- [法的・コンプライアンス]({% link _documents/_claude-code/legal-and-compliance.md %})
+- [法的・コンプライアンス]({{ site.baseurl }}/documents/_claude-code/legal-and-compliance/)
 
 ---
 
 ## 🚀 **Cursor Documentation**
 
-### [📁 セクション概要]({% link _documents/_cursor/index.md %})
+### [📁 セクション概要]({{ site.baseurl }}/documents/_cursor/index/)
 
 #### はじめに・基本
-- **[get-started/]({% link _documents/_cursor/get-started/index.md %})**
-  - [基本概念]({% link _documents/_cursor/get-started/concepts.md %})
-  - [クイックスタート]({% link _documents/_cursor/get-started/quickstart.md %})
-- [ダウンロード]({% link _documents/_cursor/downloads.md %})
+- **[get-started/]({{ site.baseurl }}/documents/_cursor/get-started/index/)**
+  - [基本概念]({{ site.baseurl }}/documents/_cursor/get-started/concepts/)
+  - [クイックスタート]({{ site.baseurl }}/documents/_cursor/get-started/quickstart/)
+- [ダウンロード]({{ site.baseurl }}/documents/_cursor/downloads/)
 
 #### AI エージェント機能
-- **[agent/]({% link _documents/_cursor/agent/index.md %})**
-  - [概要]({% link _documents/_cursor/agent/overview.md %})
-  - [モード]({% link _documents/_cursor/agent/modes.md %})
-  - [プランニング]({% link _documents/_cursor/agent/planning.md %})
-  - [レビュー]({% link _documents/_cursor/agent/review.md %})
-  - [セキュリティ]({% link _documents/_cursor/agent/security.md %})
-  - [ターミナル]({% link _documents/_cursor/agent/terminal.md %})
-  - [ツール]({% link _documents/_cursor/agent/tools.md %})
+- **[agent/]({{ site.baseurl }}/documents/_cursor/agent/index/)**
+  - [概要]({{ site.baseurl }}/documents/_cursor/agent/overview/)
+  - [モード]({{ site.baseurl }}/documents/_cursor/agent/modes/)
+  - [プランニング]({{ site.baseurl }}/documents/_cursor/agent/planning/)
+  - [レビュー]({{ site.baseurl }}/documents/_cursor/agent/review/)
+  - [セキュリティ]({{ site.baseurl }}/documents/_cursor/agent/security/)
+  - [ターミナル]({{ site.baseurl }}/documents/_cursor/agent/terminal/)
+  - [ツール]({{ site.baseurl }}/documents/_cursor/agent/tools/)
 
 #### CLI・自動化
-- **[cli/]({% link _documents/_cursor/cli/index.md %})**
-  - [概要]({% link _documents/_cursor/cli/overview.md %})
-  - [インストール]({% link _documents/_cursor/cli/installation.md %})
-  - [使用方法]({% link _documents/_cursor/cli/using.md %})
-  - [ヘッドレス実行]({% link _documents/_cursor/cli/headless.md %})
-  - [シェルモード]({% link _documents/_cursor/cli/shell-mode.md %})
-  - [GitHub Actions]({% link _documents/_cursor/cli/github-actions.md %})
-  - [MCP]({% link _documents/_cursor/cli/mcp.md %})
-  - **[reference/]({% link _documents/_cursor/cli/reference/index.md %})**
-    - [認証]({% link _documents/_cursor/cli/reference/authentication.md %})
-    - [設定]({% link _documents/_cursor/cli/reference/configuration.md %})
-    - [出力形式]({% link _documents/_cursor/cli/reference/output-format.md %})
-    - [パラメータ]({% link _documents/_cursor/cli/reference/parameters.md %})
-    - [権限]({% link _documents/_cursor/cli/reference/permissions.md %})
-    - [スラッシュコマンド]({% link _documents/_cursor/cli/reference/slash-commands.md %})
+- **[cli/]({{ site.baseurl }}/documents/_cursor/cli/index/)**
+  - [概要]({{ site.baseurl }}/documents/_cursor/cli/overview/)
+  - [インストール]({{ site.baseurl }}/documents/_cursor/cli/installation/)
+  - [使用方法]({{ site.baseurl }}/documents/_cursor/cli/using/)
+  - [ヘッドレス実行]({{ site.baseurl }}/documents/_cursor/cli/headless/)
+  - [シェルモード]({{ site.baseurl }}/documents/_cursor/cli/shell-mode/)
+  - [GitHub Actions]({{ site.baseurl }}/documents/_cursor/cli/github-actions/)
+  - [MCP]({{ site.baseurl }}/documents/_cursor/cli/mcp/)
+  - **[reference/]({{ site.baseurl }}/documents/_cursor/cli/reference/index/)**
+    - [認証]({{ site.baseurl }}/documents/_cursor/cli/reference/authentication/)
+    - [設定]({{ site.baseurl }}/documents/_cursor/cli/reference/configuration/)
+    - [出力形式]({{ site.baseurl }}/documents/_cursor/cli/reference/output-format/)
+    - [パラメータ]({{ site.baseurl }}/documents/_cursor/cli/reference/parameters/)
+    - [権限]({{ site.baseurl }}/documents/_cursor/cli/reference/permissions/)
+    - [スラッシュコマンド]({{ site.baseurl }}/documents/_cursor/cli/reference/slash-commands/)
 
 #### 設定・カスタマイズ
-- **[settings/]({% link _documents/_cursor/settings/index.md %})**
-  - [API キー]({% link _documents/_cursor/settings/api-keys.md %})
-- **[configuration/]({% link _documents/_cursor/configuration/index.md %})**
-  - [拡張機能]({% link _documents/_cursor/configuration/extensions.md %})
-  - [キーバインド]({% link _documents/_cursor/configuration/kbd.md %})
-  - [シェル]({% link _documents/_cursor/configuration/shell.md %})
-  - [テーマ]({% link _documents/_cursor/configuration/themes.md %})
+- **[settings/]({{ site.baseurl }}/documents/_cursor/settings/index/)**
+  - [API キー]({{ site.baseurl }}/documents/_cursor/settings/api-keys/)
+- **[configuration/]({{ site.baseurl }}/documents/_cursor/configuration/index/)**
+  - [拡張機能]({{ site.baseurl }}/documents/_cursor/configuration/extensions/)
+  - [キーバインド]({{ site.baseurl }}/documents/_cursor/configuration/kbd/)
+  - [シェル]({{ site.baseurl }}/documents/_cursor/configuration/shell/)
+  - [テーマ]({{ site.baseurl }}/documents/_cursor/configuration/themes/)
 
 #### コンテキスト・インデックス
-- **[context/]({% link _documents/_cursor/context/index.md %})**
-  - [コードベースインデックス]({% link _documents/_cursor/context/codebase-indexing.md %})
-  - [除外ファイル]({% link _documents/_cursor/context/ignore-files.md %})
-  - [メモリ]({% link _documents/_cursor/context/memories.md %})
-  - [ルール]({% link _documents/_cursor/context/rules.md %})
-  - [シンボル]({% link _documents/_cursor/context/symbols.md %})
+- **[context/]({{ site.baseurl }}/documents/_cursor/context/index/)**
+  - [コードベースインデックス]({{ site.baseurl }}/documents/_cursor/context/codebase-indexing/)
+  - [除外ファイル]({{ site.baseurl }}/documents/_cursor/context/ignore-files/)
+  - [メモリ]({{ site.baseurl }}/documents/_cursor/context/memories/)
+  - [ルール]({{ site.baseurl }}/documents/_cursor/context/rules/)
+  - [シンボル]({{ site.baseurl }}/documents/_cursor/context/symbols/)
 
 #### 統合・連携
-- **[integrations/]({% link _documents/_cursor/integrations/index.md %})**
-  - [ディープリンク]({% link _documents/_cursor/integrations/deeplinks.md %})
-  - [Git]({% link _documents/_cursor/integrations/git.md %})
-  - [GitHub]({% link _documents/_cursor/integrations/github.md %})
-  - [Linear]({% link _documents/_cursor/integrations/linear.md %})
-  - [Slack]({% link _documents/_cursor/integrations/slack.md %})
+- **[integrations/]({{ site.baseurl }}/documents/_cursor/integrations/index/)**
+  - [ディープリンク]({{ site.baseurl }}/documents/_cursor/integrations/deeplinks/)
+  - [Git]({{ site.baseurl }}/documents/_cursor/integrations/git/)
+  - [GitHub]({{ site.baseurl }}/documents/_cursor/integrations/github/)
+  - [Linear]({{ site.baseurl }}/documents/_cursor/integrations/linear/)
+  - [Slack]({{ site.baseurl }}/documents/_cursor/integrations/slack/)
 
 #### タブ・ワークスペース
-- **[tab/]({% link _documents/_cursor/tab/index.md %})**
-  - [概要]({% link _documents/_cursor/tab/index.md %})
+- **[tab/]({{ site.baseurl }}/documents/_cursor/tab/index/)**
+  - [概要]({{ site.baseurl }}/documents/_cursor/tab/index/)
 
 #### トラブルシューティング
-- **[troubleshooting/]({% link _documents/_cursor/troubleshooting/index.md %})**
-  - [よくある問題]({% link _documents/_cursor/troubleshooting/common-issues.md %})
-  - [リクエスト・レポート]({% link _documents/_cursor/troubleshooting/request-reporting.md %})
-  - [トラブルシューティングガイド]({% link _documents/_cursor/troubleshooting/troubleshooting-guide.md %})
+- **[troubleshooting/]({{ site.baseurl }}/documents/_cursor/troubleshooting/index/)**
+  - [よくある問題]({{ site.baseurl }}/documents/_cursor/troubleshooting/common-issues/)
+  - [リクエスト・レポート]({{ site.baseurl }}/documents/_cursor/troubleshooting/request-reporting/)
+  - [トラブルシューティングガイド]({{ site.baseurl }}/documents/_cursor/troubleshooting/troubleshooting-guide/)
 
 #### 特殊機能
-- [モデル]({% link _documents/_cursor/models.md %})
-- [BugBot]({% link _documents/_cursor/bugbot.md %})
+- [モデル]({{ site.baseurl }}/documents/_cursor/models/)
+- [BugBot]({{ site.baseurl }}/documents/_cursor/bugbot/)
 
 ---
 
 ## 🔗 **GitHub MCP Server**
 
-### [📁 セクション概要]({% link _documents/github-mcp-index.md %})
+### [📁 セクション概要]({{ site.baseurl }}/documents/github-mcp-index/)
 
 #### メインドキュメント
-- [GitHub MCP Server]({% link _documents/github-mcp-server.md %}) - 動的読み込み
+- [GitHub MCP Server]({{ site.baseurl }}/documents/github-mcp-server/) - 動的読み込み
 
 #### 実装・導入
-- [インスタント実装]({% link _documents/github-mcp-server-instant.md %})
-- [プラグイン開発]({% link _documents/github-mcp-server-plugin.md %})
+- [インスタント実装]({{ site.baseurl }}/documents/github-mcp-server-instant/)
+- [プラグイン開発]({{ site.baseurl }}/documents/github-mcp-server-plugin/)
 
 #### 技術実装
-- [iframe統合]({% link _documents/github-mcp-server-iframe.md %})
-- [リダイレクト実装]({% link _documents/github-mcp-server-redirect.md %})
+- [iframe統合]({{ site.baseurl }}/documents/github-mcp-server-iframe/)
+- [リダイレクト実装]({{ site.baseurl }}/documents/github-mcp-server-redirect/)
 
 #### 公式リソース
-- [README]({% link _documents/github-mcp-server-readme.md %})
+- [README]({{ site.baseurl }}/documents/github-mcp-server-readme/)
 
 #### 比較・分析
-- [リダイレクト手法比較]({% link _documents/redirect-comparison.md %})
+- [リダイレクト手法比較]({{ site.baseurl }}/documents/redirect-comparison/)
 
 ---
 
 ## 📖 **学習・リファレンス**
 
 ### 基本ガイド
-- [はじめに]({% link _documents/getting-started.md %})
-- [高度な機能]({% link _documents/advanced-feature.md %})
+- [はじめに]({{ site.baseurl }}/documents/getting-started/)
+- [高度な機能]({{ site.baseurl }}/documents/advanced-feature/)
 
 ### ドキュメント管理
-- [Claude Code Documentation]({% link _documents/claude-code-documentation.md %})
-- [Cursor Documentation]({% link _documents/cursor-documentation.md %})
+- [Claude Code Documentation]({{ site.baseurl }}/documents/claude-code-documentation/)
+- [Cursor Documentation]({{ site.baseurl }}/documents/cursor-documentation/)
 
 ### ナビゲーション
-- [サイトマップ]({% link _documents/site-map.md %}) - このページ
+- [サイトマップ]({{ site.baseurl }}/documents/site-map/) - このページ
 
 ---
 
@@ -202,13 +202,13 @@ layout: default
 
 ### コンテンツ概要
 
-| セクション | ドキュメント数 | 主要機能 |
-|-----------|-------------|---------|
-| **Anthropic** | 15 | プロンプトエンジニアリング・Claude 4活用 |
-| **Claude Code** | 15 | IDE統合・開発効率化・AI支援 |
-| **Cursor** | 45+ | AI統合IDE・エージェント・CLI・統合 |
-| **GitHub MCP** | 7 | GitHub統合・MCP・自動化 |
-| **基本ガイド** | 6 | 学習・リファレンス・ナビゲーション |
+| セクション      | ドキュメント数 | 主要機能                                 |
+| --------------- | -------------- | ---------------------------------------- |
+| **Anthropic**   | 15             | プロンプトエンジニアリング・Claude 4活用 |
+| **Claude Code** | 15             | IDE統合・開発効率化・AI支援              |
+| **Cursor**      | 45+            | AI統合IDE・エージェント・CLI・統合       |
+| **GitHub MCP**  | 7              | GitHub統合・MCP・自動化                  |
+| **基本ガイド**  | 6              | 学習・リファレンス・ナビゲーション       |
 
 
 ### 総計

@@ -5,19 +5,19 @@
     <span style="color: #d0d7de;">|</span>
 
     <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-      <a href="{% link _documents/_anthropic-prompt-engineering/index.md %}" style="color: #0969da; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/" style="color: #0969da; text-decoration: none;">
         🤖 Anthropic
       </a>
 
-      <a href="{% link _documents/_claude-code/index.md %}" style="color: #0969da; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/_claude-code/index/" style="color: #0969da; text-decoration: none;">
         💻 Claude Code
       </a>
 
-      <a href="{% link _documents/_cursor/index.md %}" style="color: #0969da; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/_cursor/index/" style="color: #0969da; text-decoration: none;">
         🚀 Cursor
       </a>
 
-      <a href="{% link _documents/github-mcp-index.md %}" style="color: #0969da; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/github-mcp-index/" style="color: #0969da; text-decoration: none;">
         🔗 GitHub MCP
       </a>
     </div>
@@ -25,11 +25,11 @@
     <span style="color: #d0d7de;">|</span>
 
     <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-      <a href="{% link _documents/getting-started.md %}" style="color: #cf222e; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/getting-started/" style="color: #cf222e; text-decoration: none;">
         📖 はじめに
       </a>
 
-      <a href="{% link _documents/advanced-feature.md %}" style="color: #cf222e; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/advanced-feature/" style="color: #cf222e; text-decoration: none;">
         ⚡ 高度な機能
       </a>
     </div>

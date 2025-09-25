@@ -1,53 +1,81 @@
 ---
-title: Anthropic プロンプトエンジニアリング
-description: Anthropic Claude のプロンプトエンジニアリング関連ドキュメント集
-order: 0
+title: "Anthropic プロンプトエンジニアリング"
+description: "Claude 4を活用したプロンプトエンジニアリング技術の包括的ガイド"
 layout: default
 ---
 
-# Anthropic プロンプトエンジニアリング
+# 🤖 Anthropic プロンプトエンジニアリング
 
-Anthropic Claude を効果的に活用するためのプロンプトエンジニアリング技術の包括的なガイドです。
+Claude 4を活用したプロンプトエンジニアリング技術の包括的ガイドです。
 
-## ドキュメント一覧
-
-各リンクをクリックすると、Anthropic の公式ドキュメントにリダイレクトされます。
+## 📚 コンテンツ一覧
 
 ### 基本概念
-
-1. [プロンプトエンジニアリング概要](overview.html) - プロンプトエンジニアリングの基礎と概要
-2. [Claude 4 ベストプラクティス](claude-4-best-practices.html) - Claude 4 を使用する際のベストプラクティス
-
-### ツールとリソース
-
-3. [プロンプトジェネレーター](prompt-generator.html) - プロンプトを自動生成するツール
-4. [プロンプトテンプレートと変数](prompt-templates-and-variables.html) - 再利用可能なテンプレートの作成
-5. [プロンプト改善ツール](prompt-improver.html) - 既存プロンプトの改善方法
-
-### プロンプト設計の原則
-
-6. [明確で直接的な指示](be-clear-and-direct.html) - 効果的なプロンプトの書き方
-7. [マルチショットプロンプティング](multishot-prompting.html) - 複数の例を活用する手法
-8. [思考の連鎖（Chain of Thought）](chain-of-thought.html) - 段階的思考を促す技法
+- [概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/overview/) - プロンプトエンジニアリングの基礎
+- [明確で直接的な指示]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/be-clear-and-direct/) - 効果的な指示の書き方
 
 ### 高度な技術
+- [思考の連鎖]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/chain-of-thought/) - ステップバイステップ思考
+- [プロンプト連鎖]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/chain-prompts/) - 複雑な作業の分割
+- [マルチショット・プロンプティング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/multishot-prompting/) - 例を活用した学習
 
-9. [XMLタグの使用](use-xml-tags.html) - 構造化されたプロンプトの作成
-10. [システムプロンプト](system-prompts.html) - システムレベルでの指示設定
-11. [Claudeの応答の事前入力](prefill-claudes-response.html) - 応答の開始部分を指定する方法
-12. [プロンプトチェーン](chain-prompts.html) - 複数のプロンプトを連携させる手法
+### 実践的な活用
+- [Claude 4 ベストプラクティス]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/claude-4-best-practices/) - 実務で使える技術
+- [拡張思考のコツ]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/extended-thinking-tips/) - 深い思考を促す方法
+- [長文コンテキストのコツ]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/long-context-tips/) - 大量情報の効果的処理
 
-### 特殊用途
+### システム・構造化
+- [システムプロンプト]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/system-prompts/) - ベースとなる指示設計
+- [XMLタグの活用]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/use-xml-tags/) - 構造化された指示
+- [Claudeの回答プリフィル]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prefill-claudes-response/) - 回答の誘導技術
 
-13. [長文コンテキストのコツ](long-context-tips.html) - 大量のテキストを効果的に処理する方法
-14. [拡張思考のコツ](extended-thinking-tips.html) - より深い分析と推論を促す技術
+### ツール・テンプレート
+- [プロンプトテンプレートと変数]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-templates-and-variables/) - 再利用可能な構造
+- [プロンプト生成器]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-generator/) - 自動生成ツール
+- [プロンプト改善器]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-improver/) - 既存プロンプトの最適化
+
+## 🎯 学習パス
+
+### 🆕 初心者向け
+1. [概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/overview/) - 基本概念の理解
+2. [明確で直接的な指示]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/be-clear-and-direct/) - 基本的な書き方
+3. [Claude 4 ベストプラクティス]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/claude-4-best-practices/) - 実践的な活用
+
+### ⚡ 中級者向け
+1. [思考の連鎖]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/chain-of-thought/) - 論理的思考の構築
+2. [マルチショット・プロンプティング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/multishot-prompting/) - 例示による学習
+3. [XMLタグの活用]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/use-xml-tags/) - 構造化技術
+
+### 🔧 上級者向け
+1. [プロンプト連鎖]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/chain-prompts/) - 複雑な作業分割
+2. [拡張思考のコツ]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/extended-thinking-tips/) - 深い分析技術
+3. [システムプロンプト]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/system-prompts/) - 高度なシステム設計
+
+## 📊 技術統計
+
+| カテゴリ       | ドキュメント数 | 主要機能                               |
+| -------------- | -------------- | -------------------------------------- |
+| **基本概念**   | 2ファイル      | 基礎理解・明確な指示                   |
+| **高度技術**   | 3ファイル      | 思考連鎖・連続処理・例示学習           |
+| **実践活用**   | 3ファイル      | ベストプラクティス・深い思考・長文処理 |
+| **システム化** | 3ファイル      | システム設計・構造化・回答制御         |
+| **ツール**     | 3ファイル      | テンプレート・生成器・改善器           |
+
+**総計**: **14ドキュメント** でプロンプトエンジニアリングを体系的にカバー
+
+## 🚀 クイックスタート
+
+```markdown
+1. 基本概念の理解
+   概要 → 明確な指示 → 基本的な活用
+
+2. 実践的な技術習得
+   思考の連鎖 → 例示学習 → 構造化技術
+
+3. 高度な活用
+   複雑作業分割 → 深い思考 → システム設計
+```
 
 ---
 
-**注意**: 上記のリンクは全て Anthropic の公式ドキュメントへのリダイレクトです。最新の情報については、直接公式サイトをご確認ください。
-
-## 関連リンク
-
-- [Anthropic 公式サイト](https://www.anthropic.com/)
-- [Claude API ドキュメント](https://docs.anthropic.com/en/api)
-- [Claude コンソール](https://console.anthropic.com/)
+**🎯 目標**: この包括的なガイドを通じて、Claude 4を活用した効果的なプロンプトエンジニアリング技術をマスターできることを目指しています。

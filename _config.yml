@@ -1,5 +1,11 @@
 # Jekyll Configuration for Development Documentation Hub
 
+# サイト基本情報
+title: "Development Documentation Hub"
+description: "プロフェッショナル開発者のための包括的ドキュメントサイト - AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合"
+url: "https://y_ohi.github.io" # 実際のGitHub PagesのURLに変更してください
+baseurl: "/docs-manager" # リポジトリ名に変更してください
+
 # GitHub Pages互換のテーマを使用（remote_theme使用）
 # theme: minima  # GitHub Pagesではremote_themeを優先
 
@@ -8,8 +14,8 @@ author:
   name: "Development Team"
   email: "dev@example.com"
 
-# テーマ設定
-remote_theme: jekyll/minima
+# テーマ設定（GitHub Pages標準）
+# remote_theme は使用せず、GitHub Pages標準のテーマを使用
 
 # Collections設定
 collections:
@@ -40,6 +46,7 @@ defaults:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
   - jekyll-relative-links
   - jekyll-optional-front-matter
   - jekyll-redirect-from
