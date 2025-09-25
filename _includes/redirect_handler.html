@@ -192,13 +192,36 @@ GitHub Pages用 高度リダイレクトハンドラー
       }
     `;
       document.head.appendChild(style);
-      document.body.appendChild(notice);
+
+      // document.bodyが利用可能かチェックし、なければDOMContentLoadedを待つ
+      function appendNotice() {
+        if (document.body) {
+          document.body.appendChild(notice);
+        } else {
+          // フォールバック: document.documentElementに追加
+          document.documentElement.appendChild(notice);
+        }
+      }
+
+      if (document.body) {
+        appendNotice();
+      } else if (document.readyState === 'loading') {
+        // DOMContentLoadedを待つ
+        document.addEventListener('DOMContentLoaded', appendNotice);
+      } else {
+        // 既にDOMは読み込まれているがbodyがない場合（稀）
+        appendNotice();
+      }
 
       // 3秒後に通知を削除
       setTimeout(() => {
         if (notice.parentNode) {
           notice.style.animation = 'slideDown 0.3s ease-out reverse';
-          setTimeout(() => notice.remove(), 300);
+          setTimeout(() => {
+            if (notice.parentNode) {
+              notice.parentNode.removeChild(notice);
+            }
+          }, 300);
         }
       }, 3000);
     }
