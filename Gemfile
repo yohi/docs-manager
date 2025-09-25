@@ -9,5 +9,7 @@ gem 'github-pages', group: :jekyll_plugins
 # ローカル開発用（Ruby 3.0+で必要）
 gem 'webrick', '~> 1.7'
 
-# パフォーマンス向上（任意）
-gem 'jekyll-cache', group: :jekyll_plugins
+# ローカル開発用パフォーマンス向上（GitHub Pagesでは非対応のため開発環境のみ）
+group :development do
+  gem 'jekyll-cache'
+end
