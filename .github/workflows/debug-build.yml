@@ -1,0 +1,95 @@
+name: 🐛 Debug Build
+
+on:
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  debug-build:
+    name: 🐛 Debug Jekyll Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🏗️ Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: false
+
+    - name: 📋 Environment Info
+      run: |
+        echo "=== Environment Information ==="
+        echo "Ruby version: $(ruby --version)"
+        echo "Bundler version: $(bundle --version)"
+        echo "Working directory: $(pwd)"
+        echo "Files in root:"
+        ls -la
+        echo ""
+        echo "=== Gemfile check ==="
+        if [ -f Gemfile ]; then
+          echo "✅ Gemfile exists"
+          cat Gemfile
+        else
+          echo "❌ Gemfile does not exist"
+        fi
+        echo ""
+        echo "=== _config.yml check ==="
+        if [ -f _config.yml ]; then
+          echo "✅ _config.yml exists"
+          head -20 _config.yml
+        else
+          echo "❌ _config.yml does not exist"
+        fi
+
+    - name: 🔧 Install Dependencies
+      run: |
+        echo "=== Installing dependencies ==="
+        bundle install --verbose
+        echo ""
+        echo "=== Installed gems ==="
+        bundle list
+
+    - name: 🏗️ Jekyll Build Test
+      run: |
+        echo "=== Jekyll build attempt ==="
+        echo "Jekyll version:"
+        bundle exec jekyll --version
+        echo ""
+        echo "Starting build with maximum verbosity..."
+        bundle exec jekyll build --verbose --trace --safe
+      env:
+        JEKYLL_ENV: development
+
+    - name: 📊 Build Results
+      if: always()
+      run: |
+        echo "=== Build Results Check ==="
+        if [ -d "_site" ]; then
+          echo "✅ _site directory created"
+          echo "Files in _site:"
+          find _site -type f | head -20
+          echo "Total files: $(find _site -type f | wc -l)"
+        else
+          echo "❌ _site directory not created"
+        fi
+
+    - name: 🔍 Error Diagnosis
+      if: failure()
+      run: |
+        echo "=== Error Diagnosis ==="
+        echo "Current directory contents:"
+        ls -la
+        echo ""
+        if [ -f "_site" ]; then
+          echo "_site exists but might be a file instead of directory"
+          file _site
+        fi
+        echo ""
+        echo "Checking for error logs..."
+        if [ -f ".jekyll-metadata" ]; then
+          echo "Jekyll metadata file exists"
+        fi

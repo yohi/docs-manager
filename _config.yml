@@ -22,7 +22,6 @@ collections:
   documents:
     output: true
     permalink: /documents/:name/
-    sort_by: order
 defaults:
   - scope:
       path: "_documents"
