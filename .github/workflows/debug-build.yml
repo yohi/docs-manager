@@ -59,8 +59,15 @@ jobs:
         echo "Jekyll version:"
         bundle exec jekyll --version
         echo ""
+        echo "Checking for potential issues..."
+        echo "Files in root directory:"
+        ls -la *.md *.html 2>/dev/null || echo "No .md or .html files in root"
+        echo ""
+        echo "Checking for duplicate index files:"
+        find . -name "index.*" -type f | head -10
+        echo ""
         echo "Starting build with maximum verbosity..."
-        bundle exec jekyll build --verbose --trace --safe
+        bundle exec jekyll build --verbose --trace --safe --drafts --future
       env:
         JEKYLL_ENV: development
 
