@@ -1,10 +1,7 @@
 # Jekyll Configuration for Development Documentation Hub
 
-# サイト基本設定
-title: "Development Documentation Hub"
-description: "プロフェッショナル開発者のための包括的ドキュメントサイト - AI開発・プロンプトエンジニアリング・IDE活用"
-url: "https://yohi.github.io"
-baseurl: "/docs-manager"
+# GitHub Pages互換のテーマを使用
+theme: minima
 
 # 作成者情報
 author:
@@ -28,7 +25,7 @@ defaults:
       layout: "default"
       permalink: "/documents/:name/"
 
-# 追加デフォルト設定  
+# 追加デフォルト設定
   - scope:
       path: ""
       type: "pages"
@@ -39,91 +36,11 @@ defaults:
     values:
       layout: "default"
 
-# プラグイン設定（GitHub Pages対応）
+# GitHub Pages標準プラグイン
 plugins:
+  - jekyll-feed
+  - jekyll-sitemap
   - jekyll-relative-links
   - jekyll-optional-front-matter
   - jekyll-redirect-from
-  - jekyll-sitemap
-  - jekyll-feed
-  - jekyll-seo-tag
-
-# Markdown設定
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-
-# 除外設定
-exclude:
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - "*.txt"
-  - README.md
-
-# インクルード設定（必要な場合）
-include:
-  - _pages
-  - _includes
-
-# SEO・ソーシャル設定
-social:
-  name: Development Documentation Hub
-  links:
-    - https://github.com/your-username/docs-manager
-
-# Google Analytics（オプション）
-# google_analytics: "G-XXXXXXXXXX"
-
-# サイト設定
-timezone: Asia/Tokyo
-encoding: utf-8
-lang: ja
-
-# パフォーマンス設定
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  profile: false
-  blanklines: false
-  ignore:
-    envs: [local]
-
-# カスタム変数
-custom:
-  navigation_enabled: true
-  toc_enabled: true
-  breadcrumbs_enabled: true
-  search_enabled: false # GitHub Pagesの制限により無効
-
-# RSS/Atom Feed設定
-feed:
-  posts_limit: 20
-  excerpt_only: true
-
-# 開発設定（ローカル開発時のみ）
-# port: 4000
-# host: 127.0.0.1
-# incremental: true
-# livereload: true
-
-# GitHub固有設定
-github: [metadata]
+  - jekyll-default-layout
