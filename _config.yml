@@ -3,7 +3,7 @@
 # サイト基本情報
 title: "Development Documentation Hub"
 description: "プロフェッショナル開発者のための包括的ドキュメントサイト - AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合"
-url: "https://y_ohi.github.io" # 実際のGitHub PagesのURLに変更してください
+url: "https://yohi.github.io" # GitHub Pagesの正しいURL
 baseurl: "/docs-manager" # リポジトリ名に変更してください
 
 # GitHub Pages互換のテーマを使用（remote_theme使用）
