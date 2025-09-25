@@ -2,7 +2,7 @@ name: 🔗 Link Validation & Site Health Check
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master ]
     paths:
       - '_documents/**'
       - 'index.md'
@@ -10,7 +10,7 @@ on:
       - '_includes/**'
       - '_layouts/**'
   pull_request:
-    branches: [ main, master ]
+    branches: [ master ]
     paths:
       - '_documents/**'
       - 'index.md'
@@ -226,7 +226,7 @@ jobs:
         echo "| JS Files | $JS_FILES | ℹ️ Info |" >> $GITHUB_STEP_SUMMARY
 
     - name: 🔄 Cache Site Build
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           _site
@@ -236,8 +236,8 @@ jobs:
           ${{ runner.os }}-jekyll-
 
     - name: 📤 Upload Site Artifact
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: actions/upload-artifact@v3
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      uses: actions/upload-artifact@v4
       with:
         name: built-site
         path: _site/
@@ -245,7 +245,7 @@ jobs:
 
     - name: 💬 Comment PR Results
       if: github.event_name == 'pull_request'
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           const fs = require('fs');
