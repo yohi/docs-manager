@@ -17,17 +17,17 @@ Claude Codeは、AnthropicのClaude AIを直接IDEに統合した革新的な開
 
 ### 🚀 **基本設定・開始**
 
-#### [CLI リファレンス](cli-reference.html)
+#### [CLI リファレンス](./cli-reference/)
 **コマンドライン操作の完全ガイド**
 - 基本コマンド・オプション・使用例
 - 効率的なCLI活用テクニック
 
-#### [設定](settings.html)
+#### [設定](./settings/)
 **Claude Code環境の最適化**
 - 初期設定・カスタマイズ・環境構築
 - パフォーマンス・セキュリティ設定
 
-#### [モデル設定](model-config.html)
+#### [モデル設定](./model-config/)
 **AIモデルの詳細設定**
 - モデル選択・パラメータ調整
 - 用途別最適化・パフォーマンスチューニング
@@ -36,17 +36,17 @@ Claude Codeは、AnthropicのClaude AIを直接IDEに統合した革新的な開
 
 ### 💻 **開発機能**
 
-#### [インタラクティブモード](interactive-mode.html)
+#### [インタラクティブモード](./interactive-mode/)
 **リアルタイムAI支援開発**
 - 対話型コーディング・即座のフィードバック
 - 効率的な問題解決・デバッグ支援
 
-#### [スラッシュコマンド](slash-commands.html)
+#### [スラッシュコマンド](./slash-commands/)
 **高速コマンド実行**
 - 頻繁に使用する操作の短縮
 - カスタムコマンド作成・活用
 
-#### [フック](hooks.html)
+#### [フック](./hooks/)
 **自動化・統合機能**
 - Git連携・ビルドプロセス統合
 - カスタムワークフロー構築
@@ -55,12 +55,12 @@ Claude Codeは、AnthropicのClaude AIを直接IDEに統合した革新的な開
 
 ### 🔗 **統合・連携**
 
-#### [IDE統合](ide-integrations.html)
+#### [IDE統合](./ide-integrations/)
 **既存開発環境との連携**
 - VS Code・IntelliJ・その他IDE連携
 - シームレスなワークフロー構築
 
-#### [ターミナル設定](terminal-config.html)
+#### [ターミナル設定](./terminal-config/)
 **ターミナル環境の最適化**
 - シェル設定・コマンド履歴・効率化
 - 統合ターミナルの活用
@@ -69,17 +69,17 @@ Claude Codeは、AnthropicのClaude AIを直接IDEに統合した革新的な開
 
 ### 📊 **監視・分析**
 
-#### [アナリティクス](analytics.html)
+#### [アナリティクス](./analytics/)
 **使用状況・パフォーマンス分析**
 - 開発効率測定・改善点特定
 - データドリブンな最適化
 
-#### [ステータスライン](statusline.html)
+#### [ステータスライン](./statusline/)
 **リアルタイム状態表示**
 - プロジェクト状況・AI応答状況
 - カスタム表示・通知設定
 
-#### [使用量監視](monitoring-usage.html)
+#### [使用量監視](./monitoring-usage/)
 **リソース管理・コスト最適化**
 - API使用量・料金追跡
 - 効率的なリソース活用
@@ -88,12 +88,12 @@ Claude Codeは、AnthropicのClaude AIを直接IDEに統合した革新的な開
 
 ### 💰 **運用・管理**
 
-#### [コスト](costs.html)
+#### [コスト](./costs/)
 **料金体系・コスト管理**
 - 料金プラン・使用量ベース課金
 - コスト最適化戦略
 
-#### [メモリ](memory.html)
+#### [メモリ](./memory/)
 **パフォーマンス最適化**
 - メモリ使用量・キャッシュ設定
 - 大規模プロジェクト対応
@@ -102,7 +102,7 @@ Claude Codeは、AnthropicのClaude AIを直接IDEに統合した革新的な開
 
 ### ⚖️ **法的・コンプライアンス**
 
-#### [法的・コンプライアンス](legal-and-compliance.html)
+#### [法的・コンプライアンス](./legal-and-compliance/)
 **企業利用・規制対応**
 - データ保護・プライバシー・セキュリティ
 - 企業ポリシー準拠・監査対応

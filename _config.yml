@@ -3,7 +3,7 @@
 # サイト基本情報
 title: "Development Documentation Hub"
 description: "プロフェッショナル開発者のための包括的ドキュメントサイト - AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合"
-url: "https://y_ohi.github.io" # 実際のGitHub PagesのURLに変更してください
+url: "https://yohi.github.io" # GitHub Pagesの正しいURL
 baseurl: "/docs-manager" # リポジトリ名に変更してください
 
 # GitHub Pages互換のテーマを使用（remote_theme使用）
@@ -21,15 +21,13 @@ author:
 collections:
   documents:
     output: true
-    permalink: /:collection/:name/
-    sort_by: order
+    permalink: /documents/:name/
 defaults:
   - scope:
       path: "_documents"
       type: "documents"
     values:
       layout: "default"
-      permalink: "/documents/:name/"
 
   # 追加デフォルト設定
   - scope:
@@ -51,6 +49,19 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-redirect-from
   - jekyll-default-layout
+
+# SEO 設定
+lang: ja_JP
+timezone: Asia/Tokyo
+
+# Sitemap 設定
+sitemap:
+  filename: "/sitemap.xml"
+  exclude:
+    - "/404.html"
+    - "/redirect-test.html"
+  include_posts:
+    - "/documents/"
 
 # ビルド最適化設定
 markdown: kramdown

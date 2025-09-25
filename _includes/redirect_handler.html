@@ -1,0 +1,275 @@
+<!--
+GitHub Pages用 高度リダイレクトハンドラー
+使用方法: {% include redirect_handler.html %}
+-->
+
+<script>
+  (function () {
+    'use strict';
+
+    // 動的baseurl対応
+    const baseUrl = '{{ site.baseurl | default: "" }}';
+
+    // リダイレクトマッピング（旧URL → 新URL）
+    const redirectMap = {
+      // Anthropic プロンプトエンジニアリング
+      [`${baseUrl}/documents/_anthropic-prompt-engineering/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
+      [`${baseUrl}/documents/anthropic-prompt-engineering/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
+
+      // Cursor Documentation
+      [`${baseUrl}/documents/_cursor/`]: `${baseUrl}/documents/_cursor/index/`,
+      [`${baseUrl}/documents/cursor/`]: `${baseUrl}/documents/_cursor/index/`,
+      [`${baseUrl}/documents/_cursor/get-started/`]: `${baseUrl}/documents/_cursor/get-started/index/`,
+      [`${baseUrl}/documents/_cursor/agent/`]: `${baseUrl}/documents/_cursor/agent/index/`,
+      [`${baseUrl}/documents/_cursor/cli/`]: `${baseUrl}/documents/_cursor/cli/index/`,
+      [`${baseUrl}/documents/_cursor/cli/reference/`]: `${baseUrl}/documents/_cursor/cli/reference/index/`,
+      [`${baseUrl}/documents/_cursor/settings/`]: `${baseUrl}/documents/_cursor/settings/index/`,
+      [`${baseUrl}/documents/_cursor/configuration/`]: `${baseUrl}/documents/_cursor/configuration/index/`,
+      [`${baseUrl}/documents/_cursor/context/`]: `${baseUrl}/documents/_cursor/context/index/`,
+      [`${baseUrl}/documents/_cursor/integrations/`]: `${baseUrl}/documents/_cursor/integrations/index/`,
+      [`${baseUrl}/documents/_cursor/tab/`]: `${baseUrl}/documents/_cursor/tab/index/`,
+      [`${baseUrl}/documents/_cursor/troubleshooting/`]: `${baseUrl}/documents/_cursor/troubleshooting/index/`,
+
+      // Claude Code Documentation
+      [`${baseUrl}/documents/_claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
+      [`${baseUrl}/documents/claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
+
+      // 拡張子付きURL対応（.html除去）
+      [`${baseUrl}/documents/_cursor/agent/overview.html`]: `${baseUrl}/documents/_cursor/agent/overview/`,
+      [`${baseUrl}/documents/_cursor/agent/modes.html`]: `${baseUrl}/documents/_cursor/agent/modes/`,
+      [`${baseUrl}/documents/_cursor/cli/overview.html`]: `${baseUrl}/documents/_cursor/cli/overview/`,
+      [`${baseUrl}/documents/_cursor/get-started/quickstart.html`]: `${baseUrl}/documents/_cursor/get-started/quickstart/`,
+      [`${baseUrl}/documents/_cursor/get-started/concepts.html`]: `${baseUrl}/documents/_cursor/get-started/concepts/`,
+
+      // GitHub MCP関連
+      [`${baseUrl}/documents/github-mcp/`]: `${baseUrl}/documents/github-mcp-index/`,
+      [`${baseUrl}/documents/github-mcp-server.html`]: `${baseUrl}/documents/github-mcp-server/`,
+
+      // レガシーパス対応
+      [`${baseUrl}/anthropic/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
+      [`${baseUrl}/cursor/`]: `${baseUrl}/documents/_cursor/index/`,
+      [`${baseUrl}/claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
+      [`${baseUrl}/github-mcp/`]: `${baseUrl}/documents/github-mcp-index/`
+    };
+
+    // パターンベースリダイレクト（正規表現） - baseurl対応
+    const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const baseUrlRegex = escapeRegex(baseUrl);
+
+    const patternRedirects = [
+      {
+        pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/([^\\/]+)\\.html$`),
+        replacement: `${baseUrl}/documents/$1/`
+      },
+      {
+        pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/_([^\\/]+)\\/([^\\/]+)\\.html$`),
+        replacement: `${baseUrl}/documents/_$1/$2/`
+      },
+      {
+        pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/_([^\\/]+)\\/([^\\/]+)\\/([^\\/]+)\\.html$`),
+        replacement: `${baseUrl}/documents/_$1/$2/$3/`
+      }
+    ];
+
+    // 現在のパスを取得
+    const currentPath = window.location.pathname;
+
+    // 直接マッピングをチェック
+    if (redirectMap[currentPath]) {
+      redirectTo(redirectMap[currentPath], 'exact_match');
+      return;
+    }
+
+    // パターンマッチングをチェック
+    for (const redirect of patternRedirects) {
+      const match = currentPath.match(redirect.pattern);
+      if (match) {
+        const newPath = currentPath.replace(redirect.pattern, redirect.replacement);
+        redirectTo(newPath, 'pattern_match');
+        return;
+      }
+    }
+
+    // ディレクトリアクセス（末尾スラッシュなし）対応
+    if (!currentPath.endsWith('/') && !currentPath.includes('.')) {
+      const dirPath = currentPath + '/';
+      if (redirectMap[dirPath]) {
+        redirectTo(redirectMap[dirPath], 'directory_redirect');
+        return;
+      }
+
+      // index/追加を試行
+      const indexPath = currentPath + '/index/';
+      if (redirectMap[indexPath]) {
+        redirectTo(redirectMap[indexPath], 'index_redirect');
+        return;
+      }
+    }
+
+    function redirectTo(newPath, reason) {
+      // ローディング表示
+      showRedirectNotice(newPath, reason);
+
+      // 履歴に残さずリダイレクト（SEO配慮）
+      setTimeout(() => {
+        try {
+          const url = new URL(newPath, window.location.origin);
+          // 既存の search/hash を引き継ぐ（新URL側が明示指定していない場合）
+          if (!url.search && window.location.search) url.search = window.location.search;
+          if (!url.hash && window.location.hash) url.hash = window.location.hash;
+          window.location.replace(url.toString());
+        } catch {
+          // newPath が相対パスでも安全にフォールバック
+          const suffix = (window.location.search || '') + (window.location.hash || '');
+          window.location.replace(newPath + suffix);
+        }
+      }, 1500);
+    }
+
+    function showRedirectNotice(newPath, reason) {
+      const notice = document.createElement('div');
+      notice.id = 'redirect-notice';
+      notice.style.cssText = `
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 10000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      max-width: 90%;
+      text-align: center;
+      animation: slideDown 0.3s ease-out;
+    `;
+
+      const reasonText = {
+        'exact_match': '直接マッチ',
+        'pattern_match': 'パターンマッチ',
+        'directory_redirect': 'ディレクトリ補正',
+        'index_redirect': 'インデックス補正'
+      }[reason] || '自動検出';
+
+      // セキュアなDOM構築 - XSS脆弱性修正
+      const container = document.createElement('div');
+      container.style.cssText = 'display: flex; align-items: center; justify-content: center; gap: 10px;';
+
+      const spinner = document.createElement('div');
+      spinner.style.cssText = 'width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;';
+
+      const textContainer = document.createElement('div');
+
+      const mainText = document.createElement('div');
+      mainText.style.fontWeight = '600';
+      mainText.textContent = '🔄 ページを最適化しています...';
+
+      const metaText = document.createElement('div');
+      metaText.style.cssText = 'font-size: 12px; opacity: 0.9; margin-top: 2px;';
+      // XSS対策: textContentを使用してユーザー入力をエスケープ
+      const displayPath = baseUrl ? newPath.replace(baseUrl, '') : newPath;
+      metaText.textContent = `理由: ${reasonText} | 移動先: ${displayPath}`;
+
+      textContainer.appendChild(mainText);
+      textContainer.appendChild(metaText);
+      container.appendChild(spinner);
+      container.appendChild(textContainer);
+      notice.appendChild(container);
+
+      // CSS アニメーション
+      const style = document.createElement('style');
+      style.textContent = `
+      @keyframes slideDown {
+        from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+        to { transform: translateX(-50%) translateY(0); opacity: 1; }
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `;
+      document.head.appendChild(style);
+
+      // document.bodyが利用可能かチェックし、なければDOMContentLoadedを待つ
+      function appendNotice() {
+        if (document.body) {
+          document.body.appendChild(notice);
+        } else {
+          // フォールバック: document.documentElementに追加
+          document.documentElement.appendChild(notice);
+        }
+      }
+
+      if (document.body) {
+        appendNotice();
+      } else if (document.readyState === 'loading') {
+        // DOMContentLoadedを待つ
+        document.addEventListener('DOMContentLoaded', appendNotice);
+      } else {
+        // 既にDOMは読み込まれているがbodyがない場合（稀）
+        appendNotice();
+      }
+
+      // 3秒後に通知を削除
+      setTimeout(() => {
+        if (notice.parentNode) {
+          notice.style.animation = 'slideDown 0.3s ease-out reverse';
+          setTimeout(() => {
+            if (notice.parentNode) {
+              notice.parentNode.removeChild(notice);
+            }
+          }, 300);
+        }
+      }, 3000);
+    }
+
+    // デバッグ情報（開発環境のみ）
+    if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+      console.log('[Redirect Handler] Current path:', currentPath);
+      console.log('[Redirect Handler] Available redirects:', Object.keys(redirectMap).length);
+    }
+  })();
+</script>
+
+<style>
+  /* リダイレクトハンドラー用のフォールバックスタイル */
+  .redirect-fallback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10001;
+  }
+
+  .redirect-fallback h3 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .redirect-fallback p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .redirect-fallback a {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+
+  .redirect-fallback a:hover {
+    background: #0056b3;
+  }
+</style>

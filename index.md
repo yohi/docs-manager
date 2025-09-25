@@ -1,10 +1,8 @@
 ---
-title: "Development Documentation Hub"
+title: "🚀 Development Documentation Hub"
 description: "開発者向け包括的ドキュメントサイト - AI開発・プロンプトエンジニアリング・IDE活用"
 layout: default
 ---
-
-# 🚀 Development Documentation Hub
 
 ## プロフェッショナル開発者のための包括的ドキュメントサイト
 
@@ -16,7 +14,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🤖 **AI・プロンプトエンジニアリング**
 
-#### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
+#### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/)
 ##### Claude 4を活用したプロンプトエンジニアリング技術
 - 基本概念からベストプラクティスまで
 - 15の専門技術・ツール・リソース
@@ -32,7 +30,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🛠️ **IDE・開発環境**
 
-#### [Cursor Documentation]({{ site.baseurl }}/documents/_cursor/)
+#### [Cursor Documentation]({{ site.baseurl }}/documents/_cursor/index/)
 ##### 次世代AI統合IDE Cursorの完全ガイド
 - クイックスタート・基本概念
 - エージェント機能・高度な設定

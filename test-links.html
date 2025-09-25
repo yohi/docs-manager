@@ -1,0 +1,128 @@
+---
+layout: default
+title: "Link Testing Page"
+description: "GitHub Pages deployment link testing"
+---
+
+<h1>🧪 Link Testing Page</h1>
+
+<p><strong>このページは GitHub Pages デプロイ後のリンク動作確認用です。</strong></p>
+
+<div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+  <h2>🔍 Main Navigation Tests</h2>
+
+  <h3>✅ Primary Sections (Should work)</h3>
+  <ul>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/">Anthropic
+        プロンプトエンジニアリング</a></li>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/_cursor/index/">Cursor Documentation</a></li>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/_claude-code/index/">Claude Code Documentation</a></li>
+    <li><a class="test-link" href="{{ site.baseurl }}/documents/github-mcp-index/">GitHub MCP Server</a></li>
+  </ul>
+
+  <h3>🔄 Redirect Tests (Should redirect)</h3>
+  <ul>
+    <li><a class="test-link redirect-link" href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/">Old
+        Anthropic URL (no index)</a></li>
+    <li><a class="test-link redirect-link" href="{{ site.baseurl }}/documents/_cursor/">Old Cursor URL (no index)</a>
+    </li>
+    <li><a class="test-link redirect-link" href="{{ site.baseurl }}/documents/_cursor/get-started/quickstart.html">HTML
+        extension test</a></li>
+  </ul>
+
+  <h3>❌ 404 Tests (Should show 404 page)</h3>
+  <ul>
+    <li><a class="test-link error-link" href="{{ site.baseurl }}/documents/nonexistent-page/">Non-existent page</a></li>
+    <li><a class="test-link error-link" href="{{ site.baseurl }}/old-path/test/">Old path test</a></li>
+  </ul>
+</div>
+
+<div style="background: #e7f3ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+  <h2>📊 Test Results</h2>
+  <p>デプロイ後、以下をテストしてください：</p>
+  <ol>
+    <li>✅ Primary Sections のリンクが正常に動作する</li>
+    <li>🔄 Redirect Tests のリンクが適切にリダイレクトする</li>
+    <li>❌ 404 Tests でカスタム404ページが表示される</li>
+    <li>🧭 ナビゲーション機能が動作する</li>
+  </ol>
+</div>
+
+<div style="background: #fff3cd; padding: 20px; border-radius: 8px; margin: 20px 0;">
+  <h2>🛠️ Debug Information</h2>
+  <ul>
+    <li><strong>Site URL:</strong> {{ site.url }}</li>
+    <li><strong>Base URL:</strong> {{ site.baseurl }}</li>
+    <li><strong>Current Path:</strong> <span id="current-path"></span></li>
+    <li><strong>Timestamp:</strong> {{ site.time }}</li>
+  </ul>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const currentPathEl = document.getElementById('current-path');
+    if (currentPathEl) currentPathEl.textContent = window.location.pathname;
+    const basePath = '{{ site.baseurl | default: "" }}'.replace(/\/$/, '');
+    const selector = basePath ? `a[href^="${basePath}/"]` : 'a[href^="/"]';
+    const links = document.querySelectorAll(selector);
+
+    const record = (url) => {
+      console.log('Testing link:', url);
+      try {
+        const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
+        testResults[url] = { tested: true, timestamp: new Date().toISOString() };
+        localStorage.setItem('linkTestResults', JSON.stringify(testResults));
+      } catch (error) {
+        console.warn('linkTestResultsの記録に失敗しました', error);
+      }
+    };
+
+    links.forEach(link => {
+      link.addEventListener('click', function () { record(this.href); }, { passive: true });
+      link.addEventListener('auxclick', function () { record(this.href); }, { passive: true });
+    });
+  });
+</script>
+
+<style>
+  .test-section {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 4px solid #007bff;
+    background: #f8f9fa;
+  }
+
+  .test-link {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .test-link:hover {
+    background: #0056b3;
+    color: white;
+  }
+
+  .redirect-link {
+    background: #ffc107;
+    color: #212529;
+  }
+
+  .redirect-link:hover {
+    background: #e0a800;
+    color: #212529;
+  }
+
+  .error-link {
+    background: #dc3545;
+  }
+
+  .error-link:hover {
+    background: #c82333;
+  }
+</style>

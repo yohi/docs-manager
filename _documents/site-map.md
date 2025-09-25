@@ -1,11 +1,9 @@
 ---
-title: サイトマップ
+title: 🗺️ サイトマップ
 description: Development Documentation Hubの全コンテンツ一覧
 order: 999
 layout: default
 ---
-
-# 🗺️ サイトマップ
 
 ## Development Documentation Hub の全コンテンツ階層構造
 
@@ -22,7 +20,7 @@ layout: default
 
 ## 🤖 **Anthropic プロンプトエンジニアリング**
 
-### [📁 セクション概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
+### [📁 セクション概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/)
 
 #### 基本概念
 - [プロンプトエンジニアリング概要]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/overview/)

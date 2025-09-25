@@ -1,0 +1,56 @@
+name: 🧪 Simple Jekyll Test
+
+on:
+  push:
+    branches: [ feature/notfound_error ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  simple_build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout
+      uses: actions/checkout@v4
+
+    - name: 🏗️ Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+
+    - name: 📋 Install Dependencies
+      run: |
+        if [ ! -f Gemfile ]; then
+          echo "Creating Gemfile..."
+          cat > Gemfile << 'EOF'
+        source 'https://rubygems.org'
+        gem 'github-pages', group: :jekyll_plugins
+        group :jekyll_plugins do
+          gem 'jekyll-feed'
+          gem 'jekyll-sitemap'
+          gem 'jekyll-seo-tag'
+        end
+        EOF
+        fi
+        bundle install
+
+    - name: ✅ Build Jekyll Site
+      run: |
+        echo "Jekyll version: $(bundle exec jekyll --version)"
+        echo "Building site..."
+        bundle exec jekyll build --verbose
+        echo "Build completed successfully!"
+
+    - name: 📊 Verify Build
+      run: |
+        if [ -d "_site" ]; then
+          echo "✅ Build successful - _site directory created"
+          echo "Generated files: $(find _site -type f | wc -l)"
+          ls -la _site/
+        else
+          echo "❌ Build failed - no _site directory"
+          exit 1
+        fi
