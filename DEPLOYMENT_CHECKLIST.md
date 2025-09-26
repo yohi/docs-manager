@@ -45,20 +45,20 @@ bundle exec jekyll build --verbose
 bundle exec htmlproofer _site --internal-domains="localhost"
 ```
 
-### **Step 2: GitHub リポジトリへプッシュ**
+### **Step 3: GitHub リポジトリへプッシュ**
 ```bash
 git add .
 git commit -m "🔧 Fix 404 errors: Collections config, redirects, and link validation"
 git push origin master
 ```
 
-### **Step 3: GitHub Pages 設定確認**
+### **Step 4: GitHub Pages 設定確認**
 1. リポジトリ設定 → Pages
 2. Source: Deploy from a branch
 3. Branch: master / (root)
 4. GitHub Pages サイトの有効化確認
 
-### **Step 4: デプロイ完了確認**
+### **Step 5: デプロイ完了確認**
 - [ ] GitHub Actions ワークフローが成功
 - [ ] GitHub Pages サイトが公開済み
 - [ ] SSL証明書が適用済み
