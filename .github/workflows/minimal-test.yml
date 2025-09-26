@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2'
+        ruby-version: '3.3'
     - run: |
         echo "source 'https://rubygems.org'" > Gemfile
         echo "gem 'github-pages', group: :jekyll_plugins" >> Gemfile

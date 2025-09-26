@@ -1,5 +1,9 @@
 # Jekyll Configuration for Development Documentation Hub
 
+# 環境要件
+# Ruby: 3.3以上 (EOLバージョン除外)
+# 参考: https://www.ruby-lang.org/en/downloads/releases/
+
 # サイト基本情報
 title: "Development Documentation Hub"
 description: "プロフェッショナル開発者のための包括的ドキュメントサイト - AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合"
