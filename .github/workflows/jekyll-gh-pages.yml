@@ -31,8 +31,15 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1" # GitHub Pagesでサポートされているバージョン
-          bundler-cache: true # Gemfile.lockがある場合のキャッシュ
+          ruby-version: "3.3" # より新しいバージョンで互換性向上
+          bundler-cache: false # キャッシュを無効化して依存関係の問題を回避
+
+      - name: Install dependencies
+        # Gemfile.lockを無視して新しい依存関係を解決
+        run: |
+          gem install bundler
+          bundle config set --local deployment false
+          bundle install --retry 3
 
       - name: Setup Pages
         id: pages

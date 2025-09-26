@@ -52,7 +52,7 @@ jobs:
     - name: 🏗️ Setup Ruby & Jekyll
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2'
+        ruby-version: '3.3'
         bundler-cache: true
 
     - name: 📝 Create Gemfile if missing
