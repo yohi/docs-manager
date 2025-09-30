@@ -25,7 +25,7 @@ author:
 collections:
   documents:
     output: true
-    permalink: /documents/:name/
+    permalink: /documents/:path/
 defaults:
   - scope:
       path: "_documents"
@@ -71,6 +71,12 @@ sitemap:
 markdown: kramdown
 highlighter: rouge
 incremental: false
+
+# インクルード設定（アンダースコアで始まるディレクトリを明示的に含める）
+include:
+  - _documents/_anthropic-prompt-engineering
+  - _documents/_claude-code
+  - _documents/_cursor
 
 # 除外ファイル設定
 exclude:
