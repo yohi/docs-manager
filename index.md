@@ -14,7 +14,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🤖 **AI・プロンプトエンジニアリング**
 
-#### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/)
+#### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
 ##### Claude 4を活用したプロンプトエンジニアリング技術
 - 基本概念からベストプラクティスまで
 - 15の専門技術・ツール・リソース
@@ -30,7 +30,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🛠️ **IDE・開発環境**
 
-#### [Cursor Documentation]({{ site.baseurl }}/documents/_cursor/index/)
+#### [Cursor Documentation]({{ site.baseurl }}/documents/_cursor/)
 ##### 次世代AI統合IDE Cursorの完全ガイド
 - クイックスタート・基本概念
 - エージェント機能・高度な設定
