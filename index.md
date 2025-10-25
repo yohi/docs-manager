@@ -14,6 +14,11 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🤖 **AI・プロンプトエンジニアリング**
 
+#### [AIアシスタント比較]({{ site.baseurl }}/documents/_ai-agent/ai-coding-assistant-guideline-comparison/)
+##### 各社AIコーディングアシスタントの比較分析
+- ガイドライン設定とコンテキスト管理
+- VSCode/Copilot, Cursor, ClaudeCode, Codex, Gemini CLIの比較
+
 #### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
 ##### Claude 4を活用したプロンプトエンジニアリング技術
 - 基本概念からベストプラクティスまで
