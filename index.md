@@ -133,7 +133,7 @@ GitHub MCP Server → 基本設定
 
 ### 🆕 **初心者の方**
 1. [はじめに]({{ site.baseurl }}/documents/getting-started/) - サイト全体の使い方
-2. [Cursor クイックスタート]({{ site.baseurl }}/documents/_cursor/get-started/quickstart/) - AI IDE入門
+2. [Cursor クイックスタート]({{ site.baseurl }}/documents/cursor/get-started/quickstart/) - AI IDE入門
 3. [Claude 4 ベストプラクティス]({{ site.baseurl }}/documents/anthropic-prompt-engineering/claude-4-best-practices/) - AI活用基礎
 
 ### ⚡ **効率化重視の方**

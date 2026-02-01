@@ -203,9 +203,9 @@ Cursorは、AI（特にGPT-4・Claude）を深度統合した革新的なコー�
 - [GitHub リポジトリ](https://github.com/getcursor/cursor)
 
 ### 🤝 **コミュニティ**
-- [Discord コミュニティ](https://discord.gg/cursor)
-- [Reddit r/cursor](https://reddit.com/r/cursor)
-- [Twitter @cursor](https://twitter.com/cursor)
+- [Discord コミュニティ](https://discord.gg/75zBmD69JV)
+- [Reddit r/cursor](https://www.reddit.com/r/cursor/)
+- [Twitter @cursor_ai](https://twitter.com/cursor_ai)
 
 ---
 

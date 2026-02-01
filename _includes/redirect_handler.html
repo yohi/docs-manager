@@ -63,11 +63,11 @@ GitHub Pages用 高度リダイレクトハンドラー
       },
       {
         pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/_([^\\/]+)\\/([^\\/]+)\\.html$`),
-        replacement: `${baseUrl}/documents/_$1/$2/`
+        replacement: `${baseUrl}/documents/$1/$2/`
       },
       {
         pattern: new RegExp(`^${baseUrlRegex}\\/documents\\/_([^\\/]+)\\/([^\\/]+)\\/([^\\/]+)\\.html$`),
-        replacement: `${baseUrl}/documents/_$1/$2/$3/`
+        replacement: `${baseUrl}/documents/$1/$2/$3/`
       }
     ];
 
