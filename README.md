@@ -14,11 +14,11 @@ AI活用、プロンプトエンジニアリング、Cursor IDE、GitHub統合�
 
 ## 📚 ドキュメントカテゴリ
 
-*   **AI・プロンプトエンジニアリング**: `_documents/_anthropic-prompt-engineering/`
+*   **AI・プロンプトエンジニアリング**: `_documents/anthropic-prompt-engineering/`
   *   Claude 4の活用、思考の連鎖、構造化プロンプトなど
-*   **Cursor IDE**: `_documents/_cursor/`
+*   **Cursor IDE**: `_documents/cursor/`
   *   インストール、エージェント機能、CLI活用、設定ガイド
-*   **Claude Code**: `_documents/_claude-code/`
+*   **Claude Code**: `_documents/claude-code/`
   *   IDE統合、開発効率化テクニック
 *   **GitHub MCP**: `_documents/github-mcp-*/`
   *   GitHub統合、サーバー実装、プラグイン開発
@@ -55,8 +55,8 @@ GitHub Pagesを使用しています。`master`ブランチへのプッシュで
 docs-manager/
 ├── _config.yml         # Jekyll設定
 ├── _documents/         # ドキュメント本体（カテゴリ別）
-│   ├── _anthropic-prompt-engineering/
-│   ├── _cursor/
+│   ├── anthropic-prompt-engineering/
+│   ├── cursor/
 │   └── ...
 ├── _includes/          # 共通部品
 │   └── redirect_handler.html # クライアントサイドリダイレクト

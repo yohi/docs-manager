@@ -5,15 +5,15 @@
     <span style="color: #d0d7de;">|</span>
 
     <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-      <a href="{{ site.baseurl }}/documents/_anthropic-prompt-engineering/index/" style="color: #0969da; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/anthropic-prompt-engineering/index/" style="color: #0969da; text-decoration: none;">
         🤖 Anthropic
       </a>
 
-      <a href="{{ site.baseurl }}/documents/_claude-code/index/" style="color: #0969da; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/claude-code/index/" style="color: #0969da; text-decoration: none;">
         💻 Claude Code
       </a>
 
-      <a href="{{ site.baseurl }}/documents/_cursor/index/" style="color: #0969da; text-decoration: none;">
+      <a href="{{ site.baseurl }}/documents/cursor/index/" style="color: #0969da; text-decoration: none;">
         🚀 Cursor
       </a>
 

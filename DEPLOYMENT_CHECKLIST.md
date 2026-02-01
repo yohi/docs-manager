@@ -11,9 +11,9 @@
 - [ ] `.github/workflows/link-validation.yml` - CI/CD設定
 
 ### 📁 **ディレクトリ構造確認**
-- [ ] `_documents/_anthropic-prompt-engineering/index.md` 存在
-- [ ] `_documents/_cursor/index.md` 存在
-- [ ] `_documents/_claude-code/index.md` 存在
+- [ ] `_documents/anthropic-prompt-engineering/index.md` 存在
+- [ ] `_documents/cursor/index.md` 存在
+- [ ] `_documents/claude-code/index.md` 存在
 - [ ] すべてのサブディレクトリに適切なindex.mdが配置
 
 ### 🔗 **リンク形式確認**
@@ -75,14 +75,14 @@ git push origin master
 ### **✅ 機能テスト項目**
 
 #### **1. メインナビゲーション**
-- [ ] [Anthropic プロンプトエンジニアリング](https://yohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/index/)
-- [ ] [Cursor Documentation](https://yohi.github.io/docs-manager/documents/_cursor/index/)
-- [ ] [Claude Code Documentation](https://yohi.github.io/docs-manager/documents/_claude-code/index/)
+- [ ] [Anthropic プロンプトエンジニアリング](https://yohi.github.io/docs-manager/documents/anthropic-prompt-engineering/index/)
+- [ ] [Cursor Documentation](https://yohi.github.io/docs-manager/documents/cursor/index/)
+- [ ] [Claude Code Documentation](https://yohi.github.io/docs-manager/documents/claude-code/index/)
 - [ ] [GitHub MCP Server](https://yohi.github.io/docs-manager/documents/github-mcp-index/)
 
 #### **2. リダイレクト機能**
-- [ ] <https://yohi.github.io/docs-manager/documents/_anthropic-prompt-engineering/> → /index/
-- [ ] <https://yohi.github.io/docs-manager/documents/_cursor/> → /index/
+- [ ] <https://yohi.github.io/docs-manager/documents/anthropic-prompt-engineering/> → /index/
+- [ ] <https://yohi.github.io/docs-manager/documents/cursor/> → /index/
 - [ ] .html拡張子付きURL → 拡張子なしURL
 
 #### **3. 404エラーハンドリング**
