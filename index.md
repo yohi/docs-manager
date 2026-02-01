@@ -14,7 +14,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🤖 **AI・プロンプトエンジニアリング**
 
-#### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
+#### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/anthropic-prompt-engineering/)
 ##### Claude 4を活用したプロンプトエンジニアリング技術
 - 基本概念からベストプラクティスまで
 - 15の専門技術・ツール・リソース
@@ -30,7 +30,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🛠️ **IDE・開発環境**
 
-#### [Cursor Documentation]({{ site.baseurl }}/documents/_cursor/)
+#### [Cursor Documentation]({{ site.baseurl }}/documents/cursor/)
 ##### 次世代AI統合IDE Cursorの完全ガイド
 - クイックスタート・基本概念
 - エージェント機能・高度な設定
@@ -134,17 +134,17 @@ GitHub MCP Server → 基本設定
 ### 🆕 **初心者の方**
 1. [はじめに]({{ site.baseurl }}/documents/getting-started/) - サイト全体の使い方
 2. [Cursor クイックスタート]({{ site.baseurl }}/documents/_cursor/get-started/quickstart/) - AI IDE入門
-3. [Claude 4 ベストプラクティス]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/claude-4-best-practices/) - AI活用基礎
+3. [Claude 4 ベストプラクティス]({{ site.baseurl }}/documents/anthropic-prompt-engineering/claude-4-best-practices/) - AI活用基礎
 
 ### ⚡ **効率化重視の方**
-1. [Cursor エージェント機能]({{ site.baseurl }}/documents/_cursor/agent/overview/) - AI支援開発
-2. [プロンプトテンプレート]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/prompt-templates-and-variables/) - 再利用可能な技術
-3. [GitHub Actions統合]({{ site.baseurl }}/documents/_cursor/cli/github-actions/) - CI/CD自動化
+1. [Cursor エージェント機能]({{ site.baseurl }}/documents/cursor/agent/overview/) - AI支援開発
+2. [プロンプトテンプレート]({{ site.baseurl }}/documents/anthropic-prompt-engineering/prompt-templates-and-variables/) - 再利用可能な技術
+3. [GitHub Actions統合]({{ site.baseurl }}/documents/cursor/cli/github-actions/) - CI/CD自動化
 
 ### 🔧 **上級者の方**
 1. [高度な機能]({{ site.baseurl }}/documents/advanced-feature/) - 発展的技術
 2. [GitHub MCP Server]({{ site.baseurl }}/documents/github-mcp-index/) - 深度統合
-3. [拡張思考のコツ]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/extended-thinking-tips/) - AI最適化
+3. [拡張思考のコツ]({{ site.baseurl }}/documents/anthropic-prompt-engineering/extended-thinking-tips/) - AI最適化
 
 ---
 

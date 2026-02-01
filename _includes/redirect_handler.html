@@ -13,42 +13,42 @@ GitHub Pages用 高度リダイレクトハンドラー
     // リダイレクトマッピング（旧URL → 新URL）
     const redirectMap = {
       // Anthropic プロンプトエンジニアリング
-      [`${baseUrl}/documents/_anthropic-prompt-engineering/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
-      [`${baseUrl}/documents/anthropic-prompt-engineering/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
+      [`${baseUrl}/documents/_anthropic-prompt-engineering/`]: `${baseUrl}/documents/anthropic-prompt-engineering/index/`,
+      [`${baseUrl}/documents/anthropic-prompt-engineering/`]: `${baseUrl}/documents/anthropic-prompt-engineering/index/`,
 
       // Cursor Documentation
-      [`${baseUrl}/documents/_cursor/`]: `${baseUrl}/documents/_cursor/index/`,
-      [`${baseUrl}/documents/cursor/`]: `${baseUrl}/documents/_cursor/index/`,
-      [`${baseUrl}/documents/_cursor/get-started/`]: `${baseUrl}/documents/_cursor/get-started/index/`,
-      [`${baseUrl}/documents/_cursor/agent/`]: `${baseUrl}/documents/_cursor/agent/index/`,
-      [`${baseUrl}/documents/_cursor/cli/`]: `${baseUrl}/documents/_cursor/cli/index/`,
-      [`${baseUrl}/documents/_cursor/cli/reference/`]: `${baseUrl}/documents/_cursor/cli/reference/index/`,
-      [`${baseUrl}/documents/_cursor/settings/`]: `${baseUrl}/documents/_cursor/settings/index/`,
-      [`${baseUrl}/documents/_cursor/configuration/`]: `${baseUrl}/documents/_cursor/configuration/index/`,
-      [`${baseUrl}/documents/_cursor/context/`]: `${baseUrl}/documents/_cursor/context/index/`,
-      [`${baseUrl}/documents/_cursor/integrations/`]: `${baseUrl}/documents/_cursor/integrations/index/`,
-      [`${baseUrl}/documents/_cursor/tab/`]: `${baseUrl}/documents/_cursor/tab/index/`,
-      [`${baseUrl}/documents/_cursor/troubleshooting/`]: `${baseUrl}/documents/_cursor/troubleshooting/index/`,
+      [`${baseUrl}/documents/_cursor/`]: `${baseUrl}/documents/cursor/index/`,
+      [`${baseUrl}/documents/cursor/`]: `${baseUrl}/documents/cursor/index/`,
+      [`${baseUrl}/documents/_cursor/get-started/`]: `${baseUrl}/documents/cursor/get-started/index/`,
+      [`${baseUrl}/documents/_cursor/agent/`]: `${baseUrl}/documents/cursor/agent/index/`,
+      [`${baseUrl}/documents/_cursor/cli/`]: `${baseUrl}/documents/cursor/cli/index/`,
+      [`${baseUrl}/documents/_cursor/cli/reference/`]: `${baseUrl}/documents/cursor/cli/reference/index/`,
+      [`${baseUrl}/documents/_cursor/settings/`]: `${baseUrl}/documents/cursor/settings/index/`,
+      [`${baseUrl}/documents/_cursor/configuration/`]: `${baseUrl}/documents/cursor/configuration/index/`,
+      [`${baseUrl}/documents/_cursor/context/`]: `${baseUrl}/documents/cursor/context/index/`,
+      [`${baseUrl}/documents/_cursor/integrations/`]: `${baseUrl}/documents/cursor/integrations/index/`,
+      [`${baseUrl}/documents/_cursor/tab/`]: `${baseUrl}/documents/cursor/tab/index/`,
+      [`${baseUrl}/documents/_cursor/troubleshooting/`]: `${baseUrl}/documents/cursor/troubleshooting/index/`,
 
       // Claude Code Documentation
-      [`${baseUrl}/documents/_claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
-      [`${baseUrl}/documents/claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
+      [`${baseUrl}/documents/_claude-code/`]: `${baseUrl}/documents/claude-code/index/`,
+      [`${baseUrl}/documents/claude-code/`]: `${baseUrl}/documents/claude-code/index/`,
 
       // 拡張子付きURL対応（.html除去）
-      [`${baseUrl}/documents/_cursor/agent/overview.html`]: `${baseUrl}/documents/_cursor/agent/overview/`,
-      [`${baseUrl}/documents/_cursor/agent/modes.html`]: `${baseUrl}/documents/_cursor/agent/modes/`,
-      [`${baseUrl}/documents/_cursor/cli/overview.html`]: `${baseUrl}/documents/_cursor/cli/overview/`,
-      [`${baseUrl}/documents/_cursor/get-started/quickstart.html`]: `${baseUrl}/documents/_cursor/get-started/quickstart/`,
-      [`${baseUrl}/documents/_cursor/get-started/concepts.html`]: `${baseUrl}/documents/_cursor/get-started/concepts/`,
+      [`${baseUrl}/documents/_cursor/agent/overview.html`]: `${baseUrl}/documents/cursor/agent/overview/`,
+      [`${baseUrl}/documents/_cursor/agent/modes.html`]: `${baseUrl}/documents/cursor/agent/modes/`,
+      [`${baseUrl}/documents/_cursor/cli/overview.html`]: `${baseUrl}/documents/cursor/cli/overview/`,
+      [`${baseUrl}/documents/_cursor/get-started/quickstart.html`]: `${baseUrl}/documents/cursor/get-started/quickstart/`,
+      [`${baseUrl}/documents/_cursor/get-started/concepts.html`]: `${baseUrl}/documents/cursor/get-started/concepts/`,
 
       // GitHub MCP関連
       [`${baseUrl}/documents/github-mcp/`]: `${baseUrl}/documents/github-mcp-index/`,
       [`${baseUrl}/documents/github-mcp-server.html`]: `${baseUrl}/documents/github-mcp-server/`,
 
       // レガシーパス対応
-      [`${baseUrl}/anthropic/`]: `${baseUrl}/documents/_anthropic-prompt-engineering/index/`,
-      [`${baseUrl}/cursor/`]: `${baseUrl}/documents/_cursor/index/`,
-      [`${baseUrl}/claude-code/`]: `${baseUrl}/documents/_claude-code/index/`,
+      [`${baseUrl}/anthropic/`]: `${baseUrl}/documents/anthropic-prompt-engineering/index/`,
+      [`${baseUrl}/cursor/`]: `${baseUrl}/documents/cursor/index/`,
+      [`${baseUrl}/claude-code/`]: `${baseUrl}/documents/claude-code/index/`,
       [`${baseUrl}/github-mcp/`]: `${baseUrl}/documents/github-mcp-index/`
     };
 
