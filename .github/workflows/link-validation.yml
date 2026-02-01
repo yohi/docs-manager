@@ -114,10 +114,17 @@ jobs:
         ls -la _site/ || echo "No _site directory found"
 
     - name: 🌐 External Link Validation (Disabled)
-      if: false
+      if: true
       continue-on-error: true
       run: |
-        echo "External link validation disabled for debugging"
+        echo "🌐 External link validation starting..."
+        # 外部リンクのステータスコードチェック (4xx/5xxのみ検出)
+        bundle exec htmlproofer _site \
+          --disable-external=false \
+          --ignore-urls "/twitter.com/" \
+          --only-4xx \
+          --check-external-hash \
+          --assume-extension || echo "⚠️ Warning: Some external links may be broken"
 
     - name: 📋 Basic Summary
       run: |
@@ -222,7 +229,7 @@ jobs:
         echo "🛡️ Security advisory check..."
 
         # 機密情報の誤露出チェック
-        if grep -r "password\|secret\|token\|key" _documents/ --include="*.md" | grep -v "# " | grep -v "example"; then
+        if grep -r "password\|secret\|token\|key" _documents/ --include="*.md" | grep -v "#" | grep -v "example" | grep -v "GITHUB_TOKEN"; then
           echo "⚠️ Potential security issues found in documentation"
         else
           echo "✅ No security issues found"

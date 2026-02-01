@@ -13,6 +13,10 @@ baseurl: "/docs-manager" # リポジトリ名に変更してください
 # GitHub Pages互換のテーマを使用（remote_theme使用）
 # theme: minima  # GitHub Pagesではremote_themeを優先
 
+# カスタム設定
+custom:
+  navigation_enabled: true
+
 # 作成者情報
 author:
   name: "Development Team"

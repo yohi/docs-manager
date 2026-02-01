@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://y_ohi.github.io/docs-manager/sitemap.xml
+Sitemap: https://yohi.github.io/docs-manager/sitemap.xml
 
 # 優先クロール対象（Allow: / で既に許可済みのため省略可能）
 
