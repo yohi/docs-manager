@@ -1,6 +1,6 @@
 # Development Documentation Hub
 
-https://yohi.github.io/docs-manager/
+<https://yohi.github.io/docs-manager/>
 
 プロフェッショナル開発者のための包括的ドキュメントサイト。
 AI活用、プロンプトエンジニアリング、Cursor IDE、GitHub統合など、現代的な開発ワークフローに必要な情報を体系的にまとめています。
@@ -15,13 +15,13 @@ AI活用、プロンプトエンジニアリング、Cursor IDE、GitHub統合�
 ## 📚 ドキュメントカテゴリ
 
 *   **AI・プロンプトエンジニアリング**: `_documents/_anthropic-prompt-engineering/`
-    *   Claude 4の活用、思考の連鎖、構造化プロンプトなど
+  *   Claude 4の活用、思考の連鎖、構造化プロンプトなど
 *   **Cursor IDE**: `_documents/_cursor/`
-    *   インストール、エージェント機能、CLI活用、設定ガイド
+  *   インストール、エージェント機能、CLI活用、設定ガイド
 *   **Claude Code**: `_documents/_claude-code/`
-    *   IDE統合、開発効率化テクニック
+  *   IDE統合、開発効率化テクニック
 *   **GitHub MCP**: `_documents/github-mcp-*/`
-    *   GitHub統合、サーバー実装、プラグイン開発
+  *   GitHub統合、サーバー実装、プラグイン開発
 
 ## 🚀 開発とデプロイ
 
@@ -49,7 +49,7 @@ GitHub Pagesを使用しています。`master`ブランチへのプッシュで
 
 ## 📂 ディレクトリ構造
 
-```
+```text
 docs-manager/
 ├── _config.yml         # Jekyll設定
 ├── _documents/         # ドキュメント本体（カテゴリ別）
