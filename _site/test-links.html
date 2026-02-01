@@ -4,10 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Link Testing Page</title>
-  <meta name="description" content="GitHub Pages deployment link testing">
 
-  <!-- SEO Tags -->
+  <!-- SEO Tags (Jekyll SEO Tag がtitle/descriptionを管理) -->
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Link Testing Page | Development Documentation Hub</title>
 <meta name="generator" content="Jekyll v3.9.5" />
@@ -58,23 +56,27 @@
 
   <h3>✅ Primary Sections (Should work)</h3>
   <ul>
-    <li><a href="/docs-manager/documents/_anthropic-prompt-engineering/index/">Anthropic プロンプトエンジニアリング</a></li>
-    <li><a href="/docs-manager/documents/_cursor/index/">Cursor Documentation</a></li>
-    <li><a href="/docs-manager/documents/_claude-code/index/">Claude Code Documentation</a></li>
-    <li><a href="/docs-manager/documents/github-mcp-index/">GitHub MCP Server</a></li>
+    <li><a class="test-link" href="/docs-manager/documents/_anthropic-prompt-engineering/index/">Anthropic
+        プロンプトエンジニアリング</a></li>
+    <li><a class="test-link" href="/docs-manager/documents/_cursor/index/">Cursor Documentation</a></li>
+    <li><a class="test-link" href="/docs-manager/documents/_claude-code/index/">Claude Code Documentation</a></li>
+    <li><a class="test-link" href="/docs-manager/documents/github-mcp-index/">GitHub MCP Server</a></li>
   </ul>
 
   <h3>🔄 Redirect Tests (Should redirect)</h3>
   <ul>
-    <li><a href="/docs-manager/documents/_anthropic-prompt-engineering/">Old Anthropic URL (no index)</a></li>
-    <li><a href="/docs-manager/documents/_cursor/">Old Cursor URL (no index)</a></li>
-    <li><a href="/docs-manager/documents/_cursor/get-started/quickstart.html">HTML extension test</a></li>
+    <li><a class="test-link redirect-link" href="/docs-manager/documents/_anthropic-prompt-engineering/">Old
+        Anthropic URL (no index)</a></li>
+    <li><a class="test-link redirect-link" href="/docs-manager/documents/_cursor/">Old Cursor URL (no index)</a>
+    </li>
+    <li><a class="test-link redirect-link" href="/docs-manager/documents/_cursor/get-started/quickstart.html">HTML
+        extension test</a></li>
   </ul>
 
   <h3>❌ 404 Tests (Should show 404 page)</h3>
   <ul>
-    <li><a href="/docs-manager/documents/nonexistent-page/">Non-existent page</a></li>
-    <li><a href="/docs-manager/old-path/test/">Old path test</a></li>
+    <li><a class="test-link error-link" href="/docs-manager/documents/nonexistent-page/">Non-existent page</a></li>
+    <li><a class="test-link error-link" href="/docs-manager/old-path/test/">Old path test</a></li>
   </ul>
 </div>
 
@@ -95,36 +97,32 @@
     <li><strong>Site URL:</strong> https://yohi.github.io</li>
     <li><strong>Base URL:</strong> /docs-manager</li>
     <li><strong>Current Path:</strong> <span id="current-path"></span></li>
-    <li><strong>Timestamp:</strong> 2025-09-25 20:01:13 +0900</li>
+    <li><strong>Timestamp:</strong> 2025-09-26 09:43:59 +0900</li>
   </ul>
 </div>
 
 <script>
-  document.getElementById('current-path').textContent = window.location.pathname;
-
-  // リンクテスト結果の自動記録
   document.addEventListener('DOMContentLoaded', function () {
+    const currentPathEl = document.getElementById('current-path');
+    if (currentPathEl) currentPathEl.textContent = window.location.pathname;
     const basePath = '/docs-manager'.replace(/\/$/, '');
     const selector = basePath ? `a[href^="${basePath}/"]` : 'a[href^="/"]';
     const links = document.querySelectorAll(selector);
 
-    links.forEach(link => {
-      link.addEventListener('click', function () {
-        const url = this.href;
-        console.log('Testing link:', url);
+    const record = (url) => {
+      console.log('Testing link:', url);
+      try {
+        const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
+        testResults[url] = { tested: true, timestamp: new Date().toISOString() };
+        localStorage.setItem('linkTestResults', JSON.stringify(testResults));
+      } catch (error) {
+        console.warn('linkTestResultsの記録に失敗しました', error);
+      }
+    };
 
-        try {
-          // 結果をローカルストレージに記録
-          const testResults = JSON.parse(localStorage.getItem('linkTestResults') || '{}');
-          testResults[url] = {
-            tested: true,
-            timestamp: new Date().toISOString()
-          };
-          localStorage.setItem('linkTestResults', JSON.stringify(testResults));
-        } catch (error) {
-          console.warn('linkTestResultsの記録に失敗しました', error);
-        }
-      });
+    links.forEach(link => {
+      link.addEventListener('click', function () { record(this.href); }, { passive: true });
+      link.addEventListener('auxclick', function () { record(this.href); }, { passive: true });
     });
   });
 </script>
@@ -177,12 +175,13 @@
 
     <footer>
       <p>&copy; 2025 Development Team</p>
-      <p><small>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">GitHub Pages</a></small></p>
+      <p><small>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">GitHub
+            Pages</a></small></p>
     </footer>
   </div>
 
   <!-- JavaScript -->
-  <!-- <script src="/docs-manager/assets/js/main.js"></script> -->
+  <script src="/docs-manager/assets/js/main.js"></script>
 </body>
 
 </html>

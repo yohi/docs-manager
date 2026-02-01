@@ -16,6 +16,7 @@ external_url: https://raw.githubusercontent.com/github/github-mcp-server/refs/he
   <p><a href="{{ page.external_url }}" target="_blank">元のファイルを直接表示 ↗</a></p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.3/dist/purify.min.js"></script>
 <script>
 // 外部Markdownコンテンツを動的に読み込む
 async function loadExternalContent() {
@@ -61,7 +62,7 @@ async function loadExternalContent() {
     `;
     
     loadingDiv.style.display = 'none';
-    contentDiv.innerHTML = htmlContent;
+    contentDiv.innerHTML = DOMPurify.sanitize(htmlContent);
     contentDiv.style.display = 'block';
     
   } catch (error) {

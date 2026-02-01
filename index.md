@@ -14,6 +14,11 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 ### 🤖 **AI・プロンプトエンジニアリング**
 
+#### [AIアシスタント比較]({{ site.baseurl }}/documents/_ai-agent/ai-coding-assistant-guideline-comparison/)
+##### 各社AIコーディングアシスタントの比較分析
+- ガイドライン設定とコンテキスト管理
+- VSCode/Copilot, Cursor, ClaudeCode, Codex, Gemini CLIの比較
+
 #### [Anthropic プロンプトエンジニアリング]({{ site.baseurl }}/documents/_anthropic-prompt-engineering/)
 ##### Claude 4を活用したプロンプトエンジニアリング技術
 - 基本概念からベストプラクティスまで
@@ -165,8 +170,10 @@ GitHub MCP Server → 基本設定
 
 **🎯 目標**: このサイトを通じて、開発者の皆様がAI・モダンツールを活用した効率的で高品質な開発ワークフローを構築できることを目指しています。
 
+{% if jekyll.environment == "development" %}
 {% assign docs_col = site.collections['documents'] %}
 {% assign docs_size = docs_col.docs | size %}
 {% if docs_col == nil or docs_size == 0 %}
 <p><em>ドキュメントがまだありません。_documentsフォルダにMarkdownファイルを追加してください。</em></p>
+{% endif %}
 {% endif %}
