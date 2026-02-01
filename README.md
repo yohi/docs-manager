@@ -33,11 +33,13 @@ AI活用、プロンプトエンジニアリング、Cursor IDE、GitHub統合�
 ### ローカルでの実行
 
 1.  依存関係のインストール:
+
     ```bash
     bundle install
     ```
 
 2.  ビルドとサーブ:
+
     ```bash
     bundle exec jekyll serve
     ```
