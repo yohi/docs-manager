@@ -1,3 +1,9 @@
+---
+title: Claude Code 総合ドキュメント
+description: Claude Codeの開発環境設定・統合・活用のための包括的ガイド
+layout: default
+---
+
 # Claude Code 総合ドキュメント
 
 ## 目次

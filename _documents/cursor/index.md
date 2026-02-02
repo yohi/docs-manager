@@ -3,6 +3,7 @@ title: Cursor Documentation
 description: AI統合IDE Cursorの包括的ドキュメント・ガイド集
 order: 0
 layout: default
+permalink: /documents/cursor/
 ---
 
 # 🚀 Cursor Documentation
