@@ -2,6 +2,7 @@
 title: "Anthropic プロンプトエンジニアリング"
 description: "Claude 4を活用したプロンプトエンジニアリング技術の包括的ガイド"
 layout: default
+permalink: /documents/anthropic-prompt-engineering/
 ---
 
 # 🤖 Anthropic プロンプトエンジニアリング

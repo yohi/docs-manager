@@ -2,6 +2,7 @@
 title: はじめに
 description: このプロジェクトの基本的な使い方について説明します
 order: 1
+permalink: /documents/getting-started/
 ---
 
 これは「はじめに」のドキュメントです。

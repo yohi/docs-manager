@@ -3,6 +3,7 @@ title: GitHub MCP Server Documentation
 description: GitHub MCP Server統合・自動化の包括的ガイド
 order: 4
 layout: default
+permalink: /documents/github-mcp-index/
 ---
 
 # 🔗 GitHub MCP Server Documentation

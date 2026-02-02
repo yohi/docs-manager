@@ -3,6 +3,7 @@ title: GitHub MCP Server (リダイレクト版)
 description: GitHub MCP Server公式ドキュメントへ自動リダイレクト
 order: 6
 redirect_to: https://github.com/github/github-mcp-server/blob/main/README.md
+permalink: /documents/github-mcp-server-redirect/
 ---
 
 <!DOCTYPE html>
