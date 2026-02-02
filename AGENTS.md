@@ -1,4 +1,4 @@
-# AI Agent Guidelines for Docs-Manager Repository
+# AIエージェントガイドライン（Docs-Managerリポジトリ）
 
 このファイルは、このリポジトリで作業するAIエージェント（あなた）のためのガイドラインです。
 Jekyllプロジェクトとしての技術的制約と、以下の開発フローを遵守してください。
