@@ -1,0 +1,27 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby
+.bundle/
+vendor/bundle/
+vendor/cache/
+vendor/gems/
+vendor/specifications/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor / IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Agent / Tool temporary files
+.kiro/
+.serena/
