@@ -2,6 +2,7 @@
 title: 高度な機能
 description: プロジェクトの高度な機能と設定について説明します
 order: 2
+permalink: /documents/advanced-feature/
 ---
 
 これは「高度な機能」についてのドキュメントです。

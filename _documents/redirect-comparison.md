@@ -2,6 +2,7 @@
 title: リダイレクト方法の比較
 description: 外部URLへのリダイレクト実装方法の比較とデモ
 order: 9
+permalink: /documents/redirect-comparison/
 ---
 
 # 🔄 リダイレクト方法の比較

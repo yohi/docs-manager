@@ -3,6 +3,7 @@ title: Claude Code Documentation
 description: Claude Code統合開発環境の包括的ドキュメント
 order: 0
 layout: default
+permalink: /documents/claude-code/
 ---
 
 # 🤖 Claude Code Documentation

@@ -3,6 +3,7 @@ title: GitHub MCP Server (プラグイン版)
 description: Jekyll-redirect-fromプラグインを使用した標準的なリダイレクト
 order: 8
 redirect_to: https://github.com/github/github-mcp-server/blob/main/README.md
+permalink: /documents/github-mcp-server-plugin/
 ---
 
 <!-- このページはJekyllのリダイレクトプラグインにより自動的にリダイレクトされます -->

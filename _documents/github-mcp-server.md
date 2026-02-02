@@ -3,6 +3,7 @@ title: GitHub MCP Server
 description: GitHub MCP Serverの公式ドキュメント（動的読み込み）
 order: 3
 external_url: https://raw.githubusercontent.com/github/github-mcp-server/refs/heads/main/README.md
+permalink: /documents/github-mcp-server/
 ---
 
 <div id="external-content-loading">

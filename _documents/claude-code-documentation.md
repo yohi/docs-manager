@@ -2,6 +2,7 @@
 title: Claude Code 総合ドキュメント
 description: Claude Codeの開発環境設定・統合・活用のための包括的ガイド
 layout: default
+permalink: /documents/claude-code-documentation/
 ---
 
 # Claude Code 総合ドキュメント
