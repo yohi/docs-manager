@@ -1,6 +1,6 @@
 # **組織レベルにおけるCI/CDパイプラインとAIコードレビューの統制：GitHub Actions、Greptile、CoderRabbitによるスケーラブルな構成管理**
 
-## **1\. エグゼクティブサマリー**
+## **1. エグゼクティブサマリー**
 
 現代のソフトウェア開発において、マイクロサービスアーキテクチャの採用や開発チームの分散化が進む中、CI/CD（継続的インテグレーション/継続的デリバリー）パイプラインやコードレビュー基準の「構成ドリフト（Configuration
 Drift）」は深刻な課題となっている。組織が数十から数千のリポジトリへと規模を拡大するにつれ、個々のリポジトリレベルでの設定管理は運用上のボトルネックとなり、セキュリティリスクや品質のばらつきを招く要因となる。プラットフォームエンジニアリングの観点からは、開発者の自律性を尊重しつつも、組織全体で統一されたガバナンスを効かせる「Paved
@@ -13,7 +13,7 @@ Rulesets」への移行、.githubリポジトリを活用した構成の継承�
 
 ---
 
-**2\. GitHub Actionsにおける組織レベルのアーキテクチャとガバナンス**
+**2. GitHub Actionsにおける組織レベルのアーキテクチャとガバナンス**
 
 GitHub
 Actionsを単なるタスクランナーとしてではなく、組織全体のコンプライアンスと標準化を強制するプラットフォームとして機能させるためには、適切な階層設計が必要である。ここでは、.githubリポジトリを中心とした構成管理、Reusable
@@ -43,8 +43,8 @@ Rulesetsが必要となる。
 
 ### **2.2 Reusable Workflows：ハブ＆スポーク型CIパターンの実装**
 
-従来の「コピー＆ペースト」によるワークフロー管理からの脱却には、\*\*Reusable
-Workflows（再利用可能ワークフロー）\*\*の導入が不可欠である 3。これは、一つのリポジトリで定義されたワークフローを、組織内の他のリポジトリから関数呼び出しのように実行できる機能である。
+従来の「コピー＆ペースト」によるワークフロー管理からの脱却には、**Reusable
+Workflows（再利用可能ワークフロー）**の導入が不可欠である 3。これは、一つのリポジトリで定義されたワークフローを、組織内の他のリポジトリから関数呼び出しのように実行できる機能である。
 
 #### **2.2.1 呼び出しのメカニズムとバージョン管理**
 
@@ -53,7 +53,7 @@ Workflowは、workflow_callトリガーを使用して定義される。これ�
 
 YAML
 
-\# 呼び出し側の定義例 (Caller)  
+# 呼び出し側の定義例 (Caller)  
 jobs:  
  security-scan:  
  uses: my-org/.github/.github/workflows/security-scan.yml@v2  
@@ -122,7 +122,7 @@ Repository
 Rulesetsは、ブランチ保護やステータスチェックの強制を、リポジトリの設定から切り離して「ポリシー」として管理する機能である。
 
 - **動的なターゲット設定:**
-  組織内の全リポジトリに対し、「リポジトリ名が service-\* で始まるもの」や「トピックに production が含まれるもの」といった条件でルールを一括適用できる。これにより、新規リポジトリが作成された瞬間にガバナンスが適用される 10。
+  組織内の全リポジトリに対し、「リポジトリ名が service-* で始まるもの」や「トピックに production が含まれるもの」といった条件でルールを一括適用できる。これにより、新規リポジトリが作成された瞬間にガバナンスが適用される 10。
 - **レイヤリング（Layering）:**
   組織レベルのルールセットとリポジトリレベルのルールセットは共存し、競合する場合は「より厳しい制限」が優先される。これにより、組織としてのベースライン（例：メインブランチ削除禁止）を確保しつつ、各チームが独自のルールを追加することが可能になる 9。
 
@@ -163,7 +163,7 @@ Connect）機能を使用して、静的なシークレットを持たずに一�
 
 ---
 
-**3\. CoderRabbitのグローバル構成管理と階層設計**
+**3. CoderRabbitのグローバル構成管理と階層設計**
 
 CoderRabbitは、LLM（大規模言語モデル）を活用したコードレビューエージェントであり、GitHub上のプルリクエスト（PR）に対して自動的にレビューコメントを行う。組織規模でCoderRabbitを導入する場合、リポジトリごとに設定ファイル（.coderabbit.yaml）を配置するのは管理コストが高く、ポリシーの統一性を損なう。CoderRabbitは、このようなエンタープライズ利用を想定した高度な階層的設定システムを提供している。
 
@@ -204,25 +204,25 @@ profile）をベースとしつつ、必須の静的解析ツールなどを有�
 
 YAML
 
-\# Global Configuration in my-org/coderabbit/.coderabbit.yaml  
+# Global Configuration in my-org/coderabbit/.coderabbit.yaml  
 version: "2"  
-language: "ja-JP" \# 日本語でのレビューを強制
+language: "ja-JP" # 日本語でのレビューを強制
 
 reviews:  
- profile: "chill" \#
+ profile: "chill" #
 'assertive' は誤検知時の摩擦が大きいため、グローバルでは 'chill' 推奨  
- request_changes_workflow: false \# AIが勝手にマージをブロックしないようにする  
+ request_changes_workflow: false # AIが勝手にマージをブロックしないようにする  
  high_level_summary: true  
  auto_review:  
  enabled: true  
- drafts: false \# ドラフトPRでのAPIコスト削減  
+ drafts: false # ドラフトPRでのAPIコスト削減  
  ignore:  
- \- "\*\*/package-lock.json" \# ノイズ削減のための除外設定  
- \- "dist/\*\*"  
- \- "\*\*/\*.generated.ts"
+ - "**/package-lock.json" # ノイズ削減のための除外設定  
+ - "dist/**"  
+ - "**/*.generated.ts"
 
 chat:  
- auto_reply: true \# 開発者との対話を許可
+ auto_reply: true # 開発者との対話を許可
 
 ### **3.3 承認フローとの統合とオートメーション**
 
@@ -247,22 +247,22 @@ Actionsの pull_request_review トリガーを利用する 16。
 
 YAML
 
-\#.github/workflows/ai-approved-action.yml  
+#.github/workflows/ai-approved-action.yml  
 name: Trigger on AI Approval  
 on:  
  pull_request_review:  
- types: \[submitted\]
+ types: [submitted]
 
 jobs:  
  deployment-preview:  
- \# レビュアーがCoderRabbitであり、かつ承認された場合のみ実行  
- if: \>  
- github.event.review.state \== 'approved' &&  
+ # レビュアーがCoderRabbitであり、かつ承認された場合のみ実行  
+ if: >  
+ github.event.review.state == 'approved' &&  
  contains(github.event.review.user.login, 'coderabbit')  
  runs-on: ubuntu-latest  
  steps:  
- \- uses: actions/checkout@v4  
- \- name: Deploy Preview Environment  
+ - uses: actions/checkout@v4  
+ - name: Deploy Preview Environment  
  run:./scripts/deploy-preview.sh
 
 このパターンにより、人間によるレビューの前にAIによる事前審査を通過させる「AI
@@ -270,7 +270,7 @@ First」のワークフローを構築できる。
 
 ---
 
-**4\. Greptileのグローバル構成管理とGitOps同期戦略**
+**4. Greptileのグローバル構成管理とGitOps同期戦略**
 
 Greptileは、リポジトリ全体の文脈（Context）を理解するRAG（Retrieval-Augmented
 Generation）技術に特化したAIレビューツールである。そのアーキテクチャはCoderRabbitとは異なり、設定の集中管理機能においては現時点でダッシュボード依存度が高い。ここでは、その制約を回避し、GitOpsベースでの管理を実現するための高度な手法を解説する。
@@ -303,28 +303,28 @@ cloud-sky-ops/sync-files-multi-repo などのアクションを活用する 20�
 
 YAML
 
-\#.github/workflows/sync-greptile-config.yml  
+#.github/workflows/sync-greptile-config.yml  
 name: Sync Greptile Configuration  
 on:  
  push:  
- paths: \['templates/greptile.json'\]  
- branches: \[main\]  
+ paths: ['templates/greptile.json']  
+ branches: [main]  
  workflow_dispatch:
 
 jobs:  
  sync:  
  runs-on: ubuntu-latest  
  steps:  
- \- uses: actions/checkout@v4
+ - uses: actions/checkout@v4
 
-      \- name: Sync Config to Repositories
+      - name: Sync Config to Repositories
         uses: cloud-sky-ops/sync-files-multi-repo@v1
         with:
-          \# 注意: 全リポジトリへの書き込み権限を持つトークンが必要（GitHub App推奨）
-          github\_token: ${{ secrets.ORG\_ADMIN\_TOKEN }}
+          # 注意: 全リポジトリへの書き込み権限を持つトークンが必要（GitHub App推奨）
+          github_token: ${{ secrets.ORG_ADMIN_TOKEN }}
           copy-from-directory: 'templates/'
           files: 'greptile.json'
-          \# 安全のため、直接コミットではなくPRを作成する
+          # 安全のため、直接コミットではなくPRを作成する
           create-pull-request: true
           pull-request-title: 'chore: Update Greptile AI Policy'
           pull-request-body: '組織全体のAIレビューポリシーが更新されました。マージしてください。'
@@ -351,24 +351,24 @@ Greptileは通常、PR作成時に自動的にレビューを開始するが、�
 
 YAML
 
-\#.github/workflows/trigger-greptile-audit.yml  
+#.github/workflows/trigger-greptile-audit.yml  
 name: Conditional Greptile Audit  
 on:  
  pull_request:  
- paths: \['payments/\*\*', 'auth/\*\*'\]
+ paths: ['payments/**', 'auth/**']
 
 jobs:  
  audit:  
  runs-on: ubuntu-latest  
  steps:  
- \- name: Trigger Security Review  
+ - name: Trigger Security Review  
  run: |  
- curl \-X POST <https://api.greptile.com/v2/repositories/${{> github.repository
-}}/review \\  
- \-H "Authorization: Bearer
-${{ secrets.GREPTILE\_API\_KEY }}" \\  
-          \-H "X-GitHub-Token: ${{ secrets.GITHUB\_TOKEN }}" \\  
-          \-d '{ "pr\_number": "${{ github.event.pull\_request.number }}"
+ curl -X POST <https://api.greptile.com/v2/repositories/${{> github.repository
+}}/review   
+ -H "Authorization: Bearer
+${{ secrets.GREPTILE_API_KEY }}"   
+          -H "X-GitHub-Token: ${{ secrets.GITHUB_TOKEN }}"   
+          -d '{ "pr_number": "${{ github.event.pull_request.number }}"
 }'
 
 ### **4.4 Custom Rulesによるポリシーの自然言語定義**
@@ -380,17 +380,17 @@ Greptileの強力な機能として、自然言語による「カスタムルー
 JSON
 
 {  
- "customRules": \[  
+ "customRules": [  
  "すべてのデータベースクエリは、文字列連結ではなくパラメータ化されたクエリを使用しなければならない。",  
 
 "コンソールログ（console.log）を本番コードに残してはならない。必ずロガーライブラリを使用すること。"  
 
-\]  
+]  
 }
 
 ---
 
-**5\. 比較分析と導入フレームワーク**
+**5. 比較分析と導入フレームワーク**
 
 CoderRabbitとGreptileは、どちらもAIコードレビュー領域のリーダーであるが、その構成管理思想には明確な違いがある。組織のDevOps成熟度や要件に応じた選択が必要である。
 
@@ -400,7 +400,7 @@ CoderRabbitとGreptileは、どちらもAIコードレビュー領域のリー�
 | :--------------------- | :-------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- |
 | **グローバル設定手法** | 中央リポジトリ (coderabbit) の自動参照                                                  | ダッシュボード設定 または GitOps同期による配布                                                               |
 | **Config-as-Code**     | ネイティブ対応（階層型）                                                                | ワークアラウンドが必要（Sync Action）                                                                        |
-| **優先順位構造**       | Repo \> Central Repo \> UI                                                              | Repo File \> Dashboard Default                                                                               |
+| **優先順位構造**       | Repo > Central Repo > UI                                                              | Repo File > Dashboard Default                                                                               |
 | **強み**               | **Gitネイティブな運用**。既存のGitHubフローとの親和性が高く、設定の継承モデルが直感的。 | **コンテキスト認識力**。リポジトリ全体の関係性を理解したレビューが得意だが、設定管理は少し泥臭い運用が必要。 |
 | **デプロイ制御**       | GitHub Checks APIと深く統合され、マージブロックが容易。                                 | Status Checkとしての統合は可能だが、構成管理は分散的。                                                       |
 
@@ -408,21 +408,21 @@ CoderRabbitとGreptileは、どちらもAIコードレビュー領域のリー�
 
 #### **シナリオA：数百のリポジトリを持つエンタープライズ**
 
-**推奨：CoderRabbit \+ GitHub Repository Rulesets**
+**推奨：CoderRabbit + GitHub Repository Rulesets**
 
 数百のリポジトリに対し、設定ファイルを同期して回るコストは高い。CoderRabbitの「中央リポジトリ参照」機能は、設定ファイルを追加することなく、リポジトリを作成した瞬間にポリシーを適用できるため、スケーラビリティにおいて優れている。また、GitHub
 Rulesetsと組み合わせることで、AIレビューの通過をシステム的に強制できる。
 
 #### **シナリオB：複雑な依存関係を持つモノリス/大規模システム**
 
-**推奨：Greptile \+ GitOps Sync**
+**推奨：Greptile + GitOps Sync**
 
 コードベースが巨大で、ファイル間の依存関係が複雑な場合、GreptileのRAG機能（全コードベース理解）が不可欠となる。設定管理の不便さは、前述の「Sync
 Action」を構築することで解消し、質の高いレビューを優先すべきである。特に、自然言語によるカスタムルールで「組織固有の設計パターン」を学習させることができる点は大きなメリットである。
 
 ---
 
-**6\. 結論と将来展望**
+**6. 結論と将来展望**
 
 GitHub
 Actions、CoderRabbit、Greptileを組み合わせた組織レベルの構成管理は、単なる「設定の自動化」を超え、開発組織のカルチャーをコード化する行為（Governance-as-Code）である。
@@ -441,63 +441,63 @@ Actions、CoderRabbit、Greptileを組み合わせた組織レベルの構成管
 
 ### 引用文献
 
-1. Creating workflow templates for your organization \- GitHub Docs, 2月 7,
+1. Creating workflow templates for your organization - GitHub Docs, 2月 7,
    2026にアクセス、
    [https://docs.github.com/actions/sharing-automations/creating-workflow-templates-for-your-organization](https://docs.github.com/actions/sharing-automations/creating-workflow-templates-for-your-organization)
-2. Customizing your organization's profile \- GitHub Docs, 2月 7,
+2. Customizing your organization's profile - GitHub Docs, 2月 7,
    2026にアクセス、
    [https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/customizing-your-organizations-profile](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/customizing-your-organizations-profile)
-3. Reuse workflows \- GitHub Docs, 2月 7, 2026にアクセス、
+3. Reuse workflows - GitHub Docs, 2月 7, 2026にアクセス、
    [https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows)
-4. Best practices to create reusable workflows on GitHub Actions \-
+4. Best practices to create reusable workflows on GitHub Actions -
    Incredibuild, 2月 7, 2026にアクセス、
    [https://www.incredibuild.com/blog/best-practices-to-create-reusable-workflows-on-github-actions](https://www.incredibuild.com/blog/best-practices-to-create-reusable-workflows-on-github-actions)
-5. Reusing workflow configurations \- GitHub Actions, 2月 7, 2026にアクセス、
+5. Reusing workflow configurations - GitHub Actions, 2月 7, 2026にアクセス、
    [https://docs.github.com/en/actions/concepts/workflows-and-actions/reusing-workflow-configurations](https://docs.github.com/en/actions/concepts/workflows-and-actions/reusing-workflow-configurations)
-6. Requiring workflows with Repository Rules is generally available\! ·
-   community · Discussion \#69595 \- GitHub, 2月 7, 2026にアクセス、
+6. Requiring workflows with Repository Rules is generally available! ·
+   community · Discussion #69595 - GitHub, 2月 7, 2026にアクセス、
    [https://github.com/orgs/community/discussions/69595](https://github.com/orgs/community/discussions/69595)
 7. GitHub Actions: Required Workflows will move to Repository Rules, 2月 7,
    2026にアクセス、
    [https://github.blog/changelog/2023-08-02-github-actions-required-workflows-will-move-to-repository-rules/](https://github.blog/changelog/2023-08-02-github-actions-required-workflows-will-move-to-repository-rules/)
-8. Available rules for rulesets \- GitHub Docs, 2月 7, 2026にアクセス、
+8. Available rules for rulesets - GitHub Docs, 2月 7, 2026にアクセス、
    [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets)
-9. About rulesets \- GitHub Docs, 2月 7, 2026にアクセス、
+9. About rulesets - GitHub Docs, 2月 7, 2026にアクセス、
    [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)
-10. Manage your repository visibility, rules, and settings \- GitHub Resources,
+10. Manage your repository visibility, rules, and settings - GitHub Resources,
     2月 7, 2026にアクセス、
     [https://resources.github.com/learn/pathways/administration-governance/essentials/manage-your-repository-visibility-rules-and-settings/](https://resources.github.com/learn/pathways/administration-governance/essentials/manage-your-repository-visibility-rules-and-settings/)
-11. Available rules for rulesets \- GitHub Enterprise Cloud Docs, 2月 7,
+11. Available rules for rulesets - GitHub Enterprise Cloud Docs, 2月 7,
     2026にアクセス、
     [https://docs.github.com/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets](https://docs.github.com/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets)
-12. GitHub Secrets: The Basics and 4 Critical Best Practices \- Configu, 2月 7,
+12. GitHub Secrets: The Basics and 4 Critical Best Practices - Configu, 2月 7,
     2026にアクセス、
     [https://configu.com/blog/github-secrets-the-basics-and-4-critical-best-practices/](https://configu.com/blog/github-secrets-the-basics-and-4-critical-best-practices/)
 13. Using secrets in GitHub Actions, 2月 7, 2026にアクセス、
     [https://docs.github.com/actions/security-guides/using-secrets-in-github-actions](https://docs.github.com/actions/security-guides/using-secrets-in-github-actions)
-14. Configuration Overview \- CodeRabbit Documentation \- AI code reviews on
+14. Configuration Overview - CodeRabbit Documentation - AI code reviews on
     pull requests, IDE, and CLI, 2月 7, 2026にアクセス、
     [https://docs.coderabbit.ai/guides/configuration-overview](https://docs.coderabbit.ai/guides/configuration-overview)
-15. Central configuration \- CodeRabbit Documentation \- AI code ..., 2月 7,
+15. Central configuration - CodeRabbit Documentation - AI code ..., 2月 7,
     2026にアクセス、
     [https://docs.coderabbit.ai/configuration/central-configuration](https://docs.coderabbit.ai/configuration/central-configuration)
-16. trigger action on "Pull Request Approved" · community · Discussion \#25372
-    \- GitHub, 2月 7, 2026にアクセス、
+16. trigger action on "Pull Request Approved" · community · Discussion #25372
+    - GitHub, 2月 7, 2026にアクセス、
     [https://github.com/orgs/community/discussions/25372](https://github.com/orgs/community/discussions/25372)
-17. Webhook events and payloads \- GitHub Docs, 2月 7, 2026にアクセス、
+17. Webhook events and payloads - GitHub Docs, 2月 7, 2026にアクセス、
     [https://docs.github.com/en/webhooks/webhook-events-and-payloads](https://docs.github.com/en/webhooks/webhook-events-and-payloads)
-18. Events that trigger workflows \- GitHub Docs, 2月 7, 2026にアクセス、
+18. Events that trigger workflows - GitHub Docs, 2月 7, 2026にアクセス、
     [https://docs.github.com/actions/using-workflows/events-that-trigger-workflows](https://docs.github.com/actions/using-workflows/events-that-trigger-workflows)
 19. Configure with greptile.json, 2月 7, 2026にアクセス、
     [https://www.greptile.com/docs/code-review-bot/greptile-json](https://www.greptile.com/docs/code-review-bot/greptile-json)
 20. Sync Files to Multiple Repos via API · Actions · GitHub Marketplace, 2月 7,
     2026にアクセス、
     [https://github.com/marketplace/actions/sync-files-to-multiple-repos-via-api](https://github.com/marketplace/actions/sync-files-to-multiple-repos-via-api)
-21. Repo File Sync Action \- GitHub Marketplace, 2月 7, 2026にアクセス、
+21. Repo File Sync Action - GitHub Marketplace, 2月 7, 2026にアクセス、
     [https://github.com/marketplace/actions/repo-file-sync-action](https://github.com/marketplace/actions/repo-file-sync-action)
-22. Configure Which PRs Should Be Reviewed \- Greptile, 2月 7, 2026にアクセス、
+22. Configure Which PRs Should Be Reviewed - Greptile, 2月 7, 2026にアクセス、
     [https://www.greptile.com/docs/code-review-bot/trigger-code-review](https://www.greptile.com/docs/code-review-bot/trigger-code-review)
-23. GitHub and GitLab Integration \- Greptile, 2月 7, 2026にアクセス、
+23. GitHub and GitLab Integration - Greptile, 2月 7, 2026にアクセス、
     [https://www.greptile.com/docs/integrations/github-gitlab-integration](https://www.greptile.com/docs/integrations/github-gitlab-integration)
-24. Custom Rules \- Greptile, 2月 7, 2026にアクセス、
+24. Custom Rules - Greptile, 2月 7, 2026にアクセス、
     [https://www.greptile.com/docs/how-greptile-works/custom-rules](https://www.greptile.com/docs/how-greptile-works/custom-rules)

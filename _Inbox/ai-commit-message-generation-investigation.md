@@ -1,6 +1,6 @@
 # **AI駆動型バージョン管理システムにおけるコミットメッセージ自動生成技術の包括的解析報告書**
 
-## **1\. 序論：ソフトウェア開発におけるメタデータ生成の自動化と変革**
+## **1. 序論：ソフトウェア開発におけるメタデータ生成の自動化と変革**
 
 ### **1.1 調査の背景と目的**
 
@@ -35,7 +35,7 @@ IDEにおけるコミットメッセージ自動生成の技術的メカニズ�
 
 ---
 
-**2\. Visual Studio CodeとGitHub Copilotにおける実装メカニズム**
+**2. Visual Studio CodeとGitHub Copilotにおける実装メカニズム**
 
 MicrosoftのVisual Studio Code（以下VS
 Code）におけるコミットメッセージ生成機能は、エディタ本体の機能ではなく、**GitHub
@@ -74,7 +74,7 @@ diff 相当の操作を実行する。
 
 - **ステージングされた変更:**
   デフォルトでは、コミットの対象となる「ステージングエリア（Index）」にあるファイルの差分 (git
-  diff \--cached) が対象となる 4。
+  diff --cached) が対象となる 4。
 - **getDiff メソッドの実装:**
   拡張機能内部では、非同期的にGitプロセスを呼び出す getDiff のような関数が実行される。この処理はメインスレッドをブロックしないよう慎重に設計されているが、大規模なリポジトリや巨大な差分が発生している場合、Gitプロセスの応答待ちによりUIが一時的にフリーズしたり、タイムアウトエラー（Error:
   Failed to execute git）が発生したりする事例が報告されている 5。
@@ -142,7 +142,7 @@ miniのカスタム版）が使用されている可能性が高い 11。APIコ�
 
 ---
 
-**3\. Cursor IDEにおける実装メカニズム：エージェントとMCPの融合**
+**3. Cursor IDEにおける実装メカニズム：エージェントとMCPの融合**
 
 Cursor IDEは、VS
 Codeをフォークして開発されたAIネイティブエディタであり、コミットメッセージ生成に関してもVS
@@ -187,7 +187,7 @@ Workflow）。
    AIエージェントは「コミットメッセージを生成するためには、まず何が変更されたかを知る必要がある」と判断する。
 2. **ツール実行（Call）:** エージェントは git_diff_staged ツールを呼び出す。
 3. **観察（Observation）:** MCPサーバーが git diff
-   \--cached を実行し、その結果を構造化データとしてエージェントに返す。
+   --cached を実行し、その結果を構造化データとしてエージェントに返す。
 4. **生成（Generation）:**
    エージェントは取得した差分データを分析し、ユーザー定義のルール（後述）に従ってメッセージを作成する。
 
@@ -205,13 +205,13 @@ Configuration) ファイルを用いたルールベース制御である 22。
 ---
 
 **description: Generate git commit messages following Conventional Commits
-globs:.git/\*\* alwaysApply: true**
+globs:.git/** alwaysApply: true**
 
 ## **Git Commit Message Rules**
 
 When generating commit messages:
 
-1. **Format:** Must follow \<type\>(\<scope\>): \<description\>.
+1. **Format:** Must follow <type>(<scope>): <description>.
 2. **Types:** feat, fix, docs, style, refactor, perf, test, chore.
 3. **Language:** Japanese (日本語).
 4. **Length:** Subject line under 50 chars.
@@ -226,7 +226,7 @@ Cursorは「完全自動」だけでなく、人間の入力をヒントにす�
 
 ---
 
-**4\. 比較技術分析：アプローチの相違とトレードオフ**
+**4. 比較技術分析：アプローチの相違とトレードオフ**
 
 ここでは、VS
 CodeとCursorのアプローチを技術的な観点から直接比較し、それぞれのメリットとデメリットを浮き彫りにする。
@@ -263,7 +263,7 @@ CodeとCursorのアプローチを技術的な観点から直接比較し、そ�
 
 ---
 
-**5\. 代替手法とエコシステム：OpenCommitとその他のツール**
+**5. 代替手法とエコシステム：OpenCommitとその他のツール**
 
 VS
 CodeとCursor以外にも、コミットメッセージ自動生成のアプローチは存在し、それぞれ独自の特徴を持っている。これらとの比較は、現状の技術レベルを理解する上で有用である。
@@ -285,11 +285,11 @@ CodeとCursor以外にも、コミットメッセージ自動生成のアプロ�
 (GUIクライアント) も同様の機能を提供している。
 
 - **GitKraken & MCP:**
-  GitKrakenは、Cursorと同様にMCPへの対応を表明しており、Jiraなどのチケット管理システムとGitリポジトリをAI上でリンクさせる方向へ進んでいる 18。これにより、「Jiraチケット \#123 の仕様に基づいてコミットメッセージを生成」といったクロスプラットフォームな生成が可能になる。
+  GitKrakenは、Cursorと同様にMCPへの対応を表明しており、Jiraなどのチケット管理システムとGitリポジトリをAI上でリンクさせる方向へ進んでいる 18。これにより、「Jiraチケット #123 の仕様に基づいてコミットメッセージを生成」といったクロスプラットフォームな生成が可能になる。
 
 ---
 
-**6\. セキュリティ、プライバシーおよびリスク管理**
+**6. セキュリティ、プライバシーおよびリスク管理**
 
 AIにコードベース（差分）を送信することは、企業にとって情報漏洩のリスクを伴う。各ツールはこれにどう対処しているか。
 
@@ -315,7 +315,7 @@ AIにコードベース（差分）を送信することは、企業にとって
 
 ---
 
-**7\. 結論と将来展望**
+**7. 結論と将来展望**
 
 ### **7.1 総括：ツールごとの立ち位置**
 
@@ -368,7 +368,7 @@ NPM: mcp-server-git package details
 1. Source Control API | Visual Studio Code Extension API, 2月 6,
    2026にアクセス、
    [https://code.visualstudio.com/api/extension-guides/scm-provider](https://code.visualstudio.com/api/extension-guides/scm-provider)
-2. Keyboardshort for "Generate commit message with Copilot" in VSCode? \- Stack
+2. Keyboardshort for "Generate commit message with Copilot" in VSCode? - Stack
    Overflow, 2月 6, 2026にアクセス、
    [https://stackoverflow.com/questions/78323964/keyboardshort-for-generate-commit-message-with-copilot-in-vscode](https://stackoverflow.com/questions/78323964/keyboardshort-for-generate-commit-message-with-copilot-in-vscode)
 3. How do I create a custom button in the git Message field of the VS Code
@@ -377,10 +377,10 @@ NPM: mcp-server-git package details
 4. Source Control in VS Code, 2月 6, 2026にアクセス、
    [https://code.visualstudio.com/docs/sourcecontrol/overview](https://code.visualstudio.com/docs/sourcecontrol/overview)
 5. 'Generate Commit Message With Copilot' is giving error · community ·
-   Discussion \#150575, 2月 6, 2026にアクセス、
+   Discussion #150575, 2月 6, 2026にアクセス、
    [https://github.com/orgs/community/discussions/150575](https://github.com/orgs/community/discussions/150575)
-6. Autocomplete \- Git diff is issued at each keystroke \- no cache is
-   implemented \#4130 \- GitHub, 2月 6, 2026にアクセス、
+6. Autocomplete - Git diff is issued at each keystroke - no cache is
+   implemented #4130 - GitHub, 2月 6, 2026にアクセス、
    [https://github.com/continuedev/continue/issues/4130](https://github.com/continuedev/continue/issues/4130)
 7. Files excluded from GitHub Copilot code review, 2月 6, 2026にアクセス、
    [https://docs.github.com/en/copilot/reference/review-excluded-files](https://docs.github.com/en/copilot/reference/review-excluded-files)
@@ -389,23 +389,23 @@ NPM: mcp-server-git package details
 9. Content exclusion for GitHub Copilot, 2月 6, 2026にアクセス、
    [https://docs.github.com/en/copilot/concepts/context/content-exclusion](https://docs.github.com/en/copilot/concepts/context/content-exclusion)
 10. GitHub Copilot Chat unable to generate commit messages due to content
-    exclusion rules \#1229, 2月 6, 2026にアクセス、
+    exclusion rules #1229, 2月 6, 2026にアクセス、
     [https://github.com/microsoft/vscode-copilot-release/issues/1229](https://github.com/microsoft/vscode-copilot-release/issues/1229)
 11. Responsible use of GitHub Copilot commit message generation, 2月 6,
     2026にアクセス、
     [https://docs.github.com/en/copilot/responsible-use/copilot-commit-message-generation](https://docs.github.com/en/copilot/responsible-use/copilot-commit-message-generation)
-12. Generate commit message exceeding token limit · Issue \#34486 \- GitHub,
+12. Generate commit message exceeding token limit · Issue #34486 - GitHub,
     2月 6, 2026にアクセス、
     [https://github.com/zed-industries/zed/issues/34486](https://github.com/zed-industries/zed/issues/34486)
-13. jujumilk3/leaked-system-prompts \- GitHub, 2月 6, 2026にアクセス、
+13. jujumilk3/leaked-system-prompts - GitHub, 2月 6, 2026にアクセス、
     [https://github.com/jujumilk3/leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts)
 14. GitHub Copilot is ignoring commit message generation instructions in
-    workspace settings in VS Code \- Stack Overflow, 2月 6, 2026にアクセス、
+    workspace settings in VS Code - Stack Overflow, 2月 6, 2026にアクセス、
     [https://stackoverflow.com/questions/79579035/github-copilot-is-ignoring-commit-message-generation-instructions-in-workspace-s](https://stackoverflow.com/questions/79579035/github-copilot-is-ignoring-commit-message-generation-instructions-in-workspace-s)
-15. AI git commit messages \- \#21 by gokcin \- Feature Requests \- Cursor \-
+15. AI git commit messages - #21 by gokcin - Feature Requests - Cursor -
     Community Forum, 2月 6, 2026にアクセス、
     [https://forum.cursor.com/t/ai-git-commit-messages/1027/21](https://forum.cursor.com/t/ai-git-commit-messages/1027/21)
-16. Found a workaround for Cursor context limit \- Reddit, 2月 6,
+16. Found a workaround for Cursor context limit - Reddit, 2月 6,
     2026にアクセス、
     [https://www.reddit.com/r/cursor/comments/1j56j7i/found_a_workaround_for_cursor_context_limit/](https://www.reddit.com/r/cursor/comments/1j56j7i/found_a_workaround_for_cursor_context_limit/)
 17. AI Commit Message | Cursor Docs, 2月 6, 2026にアクセス、
@@ -413,31 +413,31 @@ NPM: mcp-server-git package details
 18. GitKraken MCP: Give Copilot & Cursor the Git Context They're Missing, 2月 6,
     2026にアクセス、
     [https://www.gitkraken.com/blog/gitkraken-mcp-model-context-protocol-for-git-cursor-copilot](https://www.gitkraken.com/blog/gitkraken-mcp-model-context-protocol-for-git-cursor-copilot)
-19. Model Context Protocol \- GitHub, 2月 6, 2026にアクセス、
+19. Model Context Protocol - GitHub, 2月 6, 2026にアクセス、
     [https://github.com/modelcontextprotocol](https://github.com/modelcontextprotocol)
 20. Git | Awesome MCP Servers, 2月 6, 2026にアクセス、
     [https://mcpservers.org/servers/modelcontextprotocol/git](https://mcpservers.org/servers/modelcontextprotocol/git)
-21. @edjl/git-mcp \- npm, 2月 6, 2026にアクセス、
+21. @edjl/git-mcp - npm, 2月 6, 2026にアクセス、
     [https://www.npmjs.com/package/@edjl/git-mcp](https://www.npmjs.com/package/@edjl/git-mcp)
 22. Rules | Cursor Docs, 2月 6, 2026にアクセス、
     [https://cursor.com/docs/context/rules](https://cursor.com/docs/context/rules)
-23. cursor-like-pro/rules/git-conventions/git-conventions.mdc at main \- GitHub,
+23. cursor-like-pro/rules/git-conventions/git-conventions.mdc at main - GitHub,
     2月 6, 2026にアクセス、
     [https://github.com/gifflet/cursor-like-pro/blob/main/rules/git-conventions/git-conventions.mdc](https://github.com/gifflet/cursor-like-pro/blob/main/rules/git-conventions/git-conventions.mdc)
-24. Git Commit Conventions Using Cursor MCP: A Complete Guide \- DEV Community,
+24. Git Commit Conventions Using Cursor MCP: A Complete Guide - DEV Community,
     2月 6, 2026にアクセス、
     [https://dev.to/gifflet/how-to-enforce-git-commit-conventions-using-cursor-mcp-a-complete-guide-3cfc](https://dev.to/gifflet/how-to-enforce-git-commit-conventions-using-cursor-mcp-a-complete-guide-3cfc)
-25. Allow Input for \`Generate Commit Message\` \- Feature Requests \- Cursor,
+25. Allow Input for `Generate Commit Message` - Feature Requests - Cursor,
     2月 6, 2026にアクセス、
     [https://forum.cursor.com/t/allow-input-for-generate-commit-message/102062](https://forum.cursor.com/t/allow-input-for-generate-commit-message/102062)
-26. Commit message quality is now terrible \- Bug Reports \- Cursor \- Community
+26. Commit message quality is now terrible - Bug Reports - Cursor - Community
     Forum, 2月 6, 2026にアクセス、
     [https://forum.cursor.com/t/commit-message-quality-is-now-terrible/45383](https://forum.cursor.com/t/commit-message-quality-is-now-terrible/45383)
-27. Amazing\! Github Copilot now writes commit messages : r/programming \-
+27. Amazing! Github Copilot now writes commit messages : r/programming -
     Reddit, 2月 6, 2026にアクセス、
     [https://www.reddit.com/r/programming/comments/17nko4h/amazing_github_copilot_now_writes_commit_messages/](https://www.reddit.com/r/programming/comments/17nko4h/amazing_github_copilot_now_writes_commit_messages/)
 28. Auto-generate Git Commit Messages Using AI Analysis of Code Differences
-    \#786 \- GitHub, 2月 6, 2026にアクセス、
+    #786 - GitHub, 2月 6, 2026にアクセス、
     [https://github.com/cursor/cursor/issues/786](https://github.com/cursor/cursor/issues/786)
 29. OpenCommit — improve commits with AI · Actions · GitHub Marketplace, 2月 6,
     2026にアクセス、
@@ -446,18 +446,18 @@ NPM: mcp-server-git package details
     2月 6, 2026にアクセス、
     [https://dev.to/disukharev/opencommit-gpt-cli-to-auto-generate-impressive-commits-in-1-second-46dh](https://dev.to/disukharev/opencommit-gpt-cli-to-auto-generate-impressive-commits-in-1-second-46dh)
 31. Are autogenerated commits messages on the horizion for Copilot? · community
-    · Discussion \#58035 \- GitHub, 2月 6, 2026にアクセス、
+    · Discussion #58035 - GitHub, 2月 6, 2026にアクセス、
     [https://github.com/orgs/community/discussions/58035](https://github.com/orgs/community/discussions/58035)
-32. CamoLeak: Critical GitHub Copilot Vulnerability Leaks Private Source Code \-
+32. CamoLeak: Critical GitHub Copilot Vulnerability Leaks Private Source Code -
     Reddit, 2月 6, 2026にアクセス、
     [https://www.reddit.com/r/programming/comments/1o6tew1/camoleak_critical_github_copilot_vulnerability/](https://www.reddit.com/r/programming/comments/1o6tew1/camoleak_critical_github_copilot_vulnerability/)
-33. GitHub Copilot privacy in VSCode \- here's what I found \- Reddit, 2月 6,
+33. GitHub Copilot privacy in VSCode - here's what I found - Reddit, 2月 6,
     2026にアクセス、
     [https://www.reddit.com/r/vscode/comments/1k79uah/github_copilot_privacy_in_vscode_heres_what_i/](https://www.reddit.com/r/vscode/comments/1k79uah/github_copilot_privacy_in_vscode_heres_what_i/)
-34. GitHub Copilot coding agent \- Visual Studio Code, 2月 6, 2026にアクセス、
+34. GitHub Copilot coding agent - Visual Studio Code, 2月 6, 2026にアクセス、
     [https://code.visualstudio.com/docs/copilot/copilot-coding-agent](https://code.visualstudio.com/docs/copilot/copilot-coding-agent)
 35. Best resources to learn AMP effectively, 2月 6, 2026にアクセス、
     [https://ampcode.com/threads/T-bb2eba97-dd89-40cc-9b80-7424a04fecd5](https://ampcode.com/threads/T-bb2eba97-dd89-40cc-9b80-7424a04fecd5)
-36. 3-5 Using Cursor to Generate Commit Messages \- ExplainThis, 2月 6,
+36. 3-5 Using Cursor to Generate Commit Messages - ExplainThis, 2月 6,
     2026にアクセス、
     [https://www.explainthis.io/en/ai/cursor-guide/3-5-commit-generation](https://www.explainthis.io/en/ai/cursor-guide/3-5-commit-generation)

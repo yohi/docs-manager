@@ -134,7 +134,7 @@ export const NativeCommandPlugin: Plugin = async (ctx) => {
       config.command["my-command"] = {
         description: "プラグインから注入された動的コマンド",
         // テンプレート文字列。$ARGUMENTS はユーザー入力を受け取るプレースホルダ
-        template: "以下の指示に従ってコードを修正してください。\n\n指示: $ARGUMENTS",
+        template: "以下の指示に従ってコードを修正してください。nn指示: $ARGUMENTS",
         agent: "build", // 実行するエージェントを指定
         model: "anthropic/claude-3-5-sonnet-20241022" // モデルの指定（任意）
       };
@@ -209,7 +209,7 @@ export const MacroExpansionPlugin: Plugin = async (ctx) => {
 
       // 2. コマンド検出（正規表現）
       // 例: /refactor <対象>
-      const match = rawText.match(/^\/refactor\s+(.*)/);
+      const match = rawText.match(/^/refactors+(.*)/);
 
       if (match) {
         const target = match[1]; // 引数部分
@@ -318,7 +318,7 @@ export const InstantCommandPlugin: Plugin = async (ctx) => {
 **推奨される正規表現パターン**:
 ```typescript
 // コマンド名と、残りの引数全体をキャプチャ
-const commandRegex = /^\/([a-zA-Z0-9_-]+)(?:\s+(.*))?$/s;
+const commandRegex = /^/([a-zA-Z0-9_-]+)(?:s+(.*))?$/s;
 ```
 末尾の `s` フラグ（dotAll）は、改行を含む入力を扱うために重要である。
 
@@ -432,7 +432,7 @@ export const SlashCommandPlugin: Plugin = async (ctx) => {
       const rawText = textPart.text.trim();
       if (!rawText.startsWith("/")) return;
 
-      const match = rawText.match(/^\/([a-zA-Z0-9_-]+)(?:\s+(.*))?$/s);
+      const match = rawText.match(/^/([a-zA-Z0-9_-]+)(?:s+(.*))?$/s);
       if (!match) return;
 
       const [_, cmdName, argsContent] = match;
