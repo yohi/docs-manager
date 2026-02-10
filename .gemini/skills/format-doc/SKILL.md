@@ -5,7 +5,7 @@ This skill helps maintain consistent formatting for Markdown documentation and e
 ## Coordinated Workflow
 
 1.  **Low-Level Formatting (Script)**:
-    - Run `scripts/format_markdown.py` to handle context-independent tasks:
+    - Run `./scripts/format_markdown.py` to handle context-independent tasks:
         - Standardize headers (e.g., `# Header` instead of `# **Header**`).
         - Remove unnecessary escapes (e.g., `1\.` to `1.`).
         - Ensure consistent spacing and basic indentation.
@@ -22,7 +22,7 @@ This skill helps maintain consistent formatting for Markdown documentation and e
 ## Usage
 
 When a user provides a file or directory:
-1.  **For each file**, first execute `python3 scripts/format_markdown.py <file_path>`.
+1.  **For each file**, first execute `python3 ./scripts/format_markdown.py <file_path>`.
     - **重要**: このコマンドは**リポジトリルート**から実行すること。`<file_path>` はリポジトリルートからの相対パス(例: `_documents/cursor/README.md`)または絶対パスを指定。
 2.  **Review the output**:
     - If the script outputs `SUGGESTED_RENAME:<path>`, the LLM performs the rename using the `bash` tool (e.g., `bash(command="mv <old_path> <new_path>", description="Rename file")`).
