@@ -24,7 +24,7 @@ This skill helps maintain consistent formatting for Markdown documentation and e
 When a user provides a file or directory:
 1.  **For each file**, first execute `python3 scripts/format_markdown.py <file_path>`.
 2.  **Review the output**:
-    - If the script outputs `SUGGESTED_RENAME:<path>`, the LLM performs the rename.
+    - If the script outputs `SUGGESTED_RENAME:<path>`, the LLM performs the rename using the `bash` tool (e.g., `bash(command="mv <old_path> <new_path>", description="Rename file")`).
 3.  **Perform Contextual Review**: The LLM reads the formatted content and applies manual fixes (via `replace` or `write_file`) for any structural errors that the script cannot reliably handle.
 
 ## Example Triggers

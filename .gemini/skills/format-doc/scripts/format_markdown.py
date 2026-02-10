@@ -3,15 +3,31 @@ import os
 import re
 
 def format_content(content):
-    # 1. 見出しの後のバックスラッシュ付きピリオドなどを修正 (\. -> .)
-    content = re.sub(r'(\d+)\.', r'\1.', content)
+    # 1. バックスラッシュエスケープされたドットをアンエスケープ (\. -> .)
+    content = re.sub(r'(\d+)\\.', r'\1.', content)
+    content = re.sub(r'\\.', r'.', content)
 
     # 2. 見出しの標準化: # **Header** -> # Header
-    # 文中の太字と区別するため、行頭の見出し記号の直後にある太字を対象にする
     content = re.sub(r'^(#+)\s*\*\*([^*]+)\*\*', r'\1 \2', content, flags=re.MULTILINE)
-
-    # 3. リスト項目の前後の余分な空白などを整理 (低レイヤーの整形)
-    # (将来的に共通の低レイヤー処理をここに追加していく)
+    
+    # 3. 見出しの書式修正: #Header -> # Header (スペース不足)
+    content = re.sub(r'^(#+)([^\s#])', r'\1 \2', content, flags=re.MULTILINE)
+    
+    # 4. 見出しの行頭インデント除去
+    content = re.sub(r'^\s+(#+\s)', r'\1', content, flags=re.MULTILINE)
+    
+    # 5. 正規表現内の未エスケープスラッシュを修正 (JavaScript/TypeScript)
+    content = re.sub(r'/\^/', r'/^\\/', content)
+    content = re.sub(r'(/[a-zA-Z0-9_-]+)(\))', r'\\/\2', content)
+    
+    # 6. YAMLインデントの修正: steps配下のアクションが正しくインデントされていない
+    content = re.sub(r'^(\s+steps:\s*\n)(\s*)(-\s+uses:)', r'\1\2  \3', content, flags=re.MULTILINE)
+    
+    # 7. 無効なJSON構文の修正: "data": の後に値がない
+    content = re.sub(r'"data":\s*$', r'"data": []', content, flags=re.MULTILINE)
+    
+    # 8. コードブロックのフェンス追加 (TypeScript/JavaScriptが裸で書かれている場合)
+    content = re.sub(r'^(TypeScript|JavaScript)\s*\n([^\n`])', r'```ts\n\2', content, flags=re.MULTILINE)
 
     return content
 
@@ -21,6 +37,8 @@ def is_multibyte(s):
 def get_safe_filename(filename):
     name, ext = os.path.splitext(filename)
     safe_name = re.sub(r'[^a-zA-Z0-9\-_]+', '-', name).strip('-').lower()
+    if not safe_name:
+        safe_name = "document"
     return safe_name + ext
 
 def main():
