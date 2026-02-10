@@ -30,10 +30,18 @@ collections:
   documents:
     output: true
     permalink: /documents/:path/
+  Inbox:
+    output: true
+    permalink: /inbox/:path/
 defaults:
   - scope:
       path: "_documents"
       type: "documents"
+    values:
+      layout: "default"
+  - scope:
+      path: "_Inbox"
+      type: "Inbox"
     values:
       layout: "default"
 
