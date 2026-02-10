@@ -1,0 +1,8 @@
+description = "Format Markdown files and rename them to alphanumeric filenames using the format-doc skill."
+prompt = """
+Activate the 'format-doc' skill and apply it to the following file or directory.
+If it's a file, format its content and rename it if it contains multibyte characters.
+If it's a directory, process all Markdown files within it.
+
+Target: {{args}}
+"""
