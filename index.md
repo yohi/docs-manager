@@ -65,6 +65,12 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 - 上級者向けテクニック
 - 複合的なワークフロー構築
 
+#### [📥 Inbox - ドキュメント受信箱]({{ site.baseurl }}/inbox/)
+##### 整理中・レビュー待ちのドキュメント
+- 新規作成ドキュメントの一時保管
+- レビュー・分類待ちの内容
+- カテゴリ化前のドラフト
+
 ---
 
 ## 🎯 **特徴**
@@ -123,9 +129,10 @@ GitHub MCP Server → 基本設定
 | **Claude Code** | 14ファイル     | IDE統合・開発効率化                      |
 | **Cursor**      | 32+ファイル    | AI統合IDE・エージェント機能              |
 | **GitHub MCP**  | 7ファイル      | GitHub統合・自動化・MCP                  |
+| **Inbox**       | 12ファイル     | 整理中・レビュー待ちドキュメント         |
 | **その他**      | 4ファイル      | 基本設定・高度機能・学習ガイド           |
 
-**総計**: **70+ドキュメント** で包括的な開発者向けリソースを提供
+**総計**: **80+ドキュメント** で包括的な開発者向けリソースを提供
 
 ---
 
@@ -165,8 +172,7 @@ GitHub MCP Server → 基本設定
 
 **🎯 目標**: このサイトを通じて、開発者の皆様がAI・モダンツールを活用した効率的で高品質な開発ワークフローを構築できることを目指しています。
 
-{% assign docs_col = site.collections['documents'] %}
-{% assign docs_size = docs_col.docs | size %}
-{% if docs_col == nil or docs_size == 0 %}
+{% assign docs_size = site.documents | size %}
+{% if site.documents == nil or docs_size == 0 %}
 <p><em>ドキュメントがまだありません。_documentsフォルダにMarkdownファイルを追加してください。</em></p>
 {% endif %}
