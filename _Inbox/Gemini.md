@@ -1,4 +1,11 @@
-*Prompt design*is the process of creating prompts, or natural language requests, that elicit accurate, high quality responses from a language model.
+---
+title: "Gemini AI プロンプトデザインの基本"
+description: "Geminiモデルから高品質な回答を引き出すためのプロンプト設計、戦略、ベストプラクティス"
+date: 2026-02-12
+layout: default
+---
+*Prompt design*is the process of creating prompts
+, or natural language requests, that elicit accurate, high quality responses from a language model.
 
 This page introduces basic concepts, strategies, and best practices to get you started designing prompts to get the most out of Gemini AI models.
 | **Note:** Prompt engineering is iterative. These guidelines and templates are starting points. Experiment and refine based on your specific use cases and observed model responses.

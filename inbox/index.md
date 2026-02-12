@@ -13,7 +13,7 @@ permalink: /inbox/
 
 ## 📚 ドキュメント一覧
 
-{% assign inbox_docs = site.Inbox | sort: 'title' %}
+{% assign inbox_docs = site.inbox | sort: 'title' %}
 {% if inbox_docs.size > 0 %}
 <div class="inbox-documents">
   {% for doc in inbox_docs %}

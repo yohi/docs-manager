@@ -30,7 +30,7 @@ collections:
   documents:
     output: true
     permalink: /documents/:path/
-  Inbox:
+  inbox:
     output: true
     permalink: /inbox/:path/
 defaults:
@@ -41,7 +41,7 @@ defaults:
       layout: "default"
   - scope:
       path: "_Inbox"
-      type: "Inbox"
+      type: "inbox"
     values:
       layout: "default"
 
