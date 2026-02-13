@@ -1,3 +1,9 @@
+---
+title: "システムコンテキスト定義：Google Jules (2026 Edition)"
+date: 2026-02-13
+layout: default
+---
+
 # システムコンテキスト定義：Google Jules (2026 Edition)
 
 ## 1. エンティティ定義 (Entity Definition)

@@ -1,3 +1,9 @@
+---
+title: "組織レベルにおけるCI/CDパイプラインとAIコードレビューの統制：GitHub Actions、Greptile、CoderRabbitによるスケーラブルな構成管理"
+date: 2026-02-13
+layout: default
+---
+
 # 組織レベルにおけるCI/CDパイプラインとAIコードレビューの統制：GitHub Actions、Greptile、CoderRabbitによるスケーラブルな構成管理
 
 ## 1. エグゼクティブサマリー

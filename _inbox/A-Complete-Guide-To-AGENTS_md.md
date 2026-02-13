@@ -1,3 +1,9 @@
+---
+title: "A Complete Guide To AGENTS.md"
+date: 2026-02-13
+layout: default
+---
+
 # A Complete Guide To AGENTS.md
 
 Have you ever felt concerned about the size of your `AGENTS.md` file?
