@@ -40,7 +40,6 @@ defaults:
     values:
       layout: "default"
   - scope:
-      path: "_Inbox"
       type: "inbox"
     values:
       layout: "default"
