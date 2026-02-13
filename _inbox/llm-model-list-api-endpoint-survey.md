@@ -1,3 +1,9 @@
+---
+title: "大規模言語モデル（LLM）動的探索エンドポイントの包括的技術解析：OpenAI、Anthropic、Googleのアーキテクチャ比較と実装戦略"
+date: 2026-02-13
+layout: default
+---
+
 # 大規模言語モデル（LLM）動的探索エンドポイントの包括的技術解析：OpenAI、Anthropic、Googleのアーキテクチャ比較と実装戦略
 
 ## エグゼクティブサマリー

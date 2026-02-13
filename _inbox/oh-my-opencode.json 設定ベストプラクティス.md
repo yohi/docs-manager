@@ -1,3 +1,9 @@
+---
+title: "Oh My OpenCode (OMO) 構成の完全ガイド：マルチエージェントAIシステムの設計と最適化"
+date: 2026-02-13
+layout: default
+---
+
 # Oh My OpenCode (OMO) 構成の完全ガイド：マルチエージェントAIシステムの設計と最適化
 
 ## エグゼクティブサマリー

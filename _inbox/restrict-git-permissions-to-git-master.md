@@ -1,3 +1,9 @@
+---
+title: "oh-my-opencodeにおけるGit権限分離とgit_masterロールの高度な運用設計"
+date: 2026-02-13
+layout: default
+---
+
 # oh-my-opencodeにおけるGit権限分離とgit_masterロールの高度な運用設計
 
 ## 1. 序論：自律型AIエージェントと権限管理のパラダイムシフト

@@ -1,3 +1,9 @@
+---
+title: "Google Slides Export Tool ドキュメント"
+date: 2026-02-13
+layout: default
+---
+
 これまでの議論と実装内容を体系的に整理し、**「Google Slides Export Tool」の完全な技術ドキュメント（README）** としてMarkdown形式でまとめました。
 
 これをそのままコピーして、README.md として保存したり、チームへの共有ドキュメントとしてご利用ください。

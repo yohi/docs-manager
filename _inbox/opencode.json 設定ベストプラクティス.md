@@ -1,3 +1,9 @@
+---
+title: "OpenCode設定の決定版ガイド：opencode.jsonおよびopencode.jsoncにおけるベストプラクティスとアーキテクチャ戦略"
+date: 2026-02-13
+layout: default
+---
+
 # OpenCode設定の決定版ガイド：opencode.jsonおよびopencode.jsoncにおけるベストプラクティスとアーキテクチャ戦略
 
 ## エグゼクティブサマリー
