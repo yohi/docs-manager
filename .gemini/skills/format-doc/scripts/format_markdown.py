@@ -4,8 +4,7 @@ import re
 
 def format_content(content):
     # 1. バックスラッシュエスケープされたドットをアンエスケープ (\. -> .)
-    content = re.sub(r'(\d+)\\.', r'\1.', content)
-    content = re.sub(r'\\.', r'.', content)
+    content = re.sub(r'\\(\.)', r'\1', content)
 
     # 2. 見出しの標準化: # **Header** -> # Header
     content = re.sub(r'^(#+)\s*\*\*([^*]+)\*\*', r'\1 \2', content, flags=re.MULTILINE)
@@ -17,8 +16,8 @@ def format_content(content):
     content = re.sub(r'^\s+(#+\s)', r'\1', content, flags=re.MULTILINE)
     
     # 5. 正規表現内の未エスケープスラッシュを修正 (JavaScript/TypeScript)
+    # Note: Removed overly aggressive replacements that were breaking URLs.
     content = re.sub(r'/\^/', r'/^\\/', content)
-    content = re.sub(r'(/[a-zA-Z0-9_-]+)(\))', r'\\/\2', content)
     
     # 6. YAMLインデントの修正: steps配下のアクションが正しくインデントされていない
     content = re.sub(r'^(\s+steps:\s*\n)(\s*)(-\s+uses:)', r'\1\2  \3', content, flags=re.MULTILINE)
