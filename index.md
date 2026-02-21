@@ -67,6 +67,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 
 #### [📥 Inbox - ドキュメント受信箱]({{ site.baseurl }}/inbox/)
 ##### 整理中・レビュー待ちのドキュメント
+- **ディレクトリ構成の変更（カテゴリ化）に対応しました**
 - 新規作成ドキュメントの一時保管
 - レビュー・分類待ちの内容
 - カテゴリ化前のドラフト
@@ -88,7 +89,7 @@ AI活用・プロンプトエンジニアリング・IDE効率化・GitHub統合
 ### 🔧 **開発者重視**
 - **プロフェッショナル向け**: 実務で即活用可能
 - **効率化重視**: 作業時間短縮・品質向上
-- **統合アプローチ**: ツール間の連携最適化
+- **統合 approach**: ツール間の連携最適化
 
 ---
 
@@ -123,16 +124,23 @@ GitHub MCP Server → 基本設定
 
 ## 📊 **コンテンツ統計**
 
+{% assign anthropic_docs = site.documents | where_exp: "item", "item.path contains 'anthropic-prompt-engineering'" %}
+{% assign claude_code_docs = site.documents | where_exp: "item", "item.path contains 'claude-code'" %}
+{% assign cursor_docs = site.documents | where_exp: "item", "item.path contains 'cursor'" %}
+{% assign github_mcp_docs = site.documents | where_exp: "item", "item.path contains 'github-mcp'" %}
+{% assign inbox_size = site.inbox | size %}
+{% assign total_docs = site.documents | size | plus: inbox_size %}
+
 | カテゴリ        | ドキュメント数 | 主要機能                                 |
 | --------------- | -------------- | ---------------------------------------- |
-| **Anthropic**   | 15ファイル     | プロンプトエンジニアリング・Claude 4活用 |
-| **Claude Code** | 14ファイル     | IDE統合・開発効率化                      |
-| **Cursor**      | 32+ファイル    | AI統合IDE・エージェント機能              |
-| **GitHub MCP**  | 7ファイル      | GitHub統合・自動化・MCP                  |
-| **Inbox**       | 12ファイル     | 整理中・レビュー待ちドキュメント         |
-| **その他**      | 4ファイル      | 基本設定・高度機能・学習ガイド           |
+| **Anthropic**   | {{ anthropic_docs.size }}ファイル     | プロンプトエンジニアリング・Claude 4活用 |
+| **Claude Code** | {{ claude_code_docs.size }}ファイル     | IDE統合・開発効率化                      |
+| **Cursor**      | {{ cursor_docs.size }}ファイル    | AI統合IDE・エージェント機能              |
+| **GitHub MCP**  | {{ github_mcp_docs.size }}ファイル      | GitHub統合・自動化・MCP                  |
+| **Inbox**       | {{ inbox_size }}ファイル     | 整理中・レビュー待ちドキュメント         |
+| **その他**      | {{ site.documents.size | minus: anthropic_docs.size | minus: claude_code_docs.size | minus: cursor_docs.size | minus: github_mcp_docs.size }}ファイル      | 基本設定・高度機能・学習ガイド           |
 
-**総計**: **80+ドキュメント** で包括的な開発者向けリソースを提供
+**総計**: **{{ total_docs }}ドキュメント** で包括的な開発者向けリソースを提供
 
 ---
 
